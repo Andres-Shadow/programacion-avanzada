@@ -1,0 +1,12 @@
+relaciones ya hechas:
+
+---- 1 - n -----
+- usuario entrada 1 - n
+- pelicula funcion 1 - n
+- compra confiteria 1 - n
+- factura compra 1 - n
+- factura entrada 1 - n
+- teatro ciudad 1 - n
+- administrativo teatro 1 - n
+- entrada funcion 1 - n (cambiar en modelo esta al revés)
+
