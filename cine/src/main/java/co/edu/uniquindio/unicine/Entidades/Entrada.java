@@ -7,7 +7,10 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -18,4 +21,11 @@ public class Entrada implements Serializable {
     @Id
     private Integer id;
     private Float valor;
+    @ManyToOne
+    private Cliente cliente;
+    @OneToMany(mappedBy = "entrada")
+    private List<Factura> facturas;
+    @ManyToOne
+    private Funcion funcion;
+
 }

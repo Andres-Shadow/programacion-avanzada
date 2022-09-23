@@ -5,11 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -26,6 +24,8 @@ public class Pelicula implements Serializable {
     private String reparto;
     @Enumerated(EnumType.STRING)
     private Estado_PElicula estado;
+    @OneToMany(mappedBy = "pelicula")
+    private List<Funcion> funciones;
 
 
 }

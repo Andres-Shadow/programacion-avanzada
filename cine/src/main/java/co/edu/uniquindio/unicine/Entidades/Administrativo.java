@@ -5,11 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -24,5 +22,7 @@ public class Administrativo implements Serializable {
     private Tipo_Admin tipo;
     private String nombre;
     private String cedula;
+    @OneToMany(mappedBy = "admin")
+    private List<Teatro> teatros;
 
 }

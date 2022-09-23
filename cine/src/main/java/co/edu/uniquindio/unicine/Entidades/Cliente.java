@@ -7,8 +7,10 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -25,4 +27,6 @@ public class Cliente implements Serializable {
     private Integer puntos;
     @Email
     private String email;
+    @OneToMany(mappedBy = "cliente")
+    private List<Entrada> entradas;
 }
