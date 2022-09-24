@@ -25,5 +25,9 @@ public class Administrativo implements Serializable {
     private String cedula;
     @OneToMany(mappedBy = "admin")
     private List<Teatro> teatros;
+    @OneToMany(mappedBy = "supervisor")
+    private List<Administrativo> supervisados;
+    @ManyToOne
+    private Administrativo supervisor;
 
 }

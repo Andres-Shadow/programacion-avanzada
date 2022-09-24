@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -24,5 +21,7 @@ public class Funcion implements Serializable {
     private Pelicula pelicula;
     @OneToMany(mappedBy = "funcion")
     private List<Entrada> entradas;
+    @ManyToMany
+    private List<Horario> horarios;
 
 }

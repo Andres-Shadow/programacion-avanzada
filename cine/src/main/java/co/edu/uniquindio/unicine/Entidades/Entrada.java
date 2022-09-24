@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unicine.Entidades;
 
+import co.edu.uniquindio.unicine.Intermedia.TeatroSala;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,6 @@ public class Entrada implements Serializable {
     private List<Factura> facturas;
     @ManyToOne
     private Funcion funcion;
-
+    @ManyToOne
+    private TeatroSala teatroSala;
 }

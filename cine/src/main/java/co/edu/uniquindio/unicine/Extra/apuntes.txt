@@ -10,3 +10,9 @@ relaciones ya hechas:
 - administrativo teatro 1 - n
 - entrada funcion 1 - n (cambiar en modelo esta al revés)
 
+---- n - n ----
+- cupon cliente n - n
+- teatro sala n - n
+- funcion horario n - n
+- administrativo administrativo n - n
+
