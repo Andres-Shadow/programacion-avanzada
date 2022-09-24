@@ -23,9 +23,9 @@ public class Pelicula implements Serializable {
     private String sinopsis;
     private String reparto;
     @Enumerated(EnumType.STRING)
+    private Genero_Pelicula genero;
+    @Enumerated(EnumType.STRING)
     private Estado_PElicula estado;
     @OneToMany(mappedBy = "pelicula")
     private List<Funcion> funciones;
-
-
 }
