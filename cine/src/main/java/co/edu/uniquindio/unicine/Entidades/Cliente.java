@@ -31,4 +31,16 @@ public class Cliente implements Serializable {
 
     @OneToMany(mappedBy = "cliente")
     private List<CuponCliente> cupones;
+
+
+    public Cliente( String nombre, String telefono, String imagen, String contra, Integer puntos, String email){
+
+        this.id= 10103;
+        this.nombre = nombre;
+        this.telefono= telefono;
+        this.imagenPerfil = imagen;
+        this.contrasenia = contra;
+        this.puntos = puntos;
+        this.email = email;
+    }
 }
