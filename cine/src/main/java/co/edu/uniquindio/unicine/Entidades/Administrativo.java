@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unicine.Entidades;
 
+import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

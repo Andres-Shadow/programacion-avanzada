@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unicine.Entidades;
 
+import co.edu.uniquindio.unicine.Intermedia.CuponCliente;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,7 @@ public class Cliente implements Serializable {
     private String email;
     @OneToMany(mappedBy = "cliente")
     private List<Entrada> entradas;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<CuponCliente> cupones;
 }

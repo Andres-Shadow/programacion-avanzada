@@ -1,5 +1,7 @@
 package co.edu.uniquindio.unicine.Entidades;
 
+import co.edu.uniquindio.unicine.Tipos.Estado_PElicula;
+import co.edu.uniquindio.unicine.Tipos.Genero_Pelicula;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

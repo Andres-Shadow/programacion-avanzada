@@ -1,5 +1,7 @@
 package co.edu.uniquindio.unicine.Entidades;
 
+import co.edu.uniquindio.unicine.Intermedia.CuponCliente;
+import co.edu.uniquindio.unicine.Tipos.Tipo_Cupon;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,4 +25,6 @@ public class Cupon implements Serializable {
     private Float valorDescuento;
     private LocalDateTime fechaVencimiento;
     private String descripcion;
+    @OneToMany(mappedBy = "cupon")
+    private List<CuponCliente> clientes;
 }
