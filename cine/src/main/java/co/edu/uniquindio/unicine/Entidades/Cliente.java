@@ -18,6 +18,7 @@ import java.util.List;
 @Setter
 public class Cliente implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private String telefono;
@@ -31,4 +32,14 @@ public class Cliente implements Serializable {
 
     @OneToMany(mappedBy = "cliente")
     private List<CuponCliente> cupones;
+
+
+    public Cliente( String nombre, String telefono, String imagen, String contra, Integer puntos, String email){
+        this.nombre = nombre;
+        this.telefono= telefono;
+        this.imagenPerfil = imagen;
+        this.contrasenia = contra;
+        this.puntos = puntos;
+        this.email = email;
+    }
 }

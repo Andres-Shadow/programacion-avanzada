@@ -18,6 +18,7 @@ import java.util.List;
 @Setter
 public class Pelicula implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private String trailler;
