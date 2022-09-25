@@ -67,8 +67,10 @@ public class ClienteTest {
     }
     @Test
     public void listar(){
+        Cliente cliente = new Cliente("pepito", "3145126","foto", "12345",0,"pepe@gmail.com");
+        cliente.setId(1);
+        Cliente gaurdado = clienteRepo.save(cliente);
         List<Cliente> lista = clienteRepo.findAll();
-
         System.out.println(lista);
     }
 

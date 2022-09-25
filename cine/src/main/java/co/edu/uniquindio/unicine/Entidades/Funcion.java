@@ -16,6 +16,7 @@ import java.util.List;
 @Setter
 public class Funcion implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
     private Pelicula pelicula;

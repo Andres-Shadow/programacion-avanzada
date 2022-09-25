@@ -16,3 +16,23 @@ relaciones ya hechas:
 - funcion horario n - n
 - administrativo administrativo n - n
 
+
+----- REPOS --------
+- cliente
+- administrativo
+- ciudad
+- compra
+- confiteria
+- cupon
+- entrada
+- factura
+- funcion
+- horario
+- pelicula
+- sala
+- teatro
+
+----- TEST -----
+
+
+
