@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
@@ -91,4 +93,32 @@ public class ClienteTest {
         lista.forEach(System.out::println);
     }
 
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerPorCorreo(){
+        Cliente cliente = clienteRepo.obtener("pepe@gmail.com");
+        Assertions.assertNotNull(cliente);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void comprobarAutenticacion(){
+        Cliente cliente = clienteRepo.comprobarAutenticacion("pepe@gmail.com","1234");
+        Assertions.assertNotNull(cliente);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void paginado(){
+        List<Cliente> clientes = clienteRepo.findAll(PageRequest.of(0, 2)).toList();
+        clientes.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void ordenarRegistros(){
+        List<Cliente> clientes = clienteRepo.findAll(Sort.by("nombre"));
+        //List<Cliente> clientes2 = clienteRepo.findAll(PageRequest.of(0, 2,Sort.by("nombre"))).toList();
+        clientes.forEach(System.out::println);
+    }
 }
