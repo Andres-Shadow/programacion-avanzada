@@ -33,6 +33,18 @@ relaciones ya hechas:
 - teatro
 
 ----- TEST -----
-
+- cliente
+- administrativo
+- ciudad
+- compra
+- confiteria
+- cupon
+- entrada
+- factura
+- funcion
+- horario
+- pelicula
+- sala
+- teatro
 
 
