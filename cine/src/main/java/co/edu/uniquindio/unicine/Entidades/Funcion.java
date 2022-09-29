@@ -24,5 +24,9 @@ public class Funcion implements Serializable {
     private List<Entrada> entradas;
     @ManyToMany
     private List<Horario> horarios;
+    @ManyToOne
+    private Sala sala;
+    //AGREGAR LA ID DE LA SALA PARA LA FUNCION
+
 
 }

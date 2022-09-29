@@ -23,4 +23,6 @@ public class Compra implements Serializable {
     private List<Confiteria> confiterias;
     @ManyToOne
     private Factura factura;
+    @ManyToOne
+    private Cliente cliente;
 }

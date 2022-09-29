@@ -48,3 +48,13 @@ relaciones ya hechas:
 - teatro
 
 
+------ TODO -------
+
+-agregar la relacion entre funcion y sala para poder obtener el teatro sala -
+-terminar de implementar las consultas multiples dentro del repositorio de funcion
+-terminar de poblar la base de datos dentro del dataset
+-confirmar que las relaciones estan bien dentro de la tabla teatrosala y cupon cliente
+-ver último video de programacion para estar al dia
+
+
+

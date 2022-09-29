@@ -23,4 +23,6 @@ public class Sala implements Serializable {
     private Integer sillaDsiponible;
     @OneToMany(mappedBy = "sala")
     private List<TeatroSala> teatroSala;
+    @OneToMany(mappedBy = "sala")
+    private List<Funcion> funciones;
 }

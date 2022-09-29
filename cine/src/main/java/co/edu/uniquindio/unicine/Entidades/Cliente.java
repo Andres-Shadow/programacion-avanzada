@@ -29,7 +29,8 @@ public class Cliente implements Serializable {
     private String email;
     @OneToMany(mappedBy = "cliente")
     private List<Entrada> entradas;
-
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
     @OneToMany(mappedBy = "cliente")
     private List<CuponCliente> cupones;
 
