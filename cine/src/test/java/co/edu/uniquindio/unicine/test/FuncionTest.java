@@ -49,7 +49,7 @@ public class FuncionTest {
         List<Object[]> funciones = funcionRepo.obtenerFuncionesPelicula(1);
 
         funciones.forEach( o ->
-                   System.out.println(o[0] +","+o[1]+","+o[2]+","+o[3] )
+                   System.out.println(o[0] +","+o[1]+","+o[2]+","+o[3]+","+o[4]+","+o[5])
         );
 
     }

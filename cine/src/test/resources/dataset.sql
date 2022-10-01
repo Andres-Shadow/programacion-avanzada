@@ -4,9 +4,11 @@ insert into cliente values (3,"12","pepe2@gmail.com","foto", "pepe2", 0,"3147069
 insert into cliente values (4,"1","pepe3@gmail.com","foto", "pepe3", 0,"3147069109");
 insert into cliente values (5,"12345","pepe4@gmail.com","foto", "pepe4", 0,"3147069109");
 
-insert into pelicula values (1,"cartelera","terror","foto","el resplandor","reparto","sinopsis","trailler");
+insert into pelicula values (1,"EMISION","PORNO","foto","el resplandor","reparto","sinopsis","trailler");
 
-insert into funcion values(1, 1);
+insert into sala values(1, 100, 50);
+
+insert into funcion values(1, 1, 1);
 
 insert into ciudad values(1, "Armenia");
 
