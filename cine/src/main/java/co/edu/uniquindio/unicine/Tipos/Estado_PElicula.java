@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unicine.Entidades;
+package co.edu.uniquindio.unicine.Tipos;
 
 public enum Estado_PElicula {
     EMISION, PREVENTA;

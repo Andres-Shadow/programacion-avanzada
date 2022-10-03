@@ -1,16 +1,16 @@
 package co.edu.uniquindio.unicine.Entidades;
 
+import co.edu.uniquindio.unicine.Intermedia.CuponCliente;
+import co.edu.uniquindio.unicine.Tipos.Tipo_Cupon;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -25,4 +25,6 @@ public class Cupon implements Serializable {
     private Float valorDescuento;
     private LocalDateTime fechaVencimiento;
     private String descripcion;
+    @OneToMany(mappedBy = "cupon")
+    private List<CuponCliente> clientes;
 }

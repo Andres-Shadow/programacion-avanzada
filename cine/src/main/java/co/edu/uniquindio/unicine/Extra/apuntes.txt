@@ -1,0 +1,60 @@
+relaciones ya hechas:
+
+---- 1 - n -----
+- usuario entrada 1 - n
+- pelicula funcion 1 - n
+- compra confiteria 1 - n
+- factura compra 1 - n
+- factura entrada 1 - n
+- teatro ciudad 1 - n
+- administrativo teatro 1 - n
+- entrada funcion 1 - n (cambiar en modelo esta al revés)
+
+---- n - n ----
+- cupon cliente n - n
+- teatro sala n - n
+- funcion horario n - n
+- administrativo administrativo n - n
+
+
+----- REPOS --------
+- cliente
+- administrativo
+- ciudad
+- compra
+- confiteria
+- cupon
+- entrada
+- factura
+- funcion
+- horario
+- pelicula
+- sala
+- teatro
+
+----- TEST -----
+- cliente
+- administrativo
+- ciudad
+- compra
+- confiteria
+- cupon
+- entrada
+- factura
+- funcion
+- horario
+- pelicula
+- sala
+- teatro
+
+
+------ TODO -------
+
+-agregar la relacion entre funcion y sala para poder obtener el teatro sala -
+-terminar de implementar las consultas multiples dentro del repositorio de funcion
+-terminar de poblar la base de datos dentro del dataset
+-confirmar que las relaciones estan bien dentro de la tabla teatrosala y cupon cliente
+-ver último video de programacion para estar al dia
+
+
+
