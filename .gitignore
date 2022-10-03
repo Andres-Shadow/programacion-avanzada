@@ -4,3 +4,4 @@
 *.class
 /src/
 /negocio/
+/cine/src/main/resources/application.properties
