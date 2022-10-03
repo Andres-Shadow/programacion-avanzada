@@ -22,12 +22,14 @@ public class Entrada implements Serializable {
     private Float valor;
     private Integer fila;
     private Integer columna;
+
+
+    // ------------ RELACIONES -----------
     @ManyToOne
     private Cliente cliente;
-    @OneToMany(mappedBy = "entrada")
-    private List<Factura> facturas;
+    @ManyToOne
+    private Factura factura;
     @ManyToOne
     private Funcion funcion;
-    @ManyToOne
-    private TeatroSala teatroSala;
+
 }

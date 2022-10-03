@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @NoArgsConstructor
@@ -21,23 +22,29 @@ public class Cliente implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
-    private String telefono;
     private String imagenPerfil;
     private String contrasenia;
     private Integer puntos;
     @Email
     private String email;
+
+
+
+    // ---------------- RELACIONES -----------------
+
     @OneToMany(mappedBy = "cliente")
     private List<Entrada> entradas;
     @OneToMany(mappedBy = "cliente")
     private List<Compra> compras;
     @OneToMany(mappedBy = "cliente")
     private List<CuponCliente> cupones;
+    @ElementCollection
+    private Map<String, String> telefono;
 
+    // ------------- CONSTRUCTOR ---------------------
 
-    public Cliente( String nombre, String telefono, String imagen, String contra, Integer puntos, String email){
+    public Cliente( String nombre, String imagen, String contra, Integer puntos, String email){
         this.nombre = nombre;
-        this.telefono= telefono;
         this.imagenPerfil = imagen;
         this.contrasenia = contra;
         this.puntos = puntos;

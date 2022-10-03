@@ -28,7 +28,7 @@ public class ClienteTest {
     @Sql("classpath:dataset.sql")
     public void registrar(){
 
-        Cliente cliente = new Cliente("pepito", "3145126","foto", "12345",0,"pepe@gmail.com");
+        Cliente cliente = new Cliente("pepito","foto", "12345",0,"pepe@gmail.com");
 
 
         Cliente gaurdado = clienteRepo.save(cliente);

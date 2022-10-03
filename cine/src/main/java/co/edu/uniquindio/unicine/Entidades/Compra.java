@@ -19,7 +19,9 @@ public class Compra implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Float valor;
-    @OneToMany(mappedBy = "compra")
+
+    // --------- RELACIONES -------------
+    @ManyToMany
     private List<Confiteria> confiterias;
     @ManyToOne
     private Factura factura;

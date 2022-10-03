@@ -20,8 +20,11 @@ public class Factura implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Float valorCompleto;
+
+
+    // ---------- RELACIONES -------------
     @OneToMany(mappedBy = "factura")
     private List<Compra> compras;
-    @ManyToOne
-    private Entrada entrada;
+    @OneToMany(mappedBy = "factura")
+    private List<Entrada> entrada;
 }

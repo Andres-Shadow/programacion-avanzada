@@ -19,6 +19,9 @@ public class Ciudad implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
+
+
+    //--------- RELACIONES -----------
     @OneToMany(mappedBy = "ciudad")
     private List<Teatro> teatros;
 }

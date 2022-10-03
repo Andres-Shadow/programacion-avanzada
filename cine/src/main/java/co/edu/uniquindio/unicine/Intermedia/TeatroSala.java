@@ -24,7 +24,6 @@ public class TeatroSala {
     private Teatro teatro;
     @ManyToOne
     private Sala sala;
-    @OneToMany(mappedBy = "teatroSala")
-    private List<Entrada> entradas;
+
 
 }
