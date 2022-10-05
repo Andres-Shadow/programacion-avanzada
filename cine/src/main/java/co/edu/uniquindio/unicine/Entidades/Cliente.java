@@ -43,7 +43,12 @@ public class Cliente implements Serializable {
 
     // ------------- CONSTRUCTOR ---------------------
 
+<<<<<<< HEAD
     public Cliente( String nombre, String imagen, String contra, Integer puntos, String email){
+=======
+    public Cliente( String nombre, String telefono, String imagen, String contra, Integer puntos, String email){
+
+>>>>>>> 40dc40967b1f1114f92e8e412356672d1f9cc1e7
         this.nombre = nombre;
         this.imagenPerfil = imagen;
         this.contrasenia = contra;
