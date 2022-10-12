@@ -20,6 +20,9 @@ public class Horario implements Serializable {
     private LocalDate dia;
     private String hora_minutos;
 
+    private LocalDate inicio;
+    private LocalDate fin;
+
     //------------ RELACIONES ------------
     @ManyToMany(mappedBy = "horarios")
     private List<Funcion> funciones;

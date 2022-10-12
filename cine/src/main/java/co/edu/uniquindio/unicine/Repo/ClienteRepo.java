@@ -13,7 +13,7 @@ import java.util.List;
 public interface ClienteRepo extends JpaRepository<Cliente, Integer> {
 
     @Query("select c from Cliente c where c.email = :email")
-    Cliente obtener(String email);
+    Cliente obtenerPorCorreo(String email);
     @Query("select c from Cliente c where c.email = :email and c.contrasenia= :contrasenia")
     Cliente comprobarAutenticacion(String email, String contrasenia);
     @Query("select comp from Cliente cli, in(cli.compras) comp where cli.email =:correo")

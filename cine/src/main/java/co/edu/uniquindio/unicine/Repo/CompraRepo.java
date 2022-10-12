@@ -10,5 +10,8 @@ import java.util.List;
 @Repository
 public interface CompraRepo extends JpaRepository<Compra, Integer> {
 
+    @Query("select c.cliente.id, count(c) from Compra c where c.cupon is not null group by c.cliente")
+    List<Object[]> contarCuponesRedimidos();
+
 
 }

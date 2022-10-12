@@ -25,8 +25,11 @@ public class Cupon implements Serializable {
     private Float valorDescuento;
     private LocalDateTime fechaVencimiento;
     private String descripcion;
+    private Boolean estado;
 
     //--------- RELACIONES -----------
     @OneToMany(mappedBy = "cupon")
     private List<CuponCliente> clientes;
+    @ManyToOne
+    private Compra compra;
 }
