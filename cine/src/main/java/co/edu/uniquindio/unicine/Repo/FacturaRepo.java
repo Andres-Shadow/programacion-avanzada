@@ -19,7 +19,9 @@ public interface FacturaRepo extends JpaRepository<Factura, Integer> {
     //UTILIZANDO SUBCONSULTAS
     @Query("select c.cliente, f1 from Factura f1 join f1.compras c where f1.valorCompleto =  (select max(f.valorCompleto) from Factura f)")
     List<Object[]> obtenerCompraMasCostosa();
+
     @Query("select new co.edu.uniquindio.unicine.Dto.InformacionFacturaDTO(f.valorCompleto,f.fecha, (select sum (e.valor ) from Entrada e where e.factura.id=f.id), (select sum(c.valor) from Compra  c where c.id=f.id) ) from Factura f  join f.compras c  where c.cliente.id =:idCliente ")
     List<Object[]> obtenerInformacionCompras(Integer idCliente);
+
 
 }

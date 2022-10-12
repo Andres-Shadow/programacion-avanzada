@@ -1,13 +1,11 @@
 package co.edu.uniquindio.unicine.Entidades;
 
 import co.edu.uniquindio.unicine.Intermedia.CuponCliente;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +23,9 @@ public class Cliente implements Serializable {
     private String imagenPerfil;
     private String contrasenia;
     private Integer puntos;
+    @NotNull
     @Email
+    @Column(unique = true)
     private String email;
 
 
@@ -43,7 +43,7 @@ public class Cliente implements Serializable {
 
     // ------------- CONSTRUCTOR ---------------------
 
-
+    @Builder
     public Cliente( String nombre, String imagen, String contra, Integer puntos, String email) {
         this.nombre = nombre;
         this.imagenPerfil = imagen;

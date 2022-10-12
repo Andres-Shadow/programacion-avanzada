@@ -15,7 +15,7 @@ public class InformacionFacturaDTO {
 
     private Float precioTotal;
     private Date fecha;
-    private Integer precioEntrada;
-    private Integer precioConfiteria;
+    private Double precioEntrada;
+    private Double precioConfiteria;
 
 }

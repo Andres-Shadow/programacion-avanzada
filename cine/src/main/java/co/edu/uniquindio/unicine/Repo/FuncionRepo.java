@@ -18,6 +18,9 @@ public interface FuncionRepo extends JpaRepository<Funcion, Integer> {
     List<Object[]> obtenerFuncionesPelicula(Integer codigoPelicula);
     @Query("select f from Funcion  f join f.sala.teatroSala t  where t.teatro.id =:idTeatro and f.entradas is empty ")
     List<Funcion> obtenerFuncionesSinEntrada(Integer idTeatro);
+    /*
     @Query("select f from Funcion f join f.sala.teatroSala ts  join f.horarios hs where ts.teatro.id=: idTeatro and hs.inicio <:fin or hs.fin >:inicio")
     List<Funcion> obtenerFuncionesTeatroRangoFecha(Integer idTeatro, LocalDate inicio, LocalDate fin);
+    */
 }
+

@@ -54,7 +54,7 @@ insert into funcion values (1,4,11);
 insert into funcion values (2,2,10);
 insert into funcion values (3,8,4);
 insert into funcion values (4,6,12);
-insert into funcion values (5,3,1,);
+--insert into funcion values (5,3,1,); SI SE DESCOMENTA DEJA DE FUNCIONAR
 insert into funcion values (6,9,7);
 insert into funcion values (7,2,2);
 insert into funcion values (8,4,5);

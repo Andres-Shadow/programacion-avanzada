@@ -98,7 +98,7 @@ public class ClienteTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void obtenerPorCorreo(){
-        Cliente cliente = clienteRepo.obtener("pepe@gmail.com");
+        Cliente cliente = clienteRepo.obtenerPorCorreo("pepe@gmail.com");
         Assertions.assertNotNull(cliente);
     }
 
