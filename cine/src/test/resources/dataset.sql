@@ -80,5 +80,5 @@ insert into compra (id, valor, cliente_id) values (1, 12500, 1);
 
 insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (1, "descripcion 1","2020/02/05", 150000);
 
-insert into cupon_cliente values (1, 1, 1, 1);
+insert into cupon_cliente values (1, 1, 1, 1,1);
 

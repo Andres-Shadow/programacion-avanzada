@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unicine.Intermedia;
 
 import co.edu.uniquindio.unicine.Entidades.Cliente;
+import co.edu.uniquindio.unicine.Entidades.Compra;
 import co.edu.uniquindio.unicine.Entidades.Cupon;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class CuponCliente implements Serializable {
     private Cliente cliente;
     @ManyToOne
     private Cupon cupon;
-
+    @OneToOne(mappedBy = "cupon")
+    private Compra compra;
 
 }
