@@ -20,7 +20,8 @@ public interface ClienteRepo extends JpaRepository<Cliente, Integer> {
     List<Compra> obbtenerComrpa(String correo);
     @Query("select liscup.cupon from Cliente cli join cli.cupones liscup where cli.email= :email")
     List<Cupon> obtenerListaCupones(String email);
-
+    @Query("select c from Compra c where c.cliente.id=:idCliente")
+    List<Compra> listarCompras(Integer idCliente);
 
 
 }

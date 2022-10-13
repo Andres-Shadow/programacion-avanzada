@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unicine.Servicios;
 
 import co.edu.uniquindio.unicine.Entidades.Cliente;
+import co.edu.uniquindio.unicine.Entidades.Compra;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface ClienteServicio {
     List<Cliente> listarClientes();
 
     Cliente obtenerClientePorCodigo(Integer id) throws Exception;
+
+    List<Compra> listarCompras(Integer idCliente) throws Exception;
 }

@@ -1,7 +1,9 @@
-package co.edu.uniquindio.unicine.Servicios;
+package co.edu.uniquindio.unicine.ServiciosImpl;
 
 import co.edu.uniquindio.unicine.Entidades.Cliente;
+import co.edu.uniquindio.unicine.Entidades.Compra;
 import co.edu.uniquindio.unicine.Repo.ClienteRepo;
+import co.edu.uniquindio.unicine.Servicios.ClienteServicio;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -77,8 +79,17 @@ public class ClienteServicioImpl implements ClienteServicio {
         return guardado.get();
     }
 
+    @Override
+    public List<Compra> listarCompras(Integer idCliente) throws Exception {
+        List<Compra> listaCompras = clienteRepo.listarCompras(idCliente);
+
+        if(listaCompras == null)
+            throw new Exception("Cliente no tiene compras");
+
+        return listaCompras;
+    }
+
     //TODO
-    //ListarHistorialCompras
     //HacerCompra
     //RedimirCupon
 }
