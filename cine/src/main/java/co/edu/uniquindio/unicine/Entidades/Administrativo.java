@@ -18,11 +18,15 @@ import java.util.List;
 
 public class Administrativo implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Enumerated(EnumType.STRING)
     private Tipo_Admin tipo;
     private String nombre;
     private String cedula;
+
+    //---------- RELACIONES -----------
+
     @OneToMany(mappedBy = "admin")
     private List<Teatro> teatros;
     @OneToMany(mappedBy = "supervisor")

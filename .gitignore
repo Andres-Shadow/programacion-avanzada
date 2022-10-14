@@ -3,3 +3,6 @@
 /cine/build/
 *.class
 /src/
+/negocio/
+cine/src/main/resources/application.properties
+negocio/src/main/resources/application.properties

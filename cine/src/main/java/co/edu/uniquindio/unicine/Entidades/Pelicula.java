@@ -18,6 +18,7 @@ import java.util.List;
 @Setter
 public class Pelicula implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private String trailler;
@@ -28,6 +29,9 @@ public class Pelicula implements Serializable {
     private Genero_Pelicula genero;
     @Enumerated(EnumType.STRING)
     private Estado_PElicula estado;
+
+    //---------- RELACIONES ----------
+
     @OneToMany(mappedBy = "pelicula")
     private List<Funcion> funciones;
 }

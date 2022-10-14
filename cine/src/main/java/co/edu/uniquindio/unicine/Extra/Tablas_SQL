@@ -1,0 +1,64 @@
+CLIENTE
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| id            | int          | NO   | PRI | NULL    | auto_increment |
+| contrasenia   | varchar(255) | YES  |     | NULL    |                |
+| email         | varchar(255) | YES  |     | NULL    |                |
+| imagen_perfil | varchar(255) | YES  |     | NULL    |                |
+| nombre        | varchar(255) | YES  |     | NULL    |                |
+| puntos        | int          | YES  |     | NULL    |                |
+| telefono      | varchar(255) | YES  |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+
+PELICULAS
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| estado   | varchar(255) | YES  |     | NULL    |                |
+| genero   | varchar(255) | YES  |     | NULL    |                |
+| imagen   | varchar(255) | YES  |     | NULL    |                |
+| nombre   | varchar(255) | YES  |     | NULL    |                |
+| reparto  | varchar(255) | YES  |     | NULL    |                |
+| sinopsis | varchar(255) | YES  |     | NULL    |                |
+| trailler | varchar(255) | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+
+SALA
++------------------+------+------+-----+---------+----------------+
+| Field            | Type | Null | Key | Default | Extra          |
++------------------+------+------+-----+---------+----------------+
+| id               | int  | NO   | PRI | NULL    | auto_increment |
+| silla_dsiponible | int  | YES  |     | NULL    |                |
+| silla_total      | int  | YES  |     | NULL    |                |
++------------------+------+------+-----+---------+----------------+
+
+FUNCIONES
++-------------+------+------+-----+---------+----------------+
+| Field       | Type | Null | Key | Default | Extra          |
++-------------+------+------+-----+---------+----------------+
+| id          | int  | NO   | PRI | NULL    | auto_increment |
+| pelicula_id | int  | YES  | MUL | NULL    |                |
+| sala_id     | int  | YES  | MUL | NULL    |                |
++-------------+------+------+-----+---------+----------------+
+
+CIUDAD
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int          | NO   | PRI | NULL    | auto_increment |
+| nombre | varchar(255) | YES  |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+
+ADMINISTRATIVO
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| id            | int          | NO   | PRI | NULL    | auto_increment |
+| cedula        | varchar(255) | YES  |     | NULL    |                |
+| nombre        | varchar(255) | YES  |     | NULL    |                |
+| tipo          | varchar(255) | YES  |     | NULL    |                |
+| supervisor_id | int          | YES  | MUL | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+

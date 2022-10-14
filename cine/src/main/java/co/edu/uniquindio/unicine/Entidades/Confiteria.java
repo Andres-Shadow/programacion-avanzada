@@ -5,11 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -18,11 +16,14 @@ import java.io.Serializable;
 @Setter
 public class Confiteria implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private Float precio;
     private String imagen;
     private Integer valorPuntos;
-    @ManyToOne
-    private Compra compra;
+
+    //------------ RELACIONES -----------
+    @ManyToMany(mappedBy = "confiterias")
+    private List<Compra> compra;
 }
