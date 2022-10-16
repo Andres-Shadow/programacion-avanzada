@@ -66,19 +66,70 @@ insert into funcion values (10,2,3);
 insert into ciudad values(1, "Armenia");
 insert into ciudad values(2, "Pereira");
 insert into ciudad values(3, "Manizales");
+insert into ciudad values(4, "Cali");
+insert into ciudad values(5, "Medellin");
 
 /** --------------------------------------ADMINS-----------------------------------------------------**/
-
+                            /*    id - cedula -    nombre   -     tipo    - id supervisor*/
 insert into administrativo values (1, "12345","pepe torres", "admin teatro","1" );
+insert into administrativo values (2, "222",  "Juan Marin",  "admin teatro","1" );
+insert into administrativo values (3, "333","Carlos Tabares", "admin teatro","1" );
+insert into administrativo values (4, "444","Maria Lopez", "admin teatro","1" );
+insert into administrativo values (5, "555","Jhon Guarin", "admin teatro","1" );
 
-
-
-
+/** --------------------------------------TEATROS-----------------------------------------------------**/
 insert into teatro values (1, "direccion 1", "teatro 1", 1, 1);
+insert into teatro values (2, "direccion 2", "teatro 2", 1, 1);
+insert into teatro values (3, "direccion 3", "teatro 3", 2, 3);
+insert into teatro values (4, "direccion 4", "teatro 4", 3, 4);
+insert into teatro values (5, "direccion 5", "teatro 5", 4, 5);
 
+/** --------------------------------------COMPRAS-----------------------------------------------------**/
 insert into compra (id, valor, cliente_id) values (1, 12500, 1);
+insert into compra (id, valor, cliente_id) values (2, 17000, 2);
+insert into compra (id, valor, cliente_id) values (3, 15000, 2);
+insert into compra (id, valor, cliente_id) values (4, 22500, 3);
+insert into compra (id, valor, cliente_id) values (5, 36500, 4);
 
-insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (1, "descripcion 1","2020/02/05", 150000);
+/** --------------------------------------CUPONES-----------------------------------------------------**/
+insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (1, "descripcion 1","2020/02/05", 15000);
+insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (2, "descripcion 2","2022/10/30", 20000);
+insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (3, "descripcion 3","2022/12/09", 17000);
+insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (4, "descripcion 4","2022/11/17", 8000);
+insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (5, "descripcion 5","2022/12/05", 11000);
+
 
 insert into cupon_cliente values (1, 1, 1, 1,1);
+insert into cupon_cliente values (2, 2, 1, 1,2);
+insert into cupon_cliente values (3, 1, 1, 2,3);
+insert into cupon_cliente values (4, 2, 1, 3,2);
+insert into cupon_cliente values (5, 1, 1, 4,5);
 
+/** --------------------------------------CONFITERIA-----------------------------------------------------**/
+insert into confiteria values (1, "img1.png", "crispetas", 32000 , 2 );
+insert into confiteria values (2, "img2.png", "hot-dog", 25000 , 1 );
+insert into confiteria values (3, "img3.png", "gaseosa", 12000 , 1 );
+insert into confiteria values (4, "img4.png", "chocolatina", 8000 , null );
+insert into confiteria values (5, "img5.png", "refresco", 9000 , 1 );
+
+/** --------------------------------------ENTRADA-----------------------------------------------------**/
+/*                                    idclien-idfact-idfuncion  */
+insert into entrada values(1, 3, 4 , 8000, 2, 1 , 3);
+insert into entrada values(2, 3, 2 , 8000, 3, 2 , 3);
+insert into entrada values(3, 3, 3 , 8000, 4, 3 , 3);
+insert into entrada values(4, 2, 2 , 8000, 5, 4 , 3);
+insert into entrada values(5, 2, 4 , 8000, 2, 5 , 3);
+
+/** --------------------------------------FACTURA-----------------------------------------------------**/
+insert into factura values(1, "2022/02/05" , 23000 );
+insert into factura values(2, "2022/02/05" , 32000);
+insert into factura values(3, "2022/02/05" , 8000 );
+insert into factura values(4, "2022/02/05" , 25000 );
+insert into factura values(5, "2022/02/05" , 27000 );
+
+/** --------------------------------------HORARIO-----------------------------------------------------**/
+insert into horario values(1, date ,date, "200", date);
+insert into horario values(2, date ,date, "120", date);
+insert into horario values(3, date ,date, "150", date);
+insert into horario values(4, date ,date, "90", date);
+insert into horario values(5, date ,date, "98", date);
