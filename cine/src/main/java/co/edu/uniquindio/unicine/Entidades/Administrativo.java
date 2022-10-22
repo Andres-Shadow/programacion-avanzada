@@ -4,6 +4,7 @@ import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.List;
@@ -31,6 +32,14 @@ public class Administrativo implements Serializable {
     @ToString.Include
     @Positive
     private String cedula;
+
+    @ToString.Include
+    @Column(nullable = false, length = 50, unique = true)
+    @Email
+    private String correo;
+    @ToString.Include
+    @Column(nullable = false, length = 50)
+    private String contrasenia;
 
     //---------- RELACIONES -----------
     @ToString.Exclude
