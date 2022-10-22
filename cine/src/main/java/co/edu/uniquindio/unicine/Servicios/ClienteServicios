@@ -1,5 +1,12 @@
 Servicios relacionados al cliente
 
+Registrarse y loguearse X
+Buscar películas
+Realizar compras.
+Redimir cupones.
+Listar sus propias compras.
+Cambiar contraseña usando correo electrónico por medio de un enlace. Esta funcionalidad es para cuando el usuario olvida su contraseña.
+
 -crud:
 Registrarse X
 actualizar X

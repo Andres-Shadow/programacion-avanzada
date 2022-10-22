@@ -1,10 +1,8 @@
 package co.edu.uniquindio.unicine.Servicios;
 
-import co.edu.uniquindio.unicine.Entidades.Cliente;
-import co.edu.uniquindio.unicine.Entidades.Compra;
-import co.edu.uniquindio.unicine.Entidades.Confiteria;
-import co.edu.uniquindio.unicine.Entidades.Entrada;
+import co.edu.uniquindio.unicine.Entidades.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public interface ClienteServicio {
@@ -18,16 +16,21 @@ public interface ClienteServicio {
 
     Cliente login(String correo, String contrasenia) throws Exception;
 
-    void comprarEntrada (Entrada entrada, Cliente cliente) throws Exception;
+    Pelicula buscarPelicula (String nombre) throws Exception;
 
-    void comprarConfiteria (Confiteria entrada, Cliente cliente) throws Exception;
 
+    Compra comprar (Entrada entrada, Confiteria confiteria, Cliente cliente, Cupon cupon) throws Exception;
+
+
+    List<Compra> listarCompras(Integer idCliente) throws Exception;
+
+    Cliente cambiarContrasenia(Cliente cliente, String nuevaContrasenia) throws Exception;
 
     Cliente buscarCliente(Integer idCliente) throws Exception;
 
     void agregarPuntos(Integer idCliente, Integer puntos) throws Exception;
 
-    List<Compra> listarCompras(Integer idCliente) throws Exception;
+
     List<Cliente> listarClientes();
 
 }

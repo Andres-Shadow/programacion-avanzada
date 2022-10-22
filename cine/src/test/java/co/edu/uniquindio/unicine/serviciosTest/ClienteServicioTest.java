@@ -39,7 +39,7 @@ public class ClienteServicioTest {
     @Sql("classpath:dataset.sql")
     public void actualizarCliente(){
         try {
-            Cliente cliente = clienteServ.obtenerClientePorCodigo(1);
+            Cliente cliente = clienteServ.buscarCliente(1);
             cliente.setEmail("nuevoemail@gmail.com");
             Cliente nuevo = clienteServ.actualizarCliente(cliente);
             Assertions.assertNotNull(nuevo);
@@ -58,7 +58,7 @@ public class ClienteServicioTest {
             Assertions.assertTrue(false);
         }
         try {
-            Cliente cliente = clienteServ.obtenerClientePorCodigo(1);
+            Cliente cliente = clienteServ.buscarCliente(1);
         } catch (Exception e) {
             Assertions.assertTrue(true);
         }
@@ -69,14 +69,5 @@ public class ClienteServicioTest {
     public void listarClientes(){
         List<Cliente> cliente = clienteServ.listarClientes();
         cliente.forEach(System.out::println);
-    }
-    @Test
-    @Sql("classpath:dataset.sql")
-    public void listarHistorialCompras(){
-        try {
-            List<Compra> listaComrpas = clienteServ.listarCompras(50);
-        } catch (Exception e) {
-            Assertions.assertTrue(true);
-        }
     }
 }

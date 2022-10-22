@@ -1,8 +1,8 @@
 package co.edu.uniquindio.unicine.ServiciosImpl;
 
-import co.edu.uniquindio.unicine.Entidades.Cliente;
-import co.edu.uniquindio.unicine.Entidades.Compra;
+import co.edu.uniquindio.unicine.Entidades.*;
 import co.edu.uniquindio.unicine.Repo.ClienteRepo;
+import co.edu.uniquindio.unicine.Repo.EntradaRepo;
 import co.edu.uniquindio.unicine.Servicios.ClienteServicio;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +55,67 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
+    public Pelicula buscarPelicula(String nombrePelicula) throws Exception {
+        Optional<Pelicula> pelicula = Optional.ofNullable(clienteRepo.buscarPelicula(nombrePelicula));
+        if(pelicula.isEmpty())
+            throw new Exception("Excepcion: Pelicula no encontrada");
+        return pelicula.get();
+    }
+
+    @Override
+    public Compra comprar(Entrada entrada, Confiteria confiteria, Cliente cliente, Cupon cupon) throws Exception {
+        Optional<Entrada> entradaBuscada = Optional.ofNullable(clienteRepo.buscarEntrada(entrada.getId()));
+        Optional<Confiteria> confiteriabuscada = Optional.ofNullable(clienteRepo.buscarConfiteria(confiteria.getId()));
+        Optional<Cliente> clienteBuscado = clienteRepo.findById(cliente.getId());
+        Float valorCompra = null;
+        boolean flag = true;
+
+        if(entradaBuscada.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Entrada no registrada");}
+
+        if (confiteriabuscada.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Confiteria no encontrada");}
+
+        if(clienteBuscado.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Cliente no encontrado");}
+
+        if(flag != false){
+            valorCompra += entrada.getValor();
+            valorCompra += confiteria.getPrecio();
+            valorCompra -= cupon.getValorDescuento();}
+
+        if(valorCompra == null)
+            throw new Exception("Excepcion: Valor de la compra no cargado");
+        else
+            return Compra.builder().valor(valorCompra).build();
+
+    }
+
+    @Override
+    public List<Compra> listarCompras(Integer idCliente) throws Exception {
+        List<Compra> listaCompras = clienteRepo.listarCompras(idCliente);
+        if(listaCompras == null)
+            throw new Exception("Excepcion: Cliente sin compras");
+        return listaCompras;
+    }
+
+    @Override
+    public Cliente cambiarContrasenia(Cliente cliente, String nuevaContrasenia) throws Exception{
+        Optional<Cliente> buscado = Optional.ofNullable(clienteRepo.obtenerCliente(cliente.getId()));
+        if(buscado.isEmpty())
+            throw new Exception("Exception: Correo invalido");
+        else
+            cliente.setContrasenia(nuevaContrasenia);
+
+        return clienteRepo.save(cliente);
+
+    }
+
+
+    @Override
     public Cliente buscarCliente(Integer idCliente) throws Exception {
         Optional<Cliente> buscado = clienteRepo.findById(idCliente);
         if(buscado.isEmpty())
@@ -82,15 +143,9 @@ public class ClienteServicioImpl implements ClienteServicio {
         }
     }
 
-    @Override
-    public List<Compra> listarCompras(Integer idCliente) throws Exception {
-        List<Compra> listaCompras = clienteRepo.listarCompras(idCliente);
 
-        if(listaCompras == null)
-            throw new Exception("Cliente no tiene compras");
 
-        return listaCompras;
-    }
+
 
     //TODO
     //HacerCompra
