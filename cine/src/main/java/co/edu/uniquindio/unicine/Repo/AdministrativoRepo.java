@@ -13,6 +13,7 @@ public interface AdministrativoRepo extends JpaRepository<Administrativo, Intege
     @Query("select a from Administrativo a where a.cedula = :cedula")
     Administrativo obtenerPorCedula(String cedula);
 
+    //listamos todos los teatros creados
     @Query("select t from Teatro t")
     List<Teatro> ListarTeatros();
 
@@ -27,4 +28,14 @@ public interface AdministrativoRepo extends JpaRepository<Administrativo, Intege
 
     @Query("select a from Administrativo a")
     List<Administrativo> ListarAdminsTeatro();
+
+    @Query("select c from Ciudad c")
+    List<Ciudad> ListarCiudad();
+
+    @Query("select s from Sala s")
+    List<Sala> ListarSala();
+
+    @Query("select f from Funcion f")
+    List<Funcion> ListarFuncion();
+
 }

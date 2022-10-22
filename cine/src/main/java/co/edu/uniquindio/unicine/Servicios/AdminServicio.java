@@ -7,7 +7,12 @@ import java.util.List;
 public interface AdminServicio {
 
     Administrativo login(String cedula)throws Exception;
-    Ciudad crearCiudad(Ciudad ciudad);
+
+    //Gestionar Ciudad
+    Ciudad crearCiudad(Ciudad ciudad)throws Exception;
+    void eliminarCiudad(Integer idCiudad)throws Exception;
+    Ciudad actualizarCiudad(Ciudad ciudad)throws Exception;
+    List<Ciudad> listarCiudad();
 
     //Gestionar teatro
     Teatro crearTeatro(Teatro teatro)throws Exception;
