@@ -1,7 +1,7 @@
 package co.edu.uniquindio.unicine.ServiciosImpl;
 
 import co.edu.uniquindio.unicine.Entidades.Administrativo;
-import co.edu.uniquindio.unicine.Entidades.Ciudad;
+import co.edu.uniquindio.unicine.Entidades.Confiteria;
 import co.edu.uniquindio.unicine.Entidades.Funcion;
 import co.edu.uniquindio.unicine.Entidades.Sala;
 import co.edu.uniquindio.unicine.Repo.AdministrativoRepo;
@@ -29,10 +29,10 @@ public class AdminTeatroImpl implements AdminTeatroServicio {
     }
 
     @Override
-    public Administrativo login(String cedula) throws Exception {
-        Administrativo admin = administrativoRepo.obtenerPorCedula(cedula);
+    public Administrativo login(String correo, String password) throws Exception {
+        Administrativo admin = administrativoRepo.ComprobarAutenticacion(correo, password);
 
-        if(admin == null || !admin.getTipo().equals(Tipo_Admin.ADMINISTRADOR_TEATRO))
+        if(admin == null )
         {
             throw new Exception("Los datos de autenticacion son incorrectos");
         }
@@ -43,6 +43,10 @@ public class AdminTeatroImpl implements AdminTeatroServicio {
 
     @Override
     public Funcion crearFuncion(Funcion funcion) throws Exception {
+        Funcion funcion1 = administrativoRepo.obtenerFuncionPorId(funcion.getId());
+        if(funcion1 != null) {
+            throw new Exception("La funcion ya existe");
+        }
         return funcionRepo.save(funcion);
     }
 
@@ -73,6 +77,10 @@ public class AdminTeatroImpl implements AdminTeatroServicio {
 
     @Override
     public Sala crearSala(Sala sala) throws Exception {
+        Sala sala1 = administrativoRepo.obtenerSalaPorId(sala.getId());
+        if(sala1 != null) {
+            throw new Exception("La Sala ya existe");
+        }
         return salaRepo.save(sala);
     }
 

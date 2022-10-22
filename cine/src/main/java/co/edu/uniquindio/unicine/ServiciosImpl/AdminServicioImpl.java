@@ -28,9 +28,9 @@ public class AdminServicioImpl implements AdminServicio {
     }
 
     @Override
-    public Administrativo login(String cedula) throws Exception {
-        Administrativo admin = administrativoRepo.obtenerPorCedula(cedula);
-        if(admin == null || !admin.getTipo().equals(Tipo_Admin.ADMINISTRADOR_GLOBAL))
+    public Administrativo login(String correo, String password) throws Exception {
+        Administrativo admin = administrativoRepo.ComprobarAutenticacion(correo, password);
+        if(admin == null )
         {
             throw new Exception("Los datos de autenticacion son incorrectos");
         }
@@ -40,6 +40,10 @@ public class AdminServicioImpl implements AdminServicio {
     @Override
     public Ciudad crearCiudad(Ciudad ciudad)throws Exception {
 
+        Ciudad ciudad1 = administrativoRepo.obtenerCiudadPorid(ciudad.getId());
+        if(ciudad1 != null) {
+            throw new Exception("La ciudad ya existe");
+        }
         return ciudadRepo.save(ciudad);
     }
 
@@ -69,6 +73,10 @@ public class AdminServicioImpl implements AdminServicio {
     //Gestionar teatro
     @Override
     public Teatro crearTeatro(Teatro teatro) throws Exception {
+        Teatro teatro1 = administrativoRepo.obtenerTeatroPorid(teatro.getId());
+        if(teatro1 != null) {
+            throw new Exception("El teatro ya existe");
+        }
         return teatroRepo.save(teatro);
     }
 
@@ -102,6 +110,12 @@ public class AdminServicioImpl implements AdminServicio {
 
     @Override
     public Cupon crearCupon(Cupon cupon) throws Exception {
+
+        Cupon cupon1 = administrativoRepo.obtenerCuponPorid(cupon.getId());
+        if(cupon1 != null) {
+            throw new Exception("El cupon ya existe");
+        }
+
         return cuponRepo.save(cupon);
     }
 
@@ -133,6 +147,12 @@ public class AdminServicioImpl implements AdminServicio {
 
     @Override
     public Confiteria crearConfiteria(Confiteria confiteria) throws Exception {
+
+        Confiteria confiteria1 = administrativoRepo.obtenerConfiteriaPorid(confiteria.getId());
+        if(confiteria1 != null) {
+            throw new Exception("La confiteria ya existe");
+        }
+
         return confiteriaRepo.save(confiteria);
     }
 
@@ -164,6 +184,12 @@ public class AdminServicioImpl implements AdminServicio {
 
     @Override
     public Pelicula crearPelicula(Pelicula pelicula) throws Exception {
+
+        Pelicula pelcula1 = administrativoRepo.obtenerPeliculaPorid(pelicula.getId());
+        if(pelcula1 != null) {
+            throw new Exception("La pelicula ya existe");
+        }
+
         return peliculaRepo.save(pelicula);
     }
 
@@ -195,6 +221,11 @@ public class AdminServicioImpl implements AdminServicio {
 
     @Override
     public Administrativo crearAdminTeatro(Administrativo adminTeatro) throws Exception {
+
+        Administrativo admin1 = administrativoRepo.obtenerAdminPorCorreo(adminTeatro.getCorreo());
+        if(admin1 != null) {
+            throw new Exception("El correo ya existe");
+        }
         return administrativoRepo.save(adminTeatro);
     }
 
