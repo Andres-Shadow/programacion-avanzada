@@ -18,6 +18,9 @@ public class Funcion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+
+    // ----------- RELACIONES -------------
     @ManyToOne
     private Pelicula pelicula;
     @OneToMany(mappedBy = "funcion")

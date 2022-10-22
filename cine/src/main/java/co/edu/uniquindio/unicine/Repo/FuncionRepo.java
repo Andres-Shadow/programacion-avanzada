@@ -13,6 +13,6 @@ public interface FuncionRepo extends JpaRepository<Funcion, Integer> {
     String obtenerNombrePelicula(Integer codigoFuncion);
 
     //agregar un join para poder hacer la consulta hacía una lista
-    @Query("select f.pelicula.nombre, f.pelicula.estado, f.pelicula.imagen,t.teatro.nombre, t.teatro.ciudad.nombre,h.dia  from Funcion f left join f.sala.teatroSala t left join f.horarios  h where f.pelicula.id =:codigoPelicula")
+    @Query("select f.pelicula.nombre, f.pelicula.estado, f.pelicula.imagen,t.teatro.nombre, t.teatro.ciudad.nombre,h.dia  from Funcion f join f.sala.teatroSala t join f.horarios  h where f.pelicula.id =:codigoPelicula")
     List<Object[]> obtenerFuncionesPelicula(Integer codigoPelicula);
 }

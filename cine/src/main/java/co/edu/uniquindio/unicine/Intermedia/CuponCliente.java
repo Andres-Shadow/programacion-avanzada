@@ -20,10 +20,13 @@ public class CuponCliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Integer cantidad;
+
+    //----------- RELACIONES ---------------
     @ManyToOne
     private Cliente cliente;
     @ManyToOne
     private Cupon cupon;
-    private Integer cantidad;
+
 
 }

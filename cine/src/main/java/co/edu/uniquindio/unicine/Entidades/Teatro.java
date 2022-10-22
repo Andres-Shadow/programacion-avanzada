@@ -21,6 +21,8 @@ public class Teatro implements Serializable {
     private Integer id;
     private String nombre;
     private String direccion;
+
+    // ----------  RELACIONES -----------
     @ManyToOne
     private Ciudad ciudad;
     @ManyToOne

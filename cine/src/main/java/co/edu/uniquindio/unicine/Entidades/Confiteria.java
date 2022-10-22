@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -21,6 +22,8 @@ public class Confiteria implements Serializable {
     private Float precio;
     private String imagen;
     private Integer valorPuntos;
-    @ManyToOne
-    private Compra compra;
+
+    //------------ RELACIONES -----------
+    @ManyToMany(mappedBy = "confiterias")
+    private List<Compra> compra;
 }

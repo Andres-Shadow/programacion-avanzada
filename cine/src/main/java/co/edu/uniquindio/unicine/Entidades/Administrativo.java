@@ -24,6 +24,9 @@ public class Administrativo implements Serializable {
     private Tipo_Admin tipo;
     private String nombre;
     private String cedula;
+
+    //---------- RELACIONES -----------
+
     @OneToMany(mappedBy = "admin")
     private List<Teatro> teatros;
     @OneToMany(mappedBy = "supervisor")
