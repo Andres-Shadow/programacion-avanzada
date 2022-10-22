@@ -15,17 +15,29 @@ import java.util.Map;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ToString.Include
+    @EqualsAndHashCode.Include
     private Integer id;
+    @Column(unique = true, nullable = false, length = 50)
+    @ToString.Include
     private String nombre;
+    @ToString.Include
     private String imagenPerfil;
+    @Column(unique = true, nullable = false, length = 50)
+    @ToString.Include
     private String contrasenia;
+    @Column(unique = true, nullable = false, length = 50)
+    @ToString.Include
     private Integer puntos;
     @NotNull
     @Email
-    @Column(unique = true)
+    @Column(unique = true, nullable = false, length = 50)
+    @ToString.Include
     private String email;
 
 
@@ -33,12 +45,16 @@ public class Cliente implements Serializable {
     // ---------------- RELACIONES -----------------
 
     @OneToMany(mappedBy = "cliente")
+    @ToString.Exclude
     private List<Entrada> entradas;
     @OneToMany(mappedBy = "cliente")
+    @ToString.Exclude
     private List<Compra> compras;
     @OneToMany(mappedBy = "cliente")
+    @ToString.Exclude
     private List<CuponCliente> cupones;
     @ElementCollection
+    @ToString.Exclude
     private Map<String, String> telefono;
 
     // ------------- CONSTRUCTOR ---------------------
