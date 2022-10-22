@@ -1,41 +1,49 @@
 package co.edu.uniquindio.unicine.ServiciosImpl;
 
-import co.edu.uniquindio.unicine.Entidades.Cliente;
-import co.edu.uniquindio.unicine.Entidades.Compra;
-import co.edu.uniquindio.unicine.Repo.ClienteRepo;
+import co.edu.uniquindio.unicine.Entidades.*;
+import co.edu.uniquindio.unicine.Repo.*;
 import co.edu.uniquindio.unicine.Servicios.ClienteServicio;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class ClienteServicioImpl implements ClienteServicio {
 
-
+    private final ConfiteriaRepo confiteriarepo;
+    private final PeliculaRepo peliculaRepo;
+    private final EntradaRepo entradaRepo;
+    private final CompraRepo compraRepo;
+    private final CuponRepo cuponRepo;
     private ClienteRepo clienteRepo;
 
-    public ClienteServicioImpl(ClienteRepo clienteRepo) {
+    private final EmailServicio emailServicio;
+
+    public ClienteServicioImpl(ConfiteriaRepo confiteriarepo, PeliculaRepo peliculaRepo, EntradaRepo entradaRepo, CompraRepo compraRepo, CuponRepo cuponRepo, ClienteRepo clienteRepo, EmailServicio emailServicio) {
+        this.confiteriarepo = confiteriarepo;
+        this.peliculaRepo = peliculaRepo;
+        this.entradaRepo = entradaRepo;
+        this.compraRepo = compraRepo;
+        this.cuponRepo = cuponRepo;
         this.clienteRepo = clienteRepo;
-    }
-
-    @Override
-    public Cliente login(String correo, String contrasenia) throws Exception{
-        Cliente cliente =  clienteRepo.comprobarAutenticacion(correo, contrasenia);
-        if(cliente == null)
-            throw new Exception("Los datos de autenticacion son incorrectos");
-        else
-            return cliente;
-
+        this.emailServicio = emailServicio;
     }
 
     @Override
     public Cliente registrarCliente(Cliente cliente) throws Exception {
-
         boolean correoExiste = verCorreoRepetido(cliente.getEmail());
-
         if(correoExiste)
-            throw new Exception("El correo ya existe");
+            throw new Exception("Excepcion: Correo ya existente");
+        else{
+            emailServicio.enviarEmail("Unicine Correo:",
+                    "Hola, te has registrado en Unicine",
+                    cliente.getEmail());
 
+            emailServicio.enviarEmail("Unicine Corre0:",
+                    "Hola, se le ha enviado cun cupon: " + "(CuponCodigo)",
+                    cliente.getEmail());
+        }
         return clienteRepo.save(cliente);
     }
 
@@ -44,23 +52,118 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
     @Override
     public Cliente actualizarCliente(Cliente cliente) throws Exception{
-
         Optional<Cliente> guardado = clienteRepo.findById(cliente.getId());
-
         if(guardado.isEmpty())
-            throw new Exception("El cliente no existe");
-
+            throw new Exception("Excepcion: Cliente no encontrado");
         return clienteRepo.save(cliente);
     }
-
     @Override
     public void eliminarCliente(Integer idCliente) throws Exception{
         Optional<Cliente> guardado = clienteRepo.findById(idCliente);
-
         if(guardado.isEmpty())
-           throw new Exception("Cliente no existe en la base de datos");
-
+            throw new Exception("Excepcion: Cliente no encontrado");
         clienteRepo.delete(guardado.get());
+    }
+
+    @Override
+    public Cliente login(String correo, String contrasenia) throws Exception{
+        Cliente cliente =  clienteRepo.comprobarAutenticacion(correo, contrasenia);
+        if(cliente == null)
+            throw new Exception("Excepcion: Datos de ingreso invalidos");
+        else{
+            emailServicio.enviarEmail("Unicine Corre:",
+                            "Hola, se he entrado a Unicine",
+                                     correo);
+            return cliente;
+        }
+
+    }
+
+    @Override
+    public Pelicula buscarPelicula(String nombrePelicula) throws Exception {
+        Optional<Pelicula> pelicula = Optional.ofNullable(peliculaRepo.obtenerPorNombre(nombrePelicula));
+        if(pelicula.isEmpty())
+            throw new Exception("Excepcion: Pelicula no encontrada");
+        return pelicula.get();
+    }
+
+    @Override
+    public Compra comprar(Entrada entrada, Optional<Confiteria> confiteria, Cliente cliente, Cupon cupon) throws Exception {
+        Optional<Entrada> entradaBuscada = entradaRepo.findById(entrada.getId());
+        Optional<Confiteria> confiteriabuscada = confiteriarepo.findById(entrada.getId());
+        Optional<Cliente> clienteBuscado = clienteRepo.findById(cliente.getId());
+        Optional<Cupon> cuponBuscado = cuponRepo.findById(cupon.getId());
+
+        Float valorCompra = null;
+        boolean flag = true;
+
+        if(entradaBuscada.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Entrada no registrada");}
+
+        if (confiteriabuscada.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Confiteria no encontrada");}
+
+        if(clienteBuscado.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Cliente no encontrado");}
+
+        if(cuponBuscado.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Cupon no encontrado");}
+
+        if(flag != false)
+            valorCompra = calcularCompra(entrada, confiteria, cupon);
+        emailServicio.enviarEmail("Unicine Correo:",
+                "Hola, se ha registrado una compra: " + valorCompra,
+                cliente.getEmail());
+        if(valorCompra == null)
+            throw new Exception("Excepcion: Valor de la compra no cargado");
+        else
+            return Compra.builder().valor(valorCompra).build();
+    }
+
+    public Float calcularCompra (Entrada entrada, Optional<Confiteria> confiteria, Cupon cupon){
+        Float precio = null;
+        precio += entrada.getValor();
+        precio += confiteria.get().getPrecio();
+        precio -= cupon.getValorDescuento();
+        return precio;
+    }
+
+    @Override
+    public List<Compra> listarCompras(Integer idCliente) throws Exception {
+        List<Compra> listaCompras = clienteRepo.listarCompras(idCliente);
+        if(listaCompras == null)
+            throw new Exception("Excepcion: Cliente sin compras");
+        return listaCompras;
+    }
+
+    @Override
+    public Cliente cambiarContrasenia(Cliente cliente, String nuevaContrasenia) throws Exception{
+        Optional<Cliente> buscado = Optional.ofNullable(clienteRepo.obtenerCliente(cliente.getId()));
+        if(buscado.isEmpty())
+            throw new Exception("Exception: Correo invalido");
+        else
+
+            emailServicio.enviarEmail("Unicine Correo:",
+                    "Hola, se he cambiado la contraseña de Unicina",
+                    cliente.getEmail());
+        cliente.setContrasenia(nuevaContrasenia);
+
+        return clienteRepo.save(cliente);
+
+    }
+
+
+    @Override
+    public Cliente buscarCliente(Integer idCliente) throws Exception {
+        Optional<Cliente> buscado = clienteRepo.findById(idCliente);
+        if(buscado.isEmpty())
+            throw new Exception("Excepcion: Cliente no encontrado");
+        else
+            return buscado.get();
     }
 
     @Override
@@ -69,27 +172,17 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
-    public Cliente obtenerClientePorCodigo(Integer id) throws Exception {
-
-        Optional<Cliente> guardado = clienteRepo.findById(id);
-
-        if(guardado.isEmpty())
-            throw new Exception("Cliente no existe en la base de datos");
-
-        return guardado.get();
+    public void agregarPuntos(Integer idCliente, Integer puntos) throws Exception {
+        Optional<Cliente> buscado = clienteRepo.findById(idCliente);
+        Integer puntosActual;
+        if(buscado.isEmpty())
+            throw new Exception("Excepcion: Cliente no encontrado");
+        else {
+            puntosActual = buscado.get().getPuntos();
+            puntosActual = puntosActual + puntos;
+            buscado.get().setPuntos(puntosActual);
+            clienteRepo.save(buscado.get());
+        }
     }
 
-    @Override
-    public List<Compra> listarCompras(Integer idCliente) throws Exception {
-        List<Compra> listaCompras = clienteRepo.listarCompras(idCliente);
-
-        if(listaCompras == null)
-            throw new Exception("Cliente no tiene compras");
-
-        return listaCompras;
-    }
-
-    //TODO
-    //HacerCompra
-    //RedimirCupon
 }

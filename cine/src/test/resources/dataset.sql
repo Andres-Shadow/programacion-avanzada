@@ -19,16 +19,16 @@ insert into cliente values (15,"SGR942","iolarubio@hotmail.educo","foto","Christ
 
 /** --------------------------------------PELICULAS-----------------------------------------------------**/
 
-insert into pelicula values (1,"PREVENTA","DRAMA","foto","name","reparto","sinopsis","trailer");
-insert into pelicula values (2,"PREVENTA","TERROR","foto","name","reparto","sinopsis","trailer");
-insert into pelicula values (3,"PREVENTA","TERROR","foto","name","reparto","sinopsis","trailer");
-insert into pelicula values (4,"EMISION","ACCION","foto","name","reparto","sinopsis","trailer");
-insert into pelicula values (5,"PREVENTA","TERROR","foto","name","reparto","sinopsis","trailer");
-insert into pelicula values (6,"EMISION","ANIMACION","foto","name","reparto","sinopsis","trailer");
-insert into pelicula values (7,"PREVENTA","DRAMA","foto","name","reparto","sinopsis","trailer");
-insert into pelicula values (8,"PREVENTA","TERROR","foto","name","reparto","sinopsis","trailer");
-insert into pelicula values (9,"EMISION","ACCION","foto","name","reparto","sinopsis","trailer");
-insert into pelicula values (10,"EMISION","ROMANCE","foto","name","reparto","sinopsis","trailer");
+insert into pelicula values (1,"PREVENTA","DRAMA","foto","desaparecida","reparto","sinopsis","trailer");
+insert into pelicula values (2,"PREVENTA","TERROR","foto","la noche del demonio","reparto","sinopsis","trailer");
+insert into pelicula values (3,"PREVENTA","TERROR","foto","anabel","reparto","sinopsis","trailer");
+insert into pelicula values (4,"EMISION","ACCION","foto","los avengers","reparto","sinopsis","trailer");
+insert into pelicula values (5,"PREVENTA","TERROR","foto","black phone","reparto","sinopsis","trailer");
+insert into pelicula values (6,"EMISION","ANIMACION","foto","paranorman","reparto","sinopsis","trailer");
+insert into pelicula values (7,"PREVENTA","DRAMA","foto","despues de ella","reparto","sinopsis","trailer");
+insert into pelicula values (8,"PREVENTA","TERROR","foto","el conjuro","reparto","sinopsis","trailer");
+insert into pelicula values (9,"EMISION","ACCION","foto","escuadron suicida","reparto","sinopsis","trailer");
+insert into pelicula values (10,"EMISION","ROMANCE","foto","50 sombras mas oscuras","reparto","sinopsis","trailer");
 
 /** --------------------------------------SALAS-----------------------------------------------------**/
 
