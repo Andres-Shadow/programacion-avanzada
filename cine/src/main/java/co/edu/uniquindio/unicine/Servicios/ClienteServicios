@@ -1,0 +1,25 @@
+Servicios relacionados al cliente
+
+-crud:
+Registrarse X
+actualizar X
+eliminar X
+
+-logearse X
+
+-comprar:
+entrada
+confiteria
+
+-canjearCupon
+
+-canjearPuntos
+
+-extra:
+buscarCliente
+listarClientes
+buscarCompras
+agregarPuntos
+
+
+

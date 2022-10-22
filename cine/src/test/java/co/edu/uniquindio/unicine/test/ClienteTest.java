@@ -98,7 +98,7 @@ public class ClienteTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void obtenerPorCorreo(){
-        Cliente cliente = clienteRepo.obtener("pepe@gmail.com");
+        Cliente cliente = clienteRepo.obtenerPorCorreo("pepe@gmail.com");
         Assertions.assertNotNull(cliente);
     }
 
@@ -127,7 +127,7 @@ public class ClienteTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void obtenerCompraPorCorreo(){
-        List<Compra> lista= clienteRepo.obbtenerComrpa("pepe@gmail.com");
+        List<Compra> lista= clienteRepo.obtenerComrpa("pepe@gmail.com");
         Assertions.assertNotNull(lista);
         lista.forEach(System.out::println);
 
