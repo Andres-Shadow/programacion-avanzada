@@ -2,8 +2,8 @@ package co.edu.uniquindio.unicine.Servicios;
 
 import co.edu.uniquindio.unicine.Entidades.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+import java.util.Optional;
 
 public interface ClienteServicio {
 
@@ -19,7 +19,7 @@ public interface ClienteServicio {
     Pelicula buscarPelicula (String nombre) throws Exception;
 
 
-    Compra comprar (Entrada entrada, Confiteria confiteria, Cliente cliente, Cupon cupon) throws Exception;
+    Compra comprar (Entrada entrada, Optional<Confiteria> confiteria, Cliente cliente, Cupon cupon) throws Exception;
 
 
     List<Compra> listarCompras(Integer idCliente) throws Exception;

@@ -1,8 +1,7 @@
 package co.edu.uniquindio.unicine.ServiciosImpl;
 
 import co.edu.uniquindio.unicine.Entidades.*;
-import co.edu.uniquindio.unicine.Repo.ClienteRepo;
-import co.edu.uniquindio.unicine.Repo.EntradaRepo;
+import co.edu.uniquindio.unicine.Repo.*;
 import co.edu.uniquindio.unicine.Servicios.ClienteServicio;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +11,23 @@ import java.util.Optional;
 @Service
 public class ClienteServicioImpl implements ClienteServicio {
 
-
+    private final ConfiteriaRepo confiteriarepo;
+    private final PeliculaRepo peliculaRepo;
+    private final EntradaRepo entradaRepo;
+    private final CompraRepo compraRepo;
+    private final CuponRepo cuponRepo;
     private ClienteRepo clienteRepo;
 
-    public ClienteServicioImpl(ClienteRepo clienteRepo) {
+    private final EmailServicio emailServicio;
+
+    public ClienteServicioImpl(ConfiteriaRepo confiteriarepo, PeliculaRepo peliculaRepo, EntradaRepo entradaRepo, CompraRepo compraRepo, CuponRepo cuponRepo, ClienteRepo clienteRepo, EmailServicio emailServicio) {
+        this.confiteriarepo = confiteriarepo;
+        this.peliculaRepo = peliculaRepo;
+        this.entradaRepo = entradaRepo;
+        this.compraRepo = compraRepo;
+        this.cuponRepo = cuponRepo;
         this.clienteRepo = clienteRepo;
+        this.emailServicio = emailServicio;
     }
 
     @Override
@@ -24,6 +35,15 @@ public class ClienteServicioImpl implements ClienteServicio {
         boolean correoExiste = verCorreoRepetido(cliente.getEmail());
         if(correoExiste)
             throw new Exception("Excepcion: Correo ya existente");
+        else{
+            emailServicio.enviarEmail("Unicine Correo:",
+                    "Hola, te has registrado en Unicine",
+                    cliente.getEmail());
+
+            emailServicio.enviarEmail("Unicine Corre0:",
+                    "Hola, se le ha enviado cun cupon: " + "(CuponCodigo)",
+                    cliente.getEmail());
+        }
         return clienteRepo.save(cliente);
     }
 
@@ -50,23 +70,30 @@ public class ClienteServicioImpl implements ClienteServicio {
         Cliente cliente =  clienteRepo.comprobarAutenticacion(correo, contrasenia);
         if(cliente == null)
             throw new Exception("Excepcion: Datos de ingreso invalidos");
-        else
+        else{
+            emailServicio.enviarEmail("Unicine Corre:",
+                            "Hola, se he entrado a Unicine",
+                                     correo);
             return cliente;
+        }
+
     }
 
     @Override
     public Pelicula buscarPelicula(String nombrePelicula) throws Exception {
-        Optional<Pelicula> pelicula = Optional.ofNullable(clienteRepo.buscarPelicula(nombrePelicula));
+        Optional<Pelicula> pelicula = Optional.ofNullable(peliculaRepo.obtenerPorNombre(nombrePelicula));
         if(pelicula.isEmpty())
             throw new Exception("Excepcion: Pelicula no encontrada");
         return pelicula.get();
     }
 
     @Override
-    public Compra comprar(Entrada entrada, Confiteria confiteria, Cliente cliente, Cupon cupon) throws Exception {
-        Optional<Entrada> entradaBuscada = Optional.ofNullable(clienteRepo.buscarEntrada(entrada.getId()));
-        Optional<Confiteria> confiteriabuscada = Optional.ofNullable(clienteRepo.buscarConfiteria(confiteria.getId()));
+    public Compra comprar(Entrada entrada, Optional<Confiteria> confiteria, Cliente cliente, Cupon cupon) throws Exception {
+        Optional<Entrada> entradaBuscada = entradaRepo.findById(entrada.getId());
+        Optional<Confiteria> confiteriabuscada = confiteriarepo.findById(entrada.getId());
         Optional<Cliente> clienteBuscado = clienteRepo.findById(cliente.getId());
+        Optional<Cupon> cuponBuscado = cuponRepo.findById(cupon.getId());
+
         Float valorCompra = null;
         boolean flag = true;
 
@@ -82,16 +109,27 @@ public class ClienteServicioImpl implements ClienteServicio {
             flag = false;
             throw new Exception("Excepcion: Cliente no encontrado");}
 
-        if(flag != false){
-            valorCompra += entrada.getValor();
-            valorCompra += confiteria.getPrecio();
-            valorCompra -= cupon.getValorDescuento();}
+        if(cuponBuscado.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Cupon no encontrado");}
 
+        if(flag != false)
+            valorCompra = calcularCompra(entrada, confiteria, cupon);
+        emailServicio.enviarEmail("Unicine Correo:",
+                "Hola, se ha registrado una compra: " + valorCompra,
+                cliente.getEmail());
         if(valorCompra == null)
             throw new Exception("Excepcion: Valor de la compra no cargado");
         else
             return Compra.builder().valor(valorCompra).build();
+    }
 
+    public Float calcularCompra (Entrada entrada, Optional<Confiteria> confiteria, Cupon cupon){
+        Float precio = null;
+        precio += entrada.getValor();
+        precio += confiteria.get().getPrecio();
+        precio -= cupon.getValorDescuento();
+        return precio;
     }
 
     @Override
@@ -108,7 +146,11 @@ public class ClienteServicioImpl implements ClienteServicio {
         if(buscado.isEmpty())
             throw new Exception("Exception: Correo invalido");
         else
-            cliente.setContrasenia(nuevaContrasenia);
+
+            emailServicio.enviarEmail("Unicine Correo:",
+                    "Hola, se he cambiado la contraseña de Unicina",
+                    cliente.getEmail());
+        cliente.setContrasenia(nuevaContrasenia);
 
         return clienteRepo.save(cliente);
 
@@ -143,11 +185,4 @@ public class ClienteServicioImpl implements ClienteServicio {
         }
     }
 
-
-
-
-
-    //TODO
-    //HacerCompra
-    //RedimirCupon
 }
