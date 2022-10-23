@@ -3,12 +3,10 @@ package co.edu.uniquindio.unicine.Intermedia;
 import co.edu.uniquindio.unicine.Entidades.Entrada;
 import co.edu.uniquindio.unicine.Entidades.Sala;
 import co.edu.uniquindio.unicine.Entidades.Teatro;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -16,15 +14,20 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class TeatroSala {
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class TeatroSala implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    @ToString.Include
     private Integer id;
     @ManyToOne
+    @ToString.Exclude
     private Teatro teatro;
     @ManyToOne
+    @ToString.Exclude
     private Sala sala;
-    @OneToMany(mappedBy = "teatroSala")
-    private List<Entrada> entradas;
+
 
 }

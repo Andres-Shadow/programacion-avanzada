@@ -1,6 +1,8 @@
 package co.edu.uniquindio.unicine.test;
 
 import co.edu.uniquindio.unicine.Entidades.Cliente;
+import co.edu.uniquindio.unicine.Entidades.Compra;
+import co.edu.uniquindio.unicine.Entidades.Cupon;
 import co.edu.uniquindio.unicine.Repo.ClienteRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,7 +28,7 @@ public class ClienteTest {
     @Sql("classpath:dataset.sql")
     public void registrar(){
 
-        Cliente cliente = new Cliente("pepito", "3145126","foto", "12345",0,"pepe@gmail.com");
+        Cliente cliente = new Cliente("pepito","foto", "12345",0,"pepe@gmail.com");
 
 
         Cliente gaurdado = clienteRepo.save(cliente);
@@ -96,7 +98,7 @@ public class ClienteTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void obtenerPorCorreo(){
-        Cliente cliente = clienteRepo.obtener("pepe@gmail.com");
+        Cliente cliente = clienteRepo.obtenerPorCorreo("pepe@gmail.com");
         Assertions.assertNotNull(cliente);
     }
 
@@ -120,5 +122,23 @@ public class ClienteTest {
         List<Cliente> clientes = clienteRepo.findAll(Sort.by("nombre"));
         //List<Cliente> clientes2 = clienteRepo.findAll(PageRequest.of(0, 2,Sort.by("nombre"))).toList();
         clientes.forEach(System.out::println);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerCompraPorCorreo(){
+        List<Compra> lista= clienteRepo.obtenerComrpa("pepe@gmail.com");
+        Assertions.assertNotNull(lista);
+        lista.forEach(System.out::println);
+
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerCuponPorCorreo(){
+        List<Cupon> lista= clienteRepo.obtenerListaCupones("pepe@gmail.com");
+
+        Assertions.assertEquals(1,lista.size());
+
     }
 }
