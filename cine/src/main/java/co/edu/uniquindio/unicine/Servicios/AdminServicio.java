@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AdminServicio {
 
-    Administrativo login(String cedula)throws Exception;
+    Administrativo login(String correo, String password)throws Exception;
 
     //Gestionar Ciudad
     Ciudad crearCiudad(Ciudad ciudad)throws Exception;

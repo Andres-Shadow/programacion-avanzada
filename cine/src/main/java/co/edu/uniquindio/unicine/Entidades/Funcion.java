@@ -33,5 +33,9 @@ public class Funcion implements Serializable {
     @ToString.Exclude
     private Sala sala;
 
-
+    @Builder
+    public Funcion( Pelicula pelicula, Sala sala) {
+        this.pelicula = pelicula;
+        this.sala = sala;
+    }
 }

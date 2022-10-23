@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AdminTeatroServicio {
 
-    Administrativo login(String cedula)throws Exception;
+    Administrativo login(String correo, String cedula)throws Exception;
 
     //Gestionar funciones
     Funcion crearFuncion(Funcion funcion)throws Exception;

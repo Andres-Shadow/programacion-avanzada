@@ -52,10 +52,12 @@ public class Administrativo implements Serializable {
     @ToString.Exclude
     private Administrativo supervisor;
     @Builder
-    public Administrativo(Tipo_Admin tipo, String nombre, String cedula){
+    public Administrativo(Tipo_Admin tipo, String nombre, String cedula, String correo, String contrasenia){
         this.tipo = tipo;
         this.nombre = nombre;
         this.cedula = cedula;
+        this.correo = correo;
+        this.contrasenia= contrasenia;
     }
 
 }
