@@ -179,6 +179,7 @@ public class AdminServicioImpl implements AdminServicio {
 
     @Override
     public List<Confiteria> listarConfiteria() {
+        //confiteriaRepo.findAll();
         return administrativoRepo.ListarConfiteria();
     }
 

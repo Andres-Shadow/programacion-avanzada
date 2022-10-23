@@ -38,6 +38,7 @@ public class Teatro implements Serializable {
     @ToString.Exclude
     private List<TeatroSala> teatroSala;
 
+    @Builder
     public Teatro(String nombre, String direccion){
         this.nombre = nombre;
         this.direccion = direccion;
