@@ -13,7 +13,7 @@ public interface CiudadRepo extends JpaRepository<Ciudad, Integer> {
     @Query("select c.id, c.nombre, count(t) from Ciudad c join c.teatros t group by c.id")
     List<Object[]> contarTeatros();
 
-    @Query("select c from Ciudad c where c.id = :idCiuadad")
+    @Query("select c from Ciudad c where c.id = :idCiudad")
     Ciudad obtenerPorid(Integer idCiudad);
 
 

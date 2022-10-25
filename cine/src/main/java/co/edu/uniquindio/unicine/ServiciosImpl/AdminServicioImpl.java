@@ -13,8 +13,8 @@ import java.util.Optional;
 public class AdminServicioImpl implements AdminServicio {
 
     //repositorios para las funciones del admin
-    private AdministrativoRepo administrativoRepo;
-    private CiudadRepo ciudadRepo;
+    private final AdministrativoRepo administrativoRepo;
+    private  CiudadRepo ciudadRepo;
     private CuponRepo cuponRepo;
     private ConfiteriaRepo confiteriaRepo;
     private PeliculaRepo peliculaRepo;

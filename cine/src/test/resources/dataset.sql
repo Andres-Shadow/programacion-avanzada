@@ -70,12 +70,12 @@ insert into ciudad values(4, "Cali");
 insert into ciudad values(5, "Medellin");
 
 /** --------------------------------------ADMINS-----------------------------------------------------**/
-                            /*    id - cedula -    nombre   -     tipo    - id supervisor*/
-insert into administrativo values (1, "12345","pepe torres", "admin teatro","1" );
-insert into administrativo values (2, "222",  "Juan Marin",  "admin teatro","1" );
-insert into administrativo values (3, "333","Carlos Tabares", "admin teatro","1" );
-insert into administrativo values (4, "444","Maria Lopez", "admin teatro","1" );
-insert into administrativo values (5, "555","Jhon Guarin", "admin teatro","1" );
+                /*    id - cedula -    nombre   -     tipo    - id supervisor* - correo - contraseña */
+insert into administrativo values (1, "12345","pepe torres", "admin teatro","1", "correo1@gmail.com", "1234" );
+insert into administrativo values (2, "222",  "Juan Marin",  "admin teatro","1", "correo2@gmail.com", "12345"  );
+insert into administrativo values (3, "333","Carlos Tabares", "admin teatro","1", "correo3@gmail.com", "12346"  );
+insert into administrativo values (4, "444","Maria Lopez", "admin teatro","1", "correo4@gmail.com", "12347"  );
+insert into administrativo values (5, "555","Jhon Guarin", "admin teatro","1", "correo5@gmail.com", "12348"  );
 
 /** --------------------------------------TEATROS-----------------------------------------------------**/
 insert into teatro values (1, "direccion 1", "teatro 1", 1, 1);
@@ -106,30 +106,30 @@ insert into cupon_cliente values (4, 2, 1, 3,2);
 insert into cupon_cliente values (5, 1, 1, 4,5);
 
 /** --------------------------------------CONFITERIA-----------------------------------------------------**/
-insert into confiteria values (1, "img1.png", "crispetas", 32000 , 2 );
-insert into confiteria values (2, "img2.png", "hot-dog", 25000 , 1 );
-insert into confiteria values (3, "img3.png", "gaseosa", 12000 , 1 );
-insert into confiteria values (4, "img4.png", "chocolatina", 8000 , null );
-insert into confiteria values (5, "img5.png", "refresco", 9000 , 1 );
+insert into confiteria values (1, "img1.png", "crispetas", 32000 ,5, null);
+insert into confiteria values (2, "img2.png", "hot-dog", 25000 ,6, null );
+insert into confiteria values (3, "img3.png", "gaseosa", 12000 ,7, null );
+insert into confiteria values (4, "img4.png", "chocolatina", 8000 ,8, null );
+insert into confiteria values (5, "img5.png", "refresco", 9000 ,9, null );
 
 /** --------------------------------------ENTRADA-----------------------------------------------------**/
 /*                                    idclien-idfact-idfuncion  */
-insert into entrada values(1, 3, 4 , 8000, 2, 1 , 3);
-insert into entrada values(2, 3, 2 , 8000, 3, 2 , 3);
-insert into entrada values(3, 3, 3 , 8000, 4, 3 , 3);
-insert into entrada values(4, 2, 2 , 8000, 5, 4 , 3);
-insert into entrada values(5, 2, 4 , 8000, 2, 5 , 3);
+--insert into entrada values(1, 3, 4 , 8000, 2, 1 , 3);
+--insert into entrada values(2, 3, 2 , 8000, 3, 2 , 3);
+--insert into entrada values(3, 3, 3 , 8000, 4, 3 , 3);
+--insert into entrada values(4, 2, 2 , 8000, 5, 4 , 3);
+--insert into entrada values(5, 2, 4 , 8000, 2, 5 , 3);
 
 /** --------------------------------------FACTURA-----------------------------------------------------**/
-insert into factura values(1, "2022/02/05" , 23000 );
-insert into factura values(2, "2022/02/05" , 32000);
-insert into factura values(3, "2022/02/05" , 8000 );
-insert into factura values(4, "2022/02/05" , 25000 );
-insert into factura values(5, "2022/02/05" , 27000 );
+--insert into factura values(1, "2022/02/05" , 23000 );
+--insert into factura values(2, "2022/02/05" , 32000);
+--insert into factura values(3, "2022/02/05" , 8000 );
+--insert into factura values(4, "2022/02/05" , 25000 );
+--insert into factura values(5, "2022/02/05" , 27000 );
 
 /** --------------------------------------HORARIO-----------------------------------------------------**/
-insert into horario values(1, date ,date, "200", date);
-insert into horario values(2, date ,date, "120", date);
-insert into horario values(3, date ,date, "150", date);
-insert into horario values(4, date ,date, "90", date);
-insert into horario values(5, date ,date, "98", date);
+--insert into horario values(1, date ,date, "200", date);
+--insert into horario values(2, date ,date, "120", date);
+--insert into horario values(3, date ,date, "150", date);
+--insert into horario values(4, date ,date, "90", date);
+--insert into horario values(5, date ,date, "98", date);
