@@ -12,20 +12,8 @@
     <title>Página de Inicio</title>
 </h:head>
 <h:body>
-    <h1>#{inicioBean.mensaje}</h1>
+    <h1>PAGINA DE REGISTRO</h1>
 
-    <h:form>
-        <h:panelGrid columns="2" cellpadding="5">
-            <p:outputLabel for="cajon1" value="Dato 1: " />
 
-            <p:inputText value="#{inicioBean.dato1}" id="cajon1" required="true" />
-
-            <p:outputLabel for="cajon2" value="Dato 2: " />
-
-            <p:inputText value="#{inicioBean.dato2}" id="cajon2" required="true" />
-        </h:panelGrid>
-        <p:commandButton action="#{inicioBean.cambiarValores()}" value="Cambiar valores" update="@form" />
-        <p:growl />
-    </h:form>
 </h:body>
 </html>
