@@ -89,18 +89,14 @@ insert into compra (id, valor, cliente_id) values (4, 22500, 3);
 insert into compra (id, valor, cliente_id) values (5, 36500, 4);
 
 /** --------------------------------------CUPONES-----------------------------------------------------**/
--- insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (1, "descripcion 1","2020/02/05", 15000);
--- insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (2, "descripcion 2","2022/10/30", 20000);
--- insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (3, "descripcion 3","2022/12/09", 17000);
--- insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (4, "descripcion 4","2022/11/17", 8000);
--- insert into cupon (id, descripcion, fecha_vencimiento, valor_descuento) values (5, "descripcion 5","2022/12/05", 11000);
 
+/**  id - descripcion - estado - fecha_vencimiento - tipo - valor_descuento - compra_id **/
 
--- insert into cupon_cliente values (1, 1, 1, 1,1);
--- insert into cupon_cliente values (2, 2, 1, 1,2);
--- insert into cupon_cliente values (3, 1, 1, 2,3);
--- insert into cupon_cliente values (4, 2, 1, 3,2);
--- insert into cupon_cliente values (5, 1, 1, 4,5);
+insert  into cupon values (1, "descripcion 1",true, "2022/12/1", "CUPON_TIPO_1", 0.10, null);
+
+/** id - cantidad - cliente_id - cupon_id **/
+
+insert into cupon_cliente values (1, 3, null, 1);
 
 /** --------------------------------------CONFITERIA-----------------------------------------------------**/
 insert into confiteria values (1, "img1.png", "crispetas", 32000 ,5);
@@ -110,23 +106,19 @@ insert into confiteria values (4, "img4.png", "chocolatina", 8000 ,8 );
 insert into confiteria values (5, "img5.png", "refresco", 9000 ,9 );
 
 /** --------------------------------------ENTRADA-----------------------------------------------------**/
-/*                                    idclien-idfact-idfuncion  */
---insert into entrada values(1, 3, 4 , 8000, 2, 1 , 3);
---insert into entrada values(2, 3, 2 , 8000, 3, 2 , 3);
---insert into entrada values(3, 3, 3 , 8000, 4, 3 , 3);
---insert into entrada values(4, 2, 2 , 8000, 5, 4 , 3);
---insert into entrada values(5, 2, 4 , 8000, 2, 5 , 3);
+/*  id - columna - fila - valor - cliente_id - funcion_id - teatro_sala_id - factura_id  */
+
+insert into entrada values (1, 1, 3, 3000,null,null,null,null);
+
 
 /** --------------------------------------FACTURA-----------------------------------------------------**/
---insert into factura values(1, "2022/02/05" , 23000 );
---insert into factura values(2, "2022/02/05" , 32000);
---insert into factura values(3, "2022/02/05" , 8000 );
---insert into factura values(4, "2022/02/05" , 25000 );
---insert into factura values(5, "2022/02/05" , 27000 );
+
+/** id - fecha - valor completo **/
+
+insert  into factura values (1, "2022/12/1", 30000 );
 
 /** --------------------------------------HORARIO-----------------------------------------------------**/
---insert into horario values(1, date ,date, "200", date);
---insert into horario values(2, date ,date, "120", date);
---insert into horario values(3, date ,date, "150", date);
---insert into horario values(4, date ,date, "90", date);
---insert into horario values(5, date ,date, "98", date);
+
+/** id - dia - fin - hora-minutos - inicio **/
+
+-- insert into horario values (1, "1", "2022/12/1", "2:30 - 5:30", "6");
