@@ -22,9 +22,13 @@ public class AdminServicioImpl implements AdminServicio {
 
 
 
-    public AdminServicioImpl(AdministrativoRepo administrativoRepo) {
-
+    public AdminServicioImpl(AdministrativoRepo administrativoRepo, CiudadRepo ciudadRepo, CuponRepo cuponRepo, ConfiteriaRepo confiteriaRepo, PeliculaRepo peliculaRepo, TeatroRepo teatroRepo) {
         this.administrativoRepo = administrativoRepo;
+        this.ciudadRepo = ciudadRepo;
+        this.cuponRepo=cuponRepo;
+        this.confiteriaRepo = confiteriaRepo;
+        this.peliculaRepo = peliculaRepo;
+        this.teatroRepo = teatroRepo;
     }
 
     @Override
