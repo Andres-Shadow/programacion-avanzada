@@ -24,8 +24,10 @@ public class AdminTeatroImpl implements AdminTeatroServicio {
 
 
 
-    public AdminTeatroImpl(AdministrativoRepo administrativoRepo) {
+    public AdminTeatroImpl(AdministrativoRepo administrativoRepo, FuncionRepo funcionRepo, SalaRepo salaRepo) {
         this.administrativoRepo = administrativoRepo;
+        this.funcionRepo = funcionRepo;
+        this.salaRepo = salaRepo;
     }
 
     @Override

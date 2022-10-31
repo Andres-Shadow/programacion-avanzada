@@ -287,8 +287,8 @@ public class adminServicioTest {
     @Sql("classpath:dataset.sql")
     public void login(){
         try {
-            String correo = "admin2@google.com";
-            String contrasenia = "2222";
+            String correo = "correo1@gmail.com";
+            String contrasenia = "password";
             Administrativo buscado = adminServicio.login(correo, contrasenia);
             Assertions.assertNotNull(buscado);
         } catch (Exception e) {
