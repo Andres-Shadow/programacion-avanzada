@@ -22,7 +22,9 @@ public class ClienteServicioTest {
 
     @Autowired
     private ClienteServicio clienteServicio;
+    @Autowired
     private EmailServicio emailServicio;
+    @Autowired
     private ConfiteriaRepo confiteriaRepo;
 
 
