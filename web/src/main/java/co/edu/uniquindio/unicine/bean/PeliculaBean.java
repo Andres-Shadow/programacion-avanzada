@@ -26,17 +26,17 @@ public class PeliculaBean {
         pelicula = new Pelicula();
     }
 
-    public void registrarPelicula(){
+    public String registrarPelicula(){
         try {
-            adminServicio.crearPelicula(pelicula);
-            FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta",
-                    "Registro exitoso");
-            FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMsg);
+            //adminServicio.crearPelicula(pelicula);
+            return "/admin/pelicula_creada?faces-redirect=true";
         }catch (Exception e){
             FacesMessage facesMsg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta",
                     e.getMessage());
             FacesContext.getCurrentInstance().addMessage("mensaje_bean", facesMsg);
         }
+
+        return "";
     }
 
 }
