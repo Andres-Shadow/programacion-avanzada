@@ -22,12 +22,16 @@ public class ClienteServicioTest {
 
     @Autowired
     private ClienteServicio clienteServicio;
+    @Autowired
     private EmailServicio emailServicio;
+    @Autowired
     private ConfiteriaRepo confiteriaRepo;
 
 
+
+
+
     @Test
-    @Sql("classpath:dataset.sql")
     public void enviarCorreoTest(){
         emailServicio.enviarEmail("Prueba Email:", "Correo sirviendo", "juandada79@gmail.com");
     }
@@ -113,6 +117,8 @@ public class ClienteServicioTest {
         Entrada entrada = Entrada.builder().valor(18.500F).columna(1).fila(1).build();
         Cliente cliente = clienteServicio.buscarCliente(1);
         Optional<Confiteria> confiteria = confiteriaRepo.findById(1);
+
+        entrada.setId(1);
 
         Compra compra = clienteServicio.comprar(entrada, confiteria, cliente, null);
         Assertions.assertNotNull(compra);
