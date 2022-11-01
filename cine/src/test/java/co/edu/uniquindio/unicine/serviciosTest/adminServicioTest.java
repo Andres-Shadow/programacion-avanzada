@@ -269,6 +269,7 @@ public class adminServicioTest {
         try {
             Pelicula pelicula = Pelicula.builder().nombre("pelicula").trailler("www.youtube.com").imagen("img.png").sinopsis("pelicula de terror").reparto("actor").genero(Genero_Pelicula.TERROR).estado(Estado_PElicula.PREVENTA).build();
             pelicula.setNombre("pelicula 2");
+            pelicula.setId(1);
             Pelicula nuevo = adminServicio.actualizarPelicula(pelicula);
             Assertions.assertNotNull(nuevo);
         } catch (Exception e) {
@@ -287,8 +288,8 @@ public class adminServicioTest {
     @Sql("classpath:dataset.sql")
     public void login(){
         try {
-            String correo = "admin2@google.com";
-            String contrasenia = "2222";
+            String correo = "correo1@gmail.com";
+            String contrasenia = "password";
             Administrativo buscado = adminServicio.login(correo, contrasenia);
             Assertions.assertNotNull(buscado);
         } catch (Exception e) {

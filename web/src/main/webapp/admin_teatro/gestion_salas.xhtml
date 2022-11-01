@@ -9,23 +9,23 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Página de registro de un cliente</title>
+    <title>GESTION DE SALAS</title>
 </h:head>
 <h:body>
 
-    <p:panel header="Registro de clientes" style="align-content: center">
+    <p:panel header="GESTION DE SALAS" style="align-content: center">
         <h:form>
             <h:panelGrid columns="2" cellpadding="5">
 
                 <p:outputLabel  for="sillas_totales"  value="Sillas totales:"  />
-                <p:inputText id="sillas_totales" value="#{teatroBean.teatro.direccion}" required="true" />
+                <p:inputText id="sillas_totales" value="#{salaBean.sala.sillaTotal}" required="true" />
 
                 <p:outputLabel for="sillas_disponibles" value="Sillas disponibles:" />
-                <p:inputText id="sillas_disponibles" value="#{teatroBean.teatro.nombre}"  required="true"/>
+                <p:inputText id="sillas_disponibles" value="#{salaBean.sala.sillaDsiponible}"  required="true"/>
 
 
             </h:panelGrid>
-            <p:commandButton action="#{teatroBean.registrarTeatro()}" value="Registrar" update="@form" />
+            <p:commandButton action="#{salaBean.registrarSala()}" value="Registrar" update="@form" />
             <p:growl for="mensaje_bean"/>
         </h:form>
     </p:panel>
