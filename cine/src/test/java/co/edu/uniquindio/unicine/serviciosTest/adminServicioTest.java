@@ -28,7 +28,7 @@ public class adminServicioTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void registrarAdminTest(){
-        Administrativo adminTeatro = Administrativo.builder().nombre("Pedro").tipo(Tipo_Admin.ADMINISTRADOR_TEATRO).cedula("2345678").correo("pedro").contrasenia("pedro2").build();
+        Administrativo adminTeatro = Administrativo.builder().id(56).nombre("Pedro").tipo(Tipo_Admin.ADMINISTRADOR_TEATRO).cedula("2345678").correo("pedro").contrasenia("pedro2").build();
 
         try {
             Administrativo nuevo = adminServicio.crearAdminTeatro(adminTeatro);
