@@ -70,7 +70,11 @@ insert into ciudad values(5, "Medellin");
 
 /** --------------------------------------ADMINS-----------------------------------------------------**/
                 /*    id - cedula -    nombre   -     tipo    - id supervisor* - correo - contraseña */
-insert into administrativo values (1, "12345","password", "correo1@gmail.com","pepito", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (1, "12345","password", "correo1@gmail.com","pepito1", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (2, "54321","password", "correo2@gmail.com","pepito2", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (3, "6789","password", "correo3@gmail.com","pepito3", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (4, "9876","password", "correo4@gmail.com","pepito4", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (5, "123","password", "correo5@gmail.com","pepito5", "ADMINISTRADOR_TEATRO", null );
 
 
 /** --------------------------------------TEATROS-----------------------------------------------------**/
