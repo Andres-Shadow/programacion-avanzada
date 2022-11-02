@@ -54,7 +54,6 @@ insert into funcion values (1,4,11);
 insert into funcion values (2,2,10);
 insert into funcion values (3,8,4);
 insert into funcion values (4,6,12);
---insert into funcion values (5,3,1,); SI SE DESCOMENTA DEJA DE FUNCIONAR
 insert into funcion values (6,9,7);
 insert into funcion values (7,2,2);
 insert into funcion values (8,4,5);
@@ -93,6 +92,10 @@ insert into compra (id, valor, cliente_id) values (5, 36500, 4);
 /**  id - descripcion - estado - fecha_vencimiento - tipo - valor_descuento - compra_id **/
 
 insert  into cupon values (1, "descripcion 1",true, "2022/12/1", "CUPON_TIPO_1", 0.1, null);
+insert  into cupon values (2, "descripcion 2",true, "2022/12/2", "CUPON_TIPO_1", 0.1, null);
+insert  into cupon values (3, "descripcion 3",true, "2022/12/3", "CUPON_TIPO_1", 0.1, null);
+insert  into cupon values (4, "descripcion 4",true, "2022/12/4", "CUPON_TIPO_1", 0.1, null);
+insert  into cupon values (5, "descripcion 5",true, "2022/12/4", "CUPON_TIPO_1", 0.1, null);
 
 /** id - cantidad - cliente_id - cupon_id **/
 
@@ -108,7 +111,11 @@ insert into confiteria values (5, "img5.png", "refresco", 9000 ,9 );
 /** --------------------------------------ENTRADA-----------------------------------------------------**/
 /*  id - columna - fila - valor - cliente_id - funcion_id - teatro_sala_id - factura_id  */
 
-insert into entrada values (1, 1, 3, 3000,null,null,null);
+insert into entrada values (1, 1, 6, 3000,null,null,null);
+insert into entrada values (2, 2, 7, 4000,null,null,null);
+insert into entrada values (3, 3, 8, 5000,null,null,null);
+insert into entrada values (4, 4, 9, 6000,null,null,null);
+insert into entrada values (5, 5, 10, 7000,null,null,null);
 
 
 /** --------------------------------------FACTURA-----------------------------------------------------**/
@@ -116,9 +123,17 @@ insert into entrada values (1, 1, 3, 3000,null,null,null);
 /** id - fecha - valor completo **/
 
 insert  into factura values (1, "2022/12/1", 30000 );
+insert  into factura values (2, "2022/12/2", 40000 );
+insert  into factura values (3, "2022/12/3", 50000 );
+insert  into factura values (4, "2022/12/4", 60000 );
+insert  into factura values (5, "2022/12/4", 70000 );
 
 /** --------------------------------------HORARIO-----------------------------------------------------**/
 
 /** id - dia - fin - hora-minutos - inicio **/
 
--- insert into horario values (1, "1", "2022/12/1", "2:30 - 5:30", "6");
+insert into horario values (1, "2022-10-1 5:30:00", "2022/12/1", "2:30 - 5:30", "2022-10-1 4:30:00");
+insert into horario values (2, "2022-10-1 6:30:00", "2022/12/2", "3:30 - 4:30", "2022-09-2 4:30:00");
+insert into horario values (3, "2022-10-1 7:30:00", "2022/12/3", "2:30 - 5:30", "2022-09-3 4:30:00");
+insert into horario values (4, "2022-10-1 8:30:00", "2022/12/4", "2:30 - 5:30", "2022-09-4 4:30:00");
+insert into horario values (5, "2022-10-1 9:30:00", "2022/12/5", "2:30 - 5:30", "2022-09-5 4:30:00");
