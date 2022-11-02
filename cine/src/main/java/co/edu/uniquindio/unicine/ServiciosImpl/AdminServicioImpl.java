@@ -13,8 +13,8 @@ import java.util.Optional;
 public class AdminServicioImpl implements AdminServicio {
 
     //repositorios para las funciones del admin
-    private AdministrativoRepo administrativoRepo;
-    private CiudadRepo ciudadRepo;
+    private final AdministrativoRepo administrativoRepo;
+    private  CiudadRepo ciudadRepo;
     private CuponRepo cuponRepo;
     private ConfiteriaRepo confiteriaRepo;
     private PeliculaRepo peliculaRepo;
@@ -22,9 +22,13 @@ public class AdminServicioImpl implements AdminServicio {
 
 
 
-    public AdminServicioImpl(AdministrativoRepo administrativoRepo) {
-
+    public AdminServicioImpl(AdministrativoRepo administrativoRepo, CiudadRepo ciudadRepo, CuponRepo cuponRepo, ConfiteriaRepo confiteriaRepo, PeliculaRepo peliculaRepo, TeatroRepo teatroRepo) {
         this.administrativoRepo = administrativoRepo;
+        this.ciudadRepo = ciudadRepo;
+        this.cuponRepo=cuponRepo;
+        this.confiteriaRepo = confiteriaRepo;
+        this.peliculaRepo = peliculaRepo;
+        this.teatroRepo = teatroRepo;
     }
 
     @Override
@@ -147,12 +151,10 @@ public class AdminServicioImpl implements AdminServicio {
 
     @Override
     public Confiteria crearConfiteria(Confiteria confiteria) throws Exception {
-
         Confiteria confiteria1 = administrativoRepo.obtenerConfiteriaPorid(confiteria.getId());
         if(confiteria1 != null) {
             throw new Exception("La confiteria ya existe");
         }
-
         return confiteriaRepo.save(confiteria);
     }
 

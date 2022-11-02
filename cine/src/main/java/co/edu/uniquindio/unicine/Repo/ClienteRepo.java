@@ -14,7 +14,7 @@ public interface ClienteRepo extends JpaRepository<Cliente, Integer> {
     Cliente obtenerPorCorreo(String email);
     @Query("select c from Cliente c where c.email = :email and c.contrasenia= :contrasenia")
     Cliente comprobarAutenticacion(String email, String contrasenia);
-    @Query("select c from Cliente c where c.id = :id")
+    @Query("select c from Cliente c where c.id = :idCliente")
     Cliente obtenerCliente(Integer idCliente);
     @Query("select comp from Cliente cli, in(cli.compras) comp where cli.email =:correo")
     List<Compra> obtenerComrpa(String correo);

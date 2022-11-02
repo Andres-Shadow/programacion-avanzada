@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Locale;
 
@@ -14,8 +15,8 @@ import java.util.Locale;
 public class InformacionFacturaDTO {
 
     private Float precioTotal;
-    private Date fecha;
-    private Double precioEntrada;
-    private Double precioConfiteria;
+    private LocalDateTime fecha;
+    private Integer precioEntrada;
+    private Integer precioConfiteria;
 
 }

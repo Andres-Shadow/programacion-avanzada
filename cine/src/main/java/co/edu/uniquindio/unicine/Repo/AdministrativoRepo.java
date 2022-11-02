@@ -41,7 +41,7 @@ public interface AdministrativoRepo extends JpaRepository<Administrativo, Intege
     @Query("select f from Funcion f")
     List<Funcion> ListarFuncion();
 
-    @Query("select c from Ciudad c where c.id = :idCiuadad")
+    @Query("select c from Ciudad c where c.id = :idCiudad")
     Ciudad obtenerCiudadPorid(Integer idCiudad);
 
     @Query("select t from Teatro t where t.id = :idTeatro")
@@ -56,13 +56,13 @@ public interface AdministrativoRepo extends JpaRepository<Administrativo, Intege
     @Query("select p from Pelicula p where p.id = :idPelicula")
     Pelicula obtenerPeliculaPorid(Integer idPelicula);
 
-    @Query("select a from Administrativo a where a.correo = :correo")
+    @Query("select a from Administrativo a where a.correo = :idCorreo")
     Administrativo obtenerAdminPorCorreo(String idCorreo);
 
-    @Query("select f from Funcion f where f.id = :idFuncion")
+    @Query("select f from Funcion f where f.id = :idfuncion")
     Funcion obtenerFuncionPorId(Integer idfuncion);
 
-    @Query("select s from Sala s where s.id = :idFuncion")
+    @Query("select s from Sala s where s.id = :idsala")
     Sala obtenerSalaPorId(Integer idsala);
 
 

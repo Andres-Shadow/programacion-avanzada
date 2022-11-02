@@ -43,7 +43,8 @@ public class Entrada implements Serializable {
     @ToString.Exclude
     private Funcion funcion;
     @Builder
-    public Entrada(Float valor, Integer fila, Integer columna){
+    public Entrada(Integer id, Float valor, Integer fila, Integer columna){
+        this.id = id;
         this.valor = valor;
         this.fila = fila;
         this.columna = columna;
