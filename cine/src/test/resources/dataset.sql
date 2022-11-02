@@ -92,11 +92,11 @@ insert into compra (id, valor, cliente_id) values (5, 36500, 4);
 
 /**  id - descripcion - estado - fecha_vencimiento - tipo - valor_descuento - compra_id **/
 
-insert  into cupon values (1, "descripcion 1",true, "2022/12/1", "CUPON_TIPO_1", 0.10, null);
+insert  into cupon values (1, "descripcion 1",true, "2022/12/1", "CUPON_TIPO_1", 0.1, null);
 
 /** id - cantidad - cliente_id - cupon_id **/
 
-insert into cupon_cliente values (1, 3, null, 1);
+insert into cupon_cliente values (1, 3, 1, 1);
 
 /** --------------------------------------CONFITERIA-----------------------------------------------------**/
 insert into confiteria values (1, "img1.png", "crispetas", 32000 ,5);

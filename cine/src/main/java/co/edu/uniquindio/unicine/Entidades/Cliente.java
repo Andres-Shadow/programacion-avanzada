@@ -31,7 +31,7 @@ public class Cliente implements Serializable {
     @Column(unique = true, nullable = false, length = 50)
     @ToString.Include
     private String contrasenia;
-    @Column(unique = true, nullable = false, length = 50)
+    @Column(unique = false, nullable = false, length = 50)
     @ToString.Include
     private Integer puntos;
     @NotNull
@@ -53,9 +53,6 @@ public class Cliente implements Serializable {
     @OneToMany(mappedBy = "cliente")
     @ToString.Exclude
     private List<CuponCliente> cupones;
-    @ElementCollection
-    @ToString.Exclude
-    private Map<String, String> telefono;
 
     // ------------- CONSTRUCTOR ---------------------
 
