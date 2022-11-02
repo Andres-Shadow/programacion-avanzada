@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unicine.ServiciosImpl;
 
 import co.edu.uniquindio.unicine.Entidades.*;
+import co.edu.uniquindio.unicine.Intermedia.CuponCliente;
 import co.edu.uniquindio.unicine.Repo.*;
 import co.edu.uniquindio.unicine.Servicios.ClienteServicio;
 import org.springframework.stereotype.Service;
@@ -87,50 +88,6 @@ public class ClienteServicioImpl implements ClienteServicio {
         return pelicula.get();
     }
 
-    @Override
-    public Compra comprar(Entrada entrada, Optional<Confiteria> confiteria, Cliente cliente, Cupon cupon) throws Exception {
-        Optional<Entrada> entradaBuscada = entradaRepo.findById(entrada.getId());
-        Optional<Confiteria> confiteriabuscada = confiteriarepo.findById(entrada.getId());
-        Optional<Cliente> clienteBuscado = clienteRepo.findById(cliente.getId());
-        Optional<Cupon> cuponBuscado = cuponRepo.findById(cupon.getId());
-
-        Float valorCompra = null;
-        boolean flag = true;
-
-        if(entradaBuscada.isEmpty()){
-            flag = false;
-            throw new Exception("Excepcion: Entrada no registrada");}
-
-        if (confiteriabuscada.isEmpty()){
-            flag = false;
-            throw new Exception("Excepcion: Confiteria no encontrada");}
-
-        if(clienteBuscado.isEmpty()){
-            flag = false;
-            throw new Exception("Excepcion: Cliente no encontrado");}
-
-        if(cuponBuscado.isEmpty()){
-            flag = false;
-            throw new Exception("Excepcion: Cupon no encontrado");}
-
-        if(flag != false)
-            valorCompra = calcularCompra(entrada, confiteria, cupon);
-        emailServicio.enviarEmail("Unicine Correo:",
-                "Hola, se ha registrado una compra: " + valorCompra,
-                cliente.getEmail());
-        if(valorCompra == null)
-            throw new Exception("Excepcion: Valor de la compra no cargado");
-        else
-            return Compra.builder().valor(valorCompra).build();
-    }
-
-    public Float calcularCompra (Entrada entrada, Optional<Confiteria> confiteria, Cupon cupon){
-        Float precio = null;
-        precio += entrada.getValor();
-        precio += confiteria.get().getPrecio();
-        precio -= cupon.getValorDescuento();
-        return precio;
-    }
 
     @Override
     public List<Compra> listarCompras(Integer idCliente) throws Exception {
@@ -185,4 +142,76 @@ public class ClienteServicioImpl implements ClienteServicio {
         }
     }
 
+    @Override
+    public Compra comprar(Entrada entrada, Optional<Confiteria> confiteria, Cliente cliente, Cupon cupon) throws Exception {
+        Optional<Entrada> entradaBuscada = entradaRepo.findById(entrada.getId());
+        Optional<Confiteria> confiteriabuscada = confiteriarepo.findById(entrada.getId());
+        Optional<Cliente> clienteBuscado = clienteRepo.findById(cliente.getId());
+        Optional<Cupon> cuponBuscado = buscarCupon(clienteBuscado, cupon.getId());
+
+        Float valorCompra = null;
+        boolean flag = true;
+
+        if(entradaBuscada.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Entrada no registrada");}
+
+        if (confiteriabuscada.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Confiteria no encontrada");}
+
+        if(clienteBuscado.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Cliente no encontrado");}
+
+        if(cuponBuscado.isEmpty()){
+            flag = false;
+            throw new Exception("Excepcion: Cupon no encontrado");}
+
+        if(flag != false)
+            System.out.println("||-----------------------------------------------------\n");
+        System.out.println(entrada.toString());
+        System.out.println(confiteria.toString());
+        System.out.println(cupon.toString());
+            System.out.println("||-----------------------------------------------------\n");
+            valorCompra = calcularCompra(entrada, confiteria, cupon);
+        emailServicio.enviarEmail("Unicine Correo:",
+                "Hola, se ha registrado una compra: " + valorCompra,
+                cliente.getEmail());
+        if(valorCompra == null)
+            throw new Exception("Excepcion: Valor de la compra no cargado");
+        else
+            return Compra.builder().valor(valorCompra).build();
+    }
+
+    private Optional<Cupon> buscarCupon(Optional<Cliente> cliente, Integer codigo) {
+
+        List<CuponCliente> listaCupones = cliente.get().getCupones();
+
+        for (CuponCliente cupon : listaCupones) {
+
+            if (cupon.getCupon().getId() == codigo) {
+                return Optional.ofNullable(cupon.getCupon());
+            }
+        }
+        return null;
+    }
+
+    public Float calcularCompra (Entrada entrada, Optional<Confiteria> confiteria, Cupon cupon){
+        Float precio = 0F;
+        Float descuento = 0F;
+
+        System.out.println("-----------------------------------------------------\n");
+        System.out.println(entrada.toString());
+        System.out.println(entrada.getValor());
+        System.out.println(confiteria.toString());
+        System.out.println(cupon.toString());
+        System.out.println("-----------------------------------------------------\n");
+
+        precio += entrada.getValor();
+        precio += confiteria.get().getPrecio();
+        descuento += (precio * cupon.getValorDescuento());
+        precio -= descuento;
+        return precio;
+    }
 }

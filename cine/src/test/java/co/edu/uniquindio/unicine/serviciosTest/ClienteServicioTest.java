@@ -2,6 +2,7 @@ package co.edu.uniquindio.unicine.serviciosTest;
 
 import co.edu.uniquindio.unicine.Entidades.*;
 import co.edu.uniquindio.unicine.Repo.ConfiteriaRepo;
+import co.edu.uniquindio.unicine.Repo.CuponRepo;
 import co.edu.uniquindio.unicine.Servicios.ClienteServicio;
 import co.edu.uniquindio.unicine.ServiciosImpl.EmailServicio;
 import org.junit.jupiter.api.Assertions;
@@ -20,6 +21,10 @@ import java.util.Optional;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ClienteServicioTest {
 
+    public ClienteServicioTest() {
+        super();
+    }
+
     @Autowired
     private ClienteServicio clienteServicio;
     @Autowired
@@ -27,13 +32,13 @@ public class ClienteServicioTest {
     @Autowired
     private ConfiteriaRepo confiteriaRepo;
 
-
-
+    @Autowired
+    private CuponRepo cuponRepo;
 
 
     @Test
     public void enviarCorreoTest(){
-        emailServicio.enviarEmail("Prueba Email:", "Correo sirviendo", "juandada79@gmail.com");
+        emailServicio.enviarEmail("Prueba Email:", "Correo sirviendo", "unicineproyecto@gmail.com");
     }
 
     @Test
@@ -112,24 +117,6 @@ public class ClienteServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void comprar(){
-        try {
-        Entrada entrada = Entrada.builder().valor(18.500F).columna(1).fila(1).build();
-        Cliente cliente = clienteServicio.buscarCliente(1);
-        Optional<Confiteria> confiteria = confiteriaRepo.findById(1);
-
-        entrada.setId(1);
-
-        Compra compra = clienteServicio.comprar(entrada, confiteria, cliente, null);
-        Assertions.assertNotNull(compra);
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Test
-    @Sql("classpath:dataset.sql")
     public void cambiarContrasenia(){
         try {
             Cliente cliente = clienteServicio.buscarCliente(1);
@@ -141,6 +128,33 @@ public class ClienteServicioTest {
         }
     }
 
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void comprar(){
+        try {
+            Entrada entrada = Entrada.builder().id(1).valor(18.500F).columna(1).fila(1).build();
+            System.out.println("-----------------------------------------------------\n\n");
+            System.out.println(entrada.toString());
+            System.out.println("-----------------------------------------------------\n\n");
+            Assertions.assertNotNull(entrada);
+            Cliente cliente = clienteServicio.buscarCliente(1);
+            Assertions.assertNotNull(cliente);
+            Optional<Confiteria> confiteria = confiteriaRepo.findById(1);
+            Assertions.assertNotNull(confiteria);
+            Optional<Cupon> cupon = cuponRepo.findById(1);
+            Assertions.assertNotNull(cupon);
+            entrada.setId(1);
+
+
+
+            Compra compra = clienteServicio.comprar(entrada, confiteria, cliente, cupon.get());
+            Assertions.assertNotNull(compra);
+            System.out.println(compra.getValor());
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 
