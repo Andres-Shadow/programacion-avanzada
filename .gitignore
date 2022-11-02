@@ -1,4 +1,5 @@
 /.idea/
+/.gradle/
 /neogicio/build/
 /cine/build/
 *.class
