@@ -108,7 +108,7 @@ insert into confiteria values (5, "img5.png", "refresco", 9000 ,9 );
 /** --------------------------------------ENTRADA-----------------------------------------------------**/
 /*  id - columna - fila - valor - cliente_id - funcion_id - teatro_sala_id - factura_id  */
 
-insert into entrada values (1, 1, 3, 3000,null,null,null,null);
+insert into entrada values (1, 1, 3, 3000,null,null,null);
 
 
 /** --------------------------------------FACTURA-----------------------------------------------------**/

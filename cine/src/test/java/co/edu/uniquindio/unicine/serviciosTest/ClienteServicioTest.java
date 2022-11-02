@@ -33,7 +33,7 @@ public class ClienteServicioTest {
 
     @Test
     public void enviarCorreoTest(){
-        emailServicio.enviarEmail("Prueba Email:", "Correo sirviendo", "juandada79@gmail.com");
+        emailServicio.enviarEmail("Prueba Email:", "Correo sirviendo", "andremadussan@gmail.com");
     }
 
     @Test
