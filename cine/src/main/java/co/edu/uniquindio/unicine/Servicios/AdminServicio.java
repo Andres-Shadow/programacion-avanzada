@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unicine.Servicios;
 
 import co.edu.uniquindio.unicine.Entidades.*;
+import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public interface AdminServicio {
     void eliminarCiudad(Integer idCiudad)throws Exception;
     Ciudad actualizarCiudad(Ciudad ciudad)throws Exception;
     List<Ciudad> listarCiudad();
+    Ciudad obtenerCiudad(Integer id) throws Exception;
 
     //Gestionar teatro
     Teatro crearTeatro(Teatro teatro)throws Exception;
@@ -42,5 +44,7 @@ public interface AdminServicio {
     void eliminarAdminTeatro(String numCedula, Integer idAdmin)throws Exception;
     Administrativo actualizarAdminTeatro(Administrativo adminTeatro)throws Exception;
     List<Administrativo> listarAdminTeatro();
+
+    Administrativo obtenerAdminTeatro(Integer id, Tipo_Admin tipo)throws Exception;
 
 }

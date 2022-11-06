@@ -1,5 +1,7 @@
 package co.edu.uniquindio.unicine.serviciosTest;
 
+//SE DICE GRACIAS CERDA MALAGRADECIDA
+
 import co.edu.uniquindio.unicine.Entidades.*;
 import co.edu.uniquindio.unicine.Servicios.AdminServicio;
 import co.edu.uniquindio.unicine.Tipos.Estado_PElicula;

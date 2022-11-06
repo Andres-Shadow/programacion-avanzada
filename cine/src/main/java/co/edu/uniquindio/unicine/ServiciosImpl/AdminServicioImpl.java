@@ -257,4 +257,17 @@ public class AdminServicioImpl implements AdminServicio {
     public List<Administrativo> listarAdminTeatro() {
         return administrativoRepo.ListarAdminsTeatro();
     }
+
+    @Override
+    public Administrativo obtenerAdminTeatro(Integer id, Tipo_Admin tipo) throws Exception {
+        return administrativoRepo.obtenerAdminTeatroPorId(1, Tipo_Admin.ADMINISTRADOR_TEATRO);
+    }
+
+    @Override
+    public Ciudad obtenerCiudad(Integer id) throws Exception{
+        Optional<Ciudad> ciudad = ciudadRepo.findById(id);
+        return ciudad.get();
+    }
+
+
 }

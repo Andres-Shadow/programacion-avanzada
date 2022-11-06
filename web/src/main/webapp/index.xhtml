@@ -9,28 +9,72 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Página de Inicio</title>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputScript name="bootstrap.bundle.min" library="js"/>
+    <h:outputStylesheet name="estilos.css" library="css"/>
+
+    <title>Pagina de Inicio</title>
 </h:head>
 <h:body>
     <h1>PAGINA DE INICIO</h1>
 
-    <div id="barra_navegacion">
-        <ul>
-            <li>
-                <a href="cliente/registro.xhtml"> REGISTRO </a>
-            </li>
-            <li>
-                <a href="admin/gestion_peliculas.xhtml"> CREAR PELICULAS </a>
-            </li>
-            <li>
-                <a href="admin/gestion_teatro.xhtml"> CREAR TEATROS </a>
-            </li>
-            <li>
-                <a href="admin_teatro/gestion_salas.xhtml"> CREAR SALAS </a>
-            </li>
-        </ul>
-    </div>
+    <header class="p-3 text-bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
 
+                </a>
+                <h:graphicImage library="img" name="icono.png" styleClass="img-icon me-2" />
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="index.xhtml" class="nav-link px-2 text-secondary">INICIO</a></li>
+                    <li><a href="admin/gestion_peliculas.xhtml" class="nav-link px-2 text-white">CREAR PELICULA</a></li>
+                    <li><a href="admin_teatro/gestion_salas.xhtml" class="nav-link px-2 text-white">CREAR SALA</a></li>
+                    <li><a href="admin/gestion_teatro.xhtml" class="nav-link px-2 text-white">CREAT TEATRO</a></li>
+                    <li><a href="index.xhtml" class="nav-link px-2 text-white">PERFIL</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+
+                </ul>
+
+
+                <h:form styleClass="barraBusqueda me-5">
+                    <div class="input-searchui-inputgroup" >
+                        <p:inputText placeholder="¿Qué película está buscando?" required="true" value="#{busquedaBean.busqueda}" styleClass="form_busqueda" />
+                        <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}" />
+
+                    </div>
+                </h:form>
+
+
+                <div class="text-end">
+
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <p:linkButton value="REGISTRARSE" href="cliente/registro.xhtml" />
+
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <div class="container">
+        <div>
+            <h1>EN CARTELERA</h1>
+            <div>
+                peliculas
+            </div>
+        </div>
+
+        <div>
+            <h1>EN PREVENTA</h1>
+            <div>
+                peliculas
+            </div>
+        </div>
+    </div>
 
 </h:body>
 </html>

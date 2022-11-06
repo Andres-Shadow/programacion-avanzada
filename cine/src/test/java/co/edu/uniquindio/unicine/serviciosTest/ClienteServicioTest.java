@@ -131,6 +131,21 @@ public class ClienteServicioTest {
 
     @Test
     @Sql("classpath:dataset.sql")
+    public void listarPeliculaPorNombre(){
+        List<Pelicula>  lista = null;
+        try {
+            lista = clienteServicio.listarPeliculasPorNombre("50");
+
+            lista.forEach(System.out::println);
+            Assertions.assertNotNull(lista);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
     public void comprar(){
         try {
             Entrada entrada = Entrada.builder().id(1).valor(18.500F).columna(1).fila(1).build();
