@@ -1,6 +1,9 @@
 package co.edu.uniquindio.unicine.Servicios;
 
 import co.edu.uniquindio.unicine.Entidades.*;
+import co.edu.uniquindio.unicine.Tipos.Estado_PElicula;
+import co.edu.uniquindio.unicine.Tipos.Genero_Pelicula;
+import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
 
 import java.util.List;
 
@@ -13,6 +16,7 @@ public interface AdminServicio {
     void eliminarCiudad(Integer idCiudad)throws Exception;
     Ciudad actualizarCiudad(Ciudad ciudad)throws Exception;
     List<Ciudad> listarCiudad();
+    Ciudad obtenerCiudad(Integer id) throws Exception;
 
     //Gestionar teatro
     Teatro crearTeatro(Teatro teatro)throws Exception;
@@ -37,10 +41,14 @@ public interface AdminServicio {
     void eliminarPelicula(Integer idPelicula)throws Exception;
     Pelicula actualizarPelicula(Pelicula pelicula)throws Exception;
     List<Pelicula> listarPelicula();
+    List<Pelicula> listarPeliculaPorEstado(Estado_PElicula estado, String ciudad)throws Exception;
+    List<Pelicula> listarPeliculaPorEstadoIndependiente(Estado_PElicula estado)throws Exception;
 
     Administrativo crearAdminTeatro(Administrativo adminTeatro)throws Exception;
     void eliminarAdminTeatro(String numCedula, Integer idAdmin)throws Exception;
     Administrativo actualizarAdminTeatro(Administrativo adminTeatro)throws Exception;
     List<Administrativo> listarAdminTeatro();
+
+    Administrativo obtenerAdminTeatro(Integer id, Tipo_Admin tipo)throws Exception;
 
 }

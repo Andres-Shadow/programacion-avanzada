@@ -3,6 +3,8 @@ package co.edu.uniquindio.unicine.ServiciosImpl;
 import co.edu.uniquindio.unicine.Entidades.*;
 import co.edu.uniquindio.unicine.Repo.*;
 import co.edu.uniquindio.unicine.Servicios.AdminServicio;
+import co.edu.uniquindio.unicine.Tipos.Estado_PElicula;
+import co.edu.uniquindio.unicine.Tipos.Genero_Pelicula;
 import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
 import org.springframework.stereotype.Service;
 
@@ -19,16 +21,18 @@ public class AdminServicioImpl implements AdminServicio {
     private ConfiteriaRepo confiteriaRepo;
     private PeliculaRepo peliculaRepo;
     private TeatroRepo teatroRepo;
+    private FuncionRepo funcionRepo;
 
 
 
-    public AdminServicioImpl(AdministrativoRepo administrativoRepo, CiudadRepo ciudadRepo, CuponRepo cuponRepo, ConfiteriaRepo confiteriaRepo, PeliculaRepo peliculaRepo, TeatroRepo teatroRepo) {
+    public AdminServicioImpl(FuncionRepo funcionRepo,AdministrativoRepo administrativoRepo, CiudadRepo ciudadRepo, CuponRepo cuponRepo, ConfiteriaRepo confiteriaRepo, PeliculaRepo peliculaRepo, TeatroRepo teatroRepo) {
         this.administrativoRepo = administrativoRepo;
         this.ciudadRepo = ciudadRepo;
         this.cuponRepo=cuponRepo;
         this.confiteriaRepo = confiteriaRepo;
         this.peliculaRepo = peliculaRepo;
         this.teatroRepo = teatroRepo;
+        this.funcionRepo = funcionRepo;
     }
 
     @Override
@@ -223,6 +227,16 @@ public class AdminServicioImpl implements AdminServicio {
     }
 
     @Override
+    public List<Pelicula> listarPeliculaPorEstado(Estado_PElicula estado, String ciudad) throws Exception {
+        return funcionRepo.listarPeliculasPorEstadoCiudad(estado, ciudad);
+    }
+
+    @Override
+    public List<Pelicula> listarPeliculaPorEstadoIndependiente(Estado_PElicula estado) throws Exception {
+        return funcionRepo.listarPeliculasPorEstado(estado);
+    }
+
+    @Override
     public Administrativo crearAdminTeatro(Administrativo adminTeatro) throws Exception {
 
         Administrativo admin1 = administrativoRepo.obtenerAdminPorCorreo(adminTeatro.getCorreo());
@@ -257,4 +271,23 @@ public class AdminServicioImpl implements AdminServicio {
     public List<Administrativo> listarAdminTeatro() {
         return administrativoRepo.ListarAdminsTeatro();
     }
+
+    @Override
+    public Administrativo obtenerAdminTeatro(Integer id, Tipo_Admin tipo) throws Exception {
+        return administrativoRepo.obtenerAdminTeatroPorId(1, Tipo_Admin.ADMINISTRADOR_TEATRO);
+    }
+
+    @Override
+    public Ciudad obtenerCiudad(Integer id) throws Exception{
+        Optional<Ciudad> ciudad = ciudadRepo.findById(id);
+        return ciudad.get();
+    }
+
+    /*
+    @Override
+    public List<Pelicula> listarPeliculaPorEstado(Estado_PElicula estado, String ciudad)throws Exception{
+        return peliculaRepo.listarPeliculaPorEstado(estado, ciudad);
+    }*/
+
+
 }

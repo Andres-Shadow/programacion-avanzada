@@ -30,5 +30,5 @@ public interface ClienteServicio {
 
     List<Cliente> listarClientes();
 
-
+    List<Pelicula> listarPeliculasPorNombre(String nombre) throws Exception;
 }

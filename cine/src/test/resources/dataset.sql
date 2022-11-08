@@ -29,6 +29,7 @@ insert into pelicula values (7,"PREVENTA","DRAMA","foto","despues de ella","repa
 insert into pelicula values (8,"PREVENTA","TERROR","foto","el conjuro","reparto","sinopsis","trailer8");
 insert into pelicula values (9,"EMISION","ACCION","foto","escuadron suicida","reparto","sinopsis","trailer9");
 insert into pelicula values (10,"EMISION","ROMANCE","foto","50 sombras mas oscuras","reparto","sinopsis","trailer10");
+insert into pelicula values (11,"EMISION","ROMANCE","foto","50 sombras liberadas","reparto","sinopsis","trailer11");
 
 /** --------------------------------------SALAS-----------------------------------------------------**/
 
