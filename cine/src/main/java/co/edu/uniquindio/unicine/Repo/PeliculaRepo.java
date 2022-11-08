@@ -3,6 +3,7 @@ package co.edu.uniquindio.unicine.Repo;
 import co.edu.uniquindio.unicine.Dto.HorarioSalaDTIO;
 import co.edu.uniquindio.unicine.Entidades.Cliente;
 import co.edu.uniquindio.unicine.Entidades.Pelicula;
+import co.edu.uniquindio.unicine.Tipos.Estado_PElicula;
 import co.edu.uniquindio.unicine.Tipos.Genero_Pelicula;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
