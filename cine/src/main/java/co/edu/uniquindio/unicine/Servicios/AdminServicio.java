@@ -43,6 +43,7 @@ public interface AdminServicio {
     List<Pelicula> listarPelicula();
     List<Pelicula> listarPeliculaPorEstado(Estado_PElicula estado, String ciudad)throws Exception;
     List<Pelicula> listarPeliculaPorEstadoIndependiente(Estado_PElicula estado)throws Exception;
+    Pelicula obtnerPeliculaPorSuId(Integer id) throws Exception;
 
     Administrativo crearAdminTeatro(Administrativo adminTeatro)throws Exception;
     void eliminarAdminTeatro(String numCedula, Integer idAdmin)throws Exception;

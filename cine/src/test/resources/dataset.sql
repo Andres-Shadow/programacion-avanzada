@@ -19,17 +19,30 @@ insert into cliente values (15,"SGR942","iolarubio@hotmail.educo","foto","Christ
 
 /** --------------------------------------PELICULAS-----------------------------------------------------**/
 
-insert into pelicula values (1,"PREVENTA","DRAMA","foto","desaparecida","reparto","sinopsis","trailer");
-insert into pelicula values (2,"PREVENTA","TERROR","foto","la noche del demonio","reparto","sinopsis","trailer2");
-insert into pelicula values (3,"PREVENTA","TERROR","foto","anabel","reparto","sinopsis","trailer3");
-insert into pelicula values (4,"EMISION","ACCION","foto","los avengers","reparto","sinopsis","traile4");
-insert into pelicula values (5,"PREVENTA","TERROR","foto","black phone","reparto","sinopsis","traile5");
-insert into pelicula values (6,"EMISION","ANIMACION","foto","paranorman","reparto","sinopsis","traile6");
-insert into pelicula values (7,"PREVENTA","DRAMA","foto","despues de ella","reparto","sinopsis","traile7");
-insert into pelicula values (8,"PREVENTA","TERROR","foto","el conjuro","reparto","sinopsis","trailer8");
-insert into pelicula values (9,"EMISION","ACCION","foto","escuadron suicida","reparto","sinopsis","trailer9");
-insert into pelicula values (10,"EMISION","ROMANCE","foto","50 sombras mas oscuras","reparto","sinopsis","trailer10");
-insert into pelicula values (11,"EMISION","ROMANCE","foto","50 sombras liberadas","reparto","sinopsis","trailer11");
+insert into pelicula values (1,"PREVENTA","DRAMA","desaparecida","reparto","sinopsis","trailer");
+insert into pelicula values (2,"PREVENTA","TERROR","la noche del demonio","reparto","sinopsis","trailer2");
+insert into pelicula values (3,"PREVENTA","TERROR","anabel","reparto","sinopsis","trailer3");
+insert into pelicula values (4,"EMISION","ACCION","los avengers","reparto","sinopsis","traile4");
+insert into pelicula values (5,"PREVENTA","TERROR","black phone","reparto","sinopsis","traile5");
+insert into pelicula values (6,"EMISION","ANIMACION","paranorman","reparto","sinopsis","traile6");
+insert into pelicula values (7,"PREVENTA","DRAMA","despues de ella","reparto","sinopsis","traile7");
+insert into pelicula values (8,"PREVENTA","TERROR","el conjuro","reparto","sinopsis","trailer8");
+insert into pelicula values (9,"EMISION","ACCION","escuadron suicida","reparto","sinopsis","trailer9");
+insert into pelicula values (10,"EMISION","ROMANCE","50 sombras mas oscuras","reparto","sinopsis","trailer10");
+insert into pelicula values (11,"EMISION","ROMANCE","50 sombras liberadas","reparto","sinopsis","trailer11");
+
+insert into pelicula_imagenes values (1, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (2, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (3, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (4, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (5, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (6, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (7, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (8, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (9, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (10, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (11, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+
 
 /** --------------------------------------SALAS-----------------------------------------------------**/
 

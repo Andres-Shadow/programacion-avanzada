@@ -39,6 +39,7 @@ public class InicioBean implements Serializable {
 
     @PostConstruct
     public void init(){
+
         try {
             imagenes = new ArrayList<>();
             imagenes.add("");
@@ -47,7 +48,7 @@ public class InicioBean implements Serializable {
             cartelera = adminServicio.listarPeliculaPorEstadoIndependiente(Estado_PElicula.EMISION);
             preventa =  adminServicio.listarPeliculaPorEstadoIndependiente(Estado_PElicula.PREVENTA);
             ciudades = adminServicio.listarCiudad();
-        } catch (Exception e) {
+        } catch (Exception e ) {
             throw new RuntimeException(e);
         }
 

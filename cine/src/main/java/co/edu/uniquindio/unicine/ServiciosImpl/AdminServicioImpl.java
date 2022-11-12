@@ -237,6 +237,12 @@ public class AdminServicioImpl implements AdminServicio {
     }
 
     @Override
+    public Pelicula obtnerPeliculaPorSuId(Integer id) throws Exception {
+        Optional<Pelicula> pelicula = peliculaRepo.findById(id);
+        return pelicula.get();
+    }
+
+    @Override
     public Administrativo crearAdminTeatro(Administrativo adminTeatro) throws Exception {
 
         Administrativo admin1 = administrativoRepo.obtenerAdminPorCorreo(adminTeatro.getCorreo());

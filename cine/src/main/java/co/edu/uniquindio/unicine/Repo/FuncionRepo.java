@@ -17,7 +17,7 @@ public interface FuncionRepo extends JpaRepository<Funcion, Integer> {
     String obtenerNombrePelicula(Integer codigoFuncion);
 
     //agregar un join para poder hacer la consulta hacía una lista
-    @Query("select f.pelicula.nombre, f.pelicula.estado, f.pelicula.imagen,t.teatro.nombre, t.teatro.ciudad.nombre,h.dia  from Funcion f join f.sala.teatroSala t join f.horarios  h where f.pelicula.id =:codigoPelicula")
+    @Query("select f.pelicula.nombre, f.pelicula.estado,t.teatro.nombre, t.teatro.ciudad.nombre,h.dia  from Funcion f join f.sala.teatroSala t join f.horarios  h where f.pelicula.id =:codigoPelicula")
     List<Object[]> obtenerFuncionesPelicula(Integer codigoPelicula);
     @Query("select f from Funcion  f join f.sala.teatroSala t  where t.teatro.id =:idTeatro and f.entradas is empty ")
     List<Funcion> obtenerFuncionesSinEntrada(Integer idTeatro);
@@ -25,9 +25,9 @@ public interface FuncionRepo extends JpaRepository<Funcion, Integer> {
     @Query("select f from Funcion f join f.sala.teatroSala ts  join f.horarios hs where ts.teatro.id=: idTeatro and hs.inicio <:fin or hs.fin >:inicio")
     List<Funcion> obtenerFuncionesTeatroRangoFecha(Integer idTeatro, LocalDate inicio, LocalDate fin);
     */
-    @Query("select p from Funcion f join f.pelicula p join f.sala.teatroSala t where  f.pelicula.estado=:estado and t.teatro.ciudad.nombre=:nombreCiudad")
+    @Query("select distinct f from Funcion f join f.pelicula p join f.sala.teatroSala t where  f.pelicula.estado=:estado and t.teatro.ciudad.nombre=:nombreCiudad")
     List<Pelicula> listarPeliculasPorEstadoCiudad(Estado_PElicula estado, String nombreCiudad);
-    @Query("select p from Funcion f join f.pelicula p where  f.pelicula.estado=:estado ")
+    @Query("select distinct p from Funcion f join f.pelicula p where  f.pelicula.estado=:estado ")
     List<Pelicula> listarPeliculasPorEstado(Estado_PElicula estado);
 }
 
