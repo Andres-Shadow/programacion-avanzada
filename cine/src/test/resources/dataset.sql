@@ -46,33 +46,23 @@ insert into pelicula_imagenes values (11, "http://res.cloudinary.com/dpqdgyicu/i
 
 /** --------------------------------------SALAS-----------------------------------------------------**/
 
-insert into sala values (1,80,66);
-insert into sala values (2,80,60);
-insert into sala values (3,80,51);
-insert into sala values (4,100,53);
-insert into sala values (5,100,53);
-insert into sala values (6,100,55);
-insert into sala values (7,80,55);
-insert into sala values (8,80,56);
-insert into sala values (9,80,69);
-insert into sala values (10,100,57);
-insert into sala values (11,100,74);
-insert into sala values (12,100,73);
-insert into sala values (13,80,68);
-insert into sala values (14,80,66);
-insert into sala values (15,80,58);
+insert into sala values (1,80,66, 1);
+insert into sala values (2,80,60,1);
+insert into sala values (3,80,51,1);
+insert into sala values (4,100,53,1);
+insert into sala values (5,100,53,1);
+insert into sala values (6,100,55,1);
+insert into sala values (7,80,55,1);
+insert into sala values (8,80,56,1);
+insert into sala values (9,80,69,1);
+insert into sala values (10,100,57,1);
+insert into sala values (11,100,74,1);
+insert into sala values (12,100,73,1);
+insert into sala values (13,80,68,1);
+insert into sala values (14,80,66,1);
+insert into sala values (15,80,58,1);
 
-/** --------------------------------------FUNCIONES-----------------------------------------------------**/
 
-insert into funcion values (1,4,11);
-insert into funcion values (2,2,10);
-insert into funcion values (3,8,4);
-insert into funcion values (4,6,12);
-insert into funcion values (6,9,7);
-insert into funcion values (7,2,2);
-insert into funcion values (8,4,5);
-insert into funcion values (9,3,9);
-insert into funcion values (10,2,3);
 
 /** --------------------------------------CIUDADES-----------------------------------------------------**/
 
@@ -92,11 +82,11 @@ insert into administrativo values (5, "123","password", "correo5@gmail.com","pep
 
 
 /** --------------------------------------TEATROS-----------------------------------------------------**/
-insert into teatro values (1, "direccion 1", "teatro 1", null, null);
-insert into teatro values (2, "direccion 2", "teatro 2",null, null);
-insert into teatro values (3, "direccion 3", "teatro 3", null, null);
-insert into teatro values (4, "direccion 4", "teatro 4", null, null);
-insert into teatro values (5, "direccion 5", "teatro 5", null, null);
+insert into teatro values (1, "direccion 1", "teatro 1", 1, 1);
+insert into teatro values (2, "direccion 2", "teatro 2",1, 1);
+insert into teatro values (3, "direccion 3", "teatro 3", 1, 1);
+insert into teatro values (4, "direccion 4", "teatro 4", 2, 1);
+insert into teatro values (5, "direccion 5", "teatro 5", 2, 1);
 
 /** --------------------------------------COMPRAS-----------------------------------------------------**/
 insert into compra (id, valor, cliente_id) values (1, 12500, 1);
@@ -155,3 +145,23 @@ insert into horario values (2, "2022-10-1 6:30:00", "2022/12/2", "3:30 - 4:30", 
 insert into horario values (3, "2022-10-1 7:30:00", "2022/12/3", "2:30 - 5:30", "2022-09-3 4:30:00");
 insert into horario values (4, "2022-10-1 8:30:00", "2022/12/4", "2:30 - 5:30", "2022-09-4 4:30:00");
 insert into horario values (5, "2022-10-1 9:30:00", "2022/12/5", "2:30 - 5:30", "2022-09-5 4:30:00");
+
+
+/**----------------------------COMPRA CONFITERIA -----------------------------------------------------**/
+
+/**id - precio - unidades - compra id - confiteria id **/
+
+insert into comrpa_confiteria value (1, 30000, 3, 1, 1);
+insert into comrpa_confiteria value (2, 30000, 3, 1, 1);
+insert into comrpa_confiteria value (3, 30000, 3, 1, 1);
+insert into comrpa_confiteria value (4, 30000, 3, 1, 1);
+insert into comrpa_confiteria value (5, 30000, 3, 1, 1);
+
+/** --------------------------------------FUNCIONES-----------------------------------------------------**/
+
+insert into funcion values (1,4,11,1);
+insert into funcion values (2,2,10,1);
+insert into funcion values (7,2,2,1);
+insert into funcion values (8,4,5,1);
+insert into funcion values (9,3,9,1);
+insert into funcion values (10,2,3,1);
