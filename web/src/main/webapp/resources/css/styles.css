@@ -28,3 +28,10 @@
     width: 100%;
     height: auto ;
 }
+
+.div-separador{
+    border-bottom: thin;
+    border-top: thin;
+    border-right: thin;
+    border-left: thin;
+}

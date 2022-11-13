@@ -7,76 +7,57 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:jsf="http://xmlns.jcp.org/jsf">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
-    <h:outputScript name="bootstrap.bundle.min" library="js"/>
-    <h:outputStylesheet name="styles.css" library="css"/>
 
-    <title>Pagina de Inicio</title>
-</h:head>
-<h:body>
-    <h1>PAGINA DE INICIO</h1>
+<ui:composition template="/WEB-INF/template.xhtml">
+    <ui:define name="content">
 
-    <header class="p-3 text-bg-dark">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-
-                </a>
-                <h:graphicImage library="img" name="icono.png" styleClass="img-icon me-2" />
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="index.xhtml" class="nav-link px-2 text-secondary">INICIO</a></li>
-                    <li><a href="admin/gestion_peliculas.xhtml" class="nav-link px-2 text-white">GESTIONAR PELICULA</a></li>
-                    <li><a href="admin_teatro/gestion_salas.xhtml" class="nav-link px-2 text-white">GESTIONAR SALA</a></li>
-                    <li><a href="admin/gestion_teatro.xhtml" class="nav-link px-2 text-white">GESTIONAR TEATRO</a></li>
-                    <li><a href="" class="nav-link px-2 text-white">PERFIL</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-
-                </ul>
+        <div>
+            <p:carousel value="#{inicioBean.cartelera}" var="pelicula" numScroll="1" numVisible="3">
+                <div class="item_carrusel">
+                    <img src="#{pelicula.obtenerImagenPrincipal()}" alt=""/>
+                </div>
+            </p:carousel>
+        </div>
 
 
-                <h:form styleClass="barraBusqueda me-5">
-                    <div class="input-searchui-inputgroup" >
-                        <p:inputText placeholder="¿Qué película está buscando?" required="true" value="#{busquedaBean.busqueda}" styleClass="form_busqueda" />
-                        <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}" />
 
+            <div jsf:id="listas_peliculas" class="container ">
+                <div>
+                    <h1>EN CARTELERA</h1>
+                    <div class="row">
+                        <p:repeat value="#{inicioBean.cartelera}" var="pelicula">
+                                <div class="col-md-6">
+                                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                            <div class="col p-4 d-flex flex-column position-static">
+                                                <strong class="d-inline-block mb-2 text-primary">
+                                                    <p:repeat value="#{pelicula.genero}" var="genero">
+                                                        <p:chip label="#{genero}"/>
+                                                    </p:repeat>
+
+                                                </strong>
+
+                                                    <h3 class="mb-0">#{pelicula.nombre}</h3>
+
+                                                <p class="card-text mb-auto">#{pelicula.sinopsis}</p>
+                                                <a href="admin_teatro/detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
+                                            </div>
+                                            <div class="col-auto d-none d-lg-block">
+                                                <div class="col-auto d-none d-lg-block imagen-pelicula">
+                                                    <img src="#{pelicula.obtenerImagenPrincipal()}" alt="#{pelicula.nombre}"/>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                </div>
+                        </p:repeat>
                     </div>
-                </h:form>
-
-
-                <div class="text-end">
-
-                    <button type="button" class="btn btn-outline-light me-2">Login</button>
-                    <p:linkButton value="REGISTRARSE" href="cliente/registro.xhtml" />
-
                 </div>
 
-
-            </div>
-        </div>
-    </header>
-
-
-
-    <div>
-        <p:carousel value="#{inicioBean.cartelera}" var="pelicula" numScroll="1" numVisible="3">
-            <div class="item_carrusel">
-                <img src="#{pelicula.obtenerImagenPrincipal()}" alt=""/>
-            </div>
-        </p:carousel>
-    </div>
-
-
-
-
-    <div jsf:id="listas_peliculas" class="container">
-        <div>
-            <h1>EN CARTELERA</h1>
-            <div class="row">
-                <p:repeat value="#{inicioBean.cartelera}" var="pelicula">
-                        <div class="col-md-6">
+                <div>
+                    <h1>EN PREVENTA</h1>
+                    <div class="row">
+                        <p:repeat value="#{inicioBean.preventa}" var="pelicula">
+                            <div class="col-md-6">
                                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                     <div class="col p-4 d-flex flex-column position-static">
                                         <strong class="d-inline-block mb-2 text-primary">
@@ -86,7 +67,7 @@
 
                                         </strong>
 
-                                            <h3 class="mb-0">#{pelicula.nombre}</h3>
+                                        <h3 class="mb-0">#{pelicula.nombre}</h3>
 
                                         <p class="card-text mb-auto">#{pelicula.sinopsis}</p>
                                         <a href="admin_teatro/detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
@@ -98,64 +79,34 @@
 
                                     </div>
                                 </div>
-                        </div>
-                </p:repeat>
-            </div>
-        </div>
-
-        <div>
-            <h1>EN PREVENTA</h1>
-            <div class="row">
-                <p:repeat value="#{inicioBean.preventa}" var="pelicula">
-                    <div class="col-md-6">
-                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                            <div class="col p-4 d-flex flex-column position-static">
-                                <strong class="d-inline-block mb-2 text-primary">
-                                    <p:repeat value="#{pelicula.genero}" var="genero">
-                                        <p:chip label="#{genero}"/>
-                                    </p:repeat>
-
-                                </strong>
-
-                                <h3 class="mb-0">#{pelicula.nombre}</h3>
-
-                                <p class="card-text mb-auto">#{pelicula.sinopsis}</p>
-                                <a href="admin_teatro/detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
                             </div>
-                            <div class="col-auto d-none d-lg-block">
-                                <div class="col-auto d-none d-lg-block imagen-pelicula">
-                                    <img src="#{pelicula.obtenerImagenPrincipal()}" alt="#{pelicula.nombre}"/>
-                                </div>
-
-                            </div>
-                        </div>
+                        </p:repeat>
                     </div>
-                </p:repeat>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <p:dialog modal="true" id="dialogo_ciudad" widgetVar="dialogo_ciudad" visible="true" header="Seleccione una ciudad" >
+        <p:dialog modal="true" id="dialogo_ciudad" widgetVar="dialogo_ciudad" visible="true" header="Seleccione una ciudad" >
 
-        <h:form>
-            <h:panelGrid columns="2" cellpadding="5">
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
 
-                <p:outputLabel for="id_ciudad" value="Ciudad: " />
-                <p:selectOneMenu id="id_ciudad" value="#{inicioBean.ciudadSeleccionada}" converter="#{ciudadConverter}">
-                    <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true" itemValue="#{null}"/>
-                    <f:selectItems value="#{inicioBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}"/>
-                </p:selectOneMenu>
+                    <p:outputLabel for="id_ciudad" value="Ciudad: " />
+                    <p:selectOneMenu id="id_ciudad" value="#{inicioBean.ciudadSeleccionada}" converter="#{ciudadConverter}">
+                        <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true" itemValue="#{null}"/>
+                        <f:selectItems value="#{inicioBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}"/>
+                    </p:selectOneMenu>
 
 
-            </h:panelGrid>
-            <p:commandButton action="#{inicioBean.elegirCiudad()}" value="Seleccionar ciudad" update="@form, listas_peliculas" oncomplete="PF('dialogo_ciudad').hide()"/>
-            <p:growl for="mensaje_bean"/>
+                </h:panelGrid>
+                <p:commandButton action="#{inicioBean.elegirCiudad()}" value="Seleccionar ciudad" update="@form, listas_peliculas" oncomplete="PF('dialogo_ciudad').hide()"/>
+                <p:growl for="mensaje_bean"/>
 
-        </h:form>
+            </h:form>
 
-    </p:dialog>
+        </p:dialog>
 
 
 
-</h:body>
+    </ui:define>
+</ui:composition>
 </html>
