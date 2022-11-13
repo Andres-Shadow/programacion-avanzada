@@ -35,3 +35,8 @@
     border-right: thin;
     border-left: thin;
 }
+
+.my-heading-row {
+    background-color: var(--surface-c);
+    font-weight: bold;
+}

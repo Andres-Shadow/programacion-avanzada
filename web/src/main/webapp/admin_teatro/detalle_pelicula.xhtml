@@ -13,6 +13,59 @@
 
     <ui:define name="content">
 
+
+        <div class="container">
+            <p:panelGrid>
+
+
+                <p:row>
+                    <p:column colspan="1">
+
+                        <img src="#{detallePeliculaBean.pelicula.obtenerImagenPrincipal()}" alt=""/>
+                    </p:column>
+
+
+                    <p:column colspan="2">
+
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/bZ9sXOomNbk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+
+                    </p:column>
+
+                </p:row>
+            </p:panelGrid>
+
+
+
+            <p:panelGrid columns="4"
+                         columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                         layout="grid"
+                         styleClass="ui-panelgrid-blank ui-fluid"
+                         style="border:0px none; background-color:transparent;">
+
+                <p:row styleClass="my-heading-row">
+                    Detalle pelicula
+                </p:row>
+
+                <p:outputLabel for="@next" value="Nombre:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.nombre}"/>
+
+                <p:outputLabel for="@next" value="Sinopsis:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.sinopsis}"/>
+
+                <p:outputLabel for="@next" value="Genero:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.genero}"/>
+
+                <p:outputLabel for="@next" value="Reparto:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.reparto}"/>
+
+
+
+            </p:panelGrid>
+        </div>
+
+
+
+        <!--
         <p:panel id="informacion_pelicula" header="Información pelicula" styleClass="mt-3">
             <div class="container">
                 <div class="col-4">
@@ -45,25 +98,9 @@
 
             </div>
         </p:panel>
+        -->
 
-        <p:panelGrid>
-            <p:row>
-                <p:column colspan="1">
-                    <strong class="d-inline-block me-2">
-                        Imagen:
-                    </strong>
-                    <img src="#{detallePeliculaBean.pelicula.obtenerImagenPrincipal()}" alt=""/>
-                </p:column>
 
-                <p:column colspan="2">
-                    <strong class="d-inline-block me-2">
-                        Pelicula:
-                    </strong>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bZ9sXOomNbk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
-                </p:column>
-
-            </p:row>
-        </p:panelGrid>
 
 
 
