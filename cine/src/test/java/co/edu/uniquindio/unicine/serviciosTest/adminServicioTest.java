@@ -249,7 +249,7 @@ public class adminServicioTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void crearPeliculasTest(){
-        Pelicula pelicula = Pelicula.builder().nombre("pelicula").trailler("www.youtube.com").imagen("img.png").sinopsis("pelicula de terror").reparto("actor").genero(Genero_Pelicula.TERROR).estado(Estado_PElicula.PREVENTA).build();
+        Pelicula pelicula = Pelicula.builder().nombre("pelicula").trailler("www.youtube.com").sinopsis("pelicula de terror").reparto("actor").genero(Genero_Pelicula.TERROR).estado(Estado_PElicula.PREVENTA).build();
 
         try {
             Pelicula nuevo = adminServicio.crearPelicula(pelicula);
@@ -273,7 +273,7 @@ public class adminServicioTest {
     @Sql("classpath:dataset.sql")
     public void actualizarPelicula(){
         try {
-            Pelicula pelicula = Pelicula.builder().nombre("pelicula").trailler("www.youtube.com").imagen("img.png").sinopsis("pelicula de terror").reparto("actor").genero(Genero_Pelicula.TERROR).estado(Estado_PElicula.PREVENTA).build();
+            Pelicula pelicula = Pelicula.builder().nombre("pelicula").trailler("www.youtube.com").sinopsis("pelicula de terror").reparto("actor").genero(Genero_Pelicula.TERROR).estado(Estado_PElicula.PREVENTA).build();
             pelicula.setNombre("pelicula 2");
             pelicula.setId(1);
             Pelicula nuevo = adminServicio.actualizarPelicula(pelicula);
