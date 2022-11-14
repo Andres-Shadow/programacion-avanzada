@@ -20,40 +20,28 @@
 </h:head>
 <h:body>
     <header class="p-3 menu_principal">
-        <div class="container col-11">
+        <div class="container col-xxl-12">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                     <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-
                     </a>
                     <h:graphicImage library="img" name="Unicine.png" styleClass="img-icon me-2"/>
 
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-
-                        <li><a href="/index.xhtml" class="nav-link px-2 text-secondary">Incio</a></li>
-                        <li><a href="/admin/gestion_peliculas.xhtml"
-                               class="nav-link px-2 text-white">GESTIONAR PELICULA</a></li>
-                        <li><a href="/admin_teatro/gestion_salas.xhtml"
-                               class="nav-link px-2 text-white">GESTIONAR SALA</a></li>
-                        <li><a href="/admin/gestion_teatro.xhtml" class="nav-link px-2 text-white">GESTIONAR TEATRO</a>
-                        </li>
-                        <li><a href="" class="nav-link px-2 text-white">PERFIL</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-
+                        <li><a href="/index.xhtml" class="nav-link px-2 titulo">UNICINE</a></li>
+                        <li><a href="/admin/gestion_peliculas.xhtml" class="nav-link px-2 text-white opciones_Menu">Gestionar Pelicula</a></li>
+                        <li><a href="/admin_teatro/gestion_salas.xhtml" class="nav-link px-2 text-white opciones_Menu">Gestionar Sala</a></li>
+                        <li><a href="/admin/gestion_teatro.xhtml" class="nav-link px-2 text-white opciones_Menu">Gestionar Teatro</a></li>
                     </ul>
-
 
                     <h:form styleClass="barraBusqueda me-5">
                         <div class="input-searchui-inputgroup">
                             <p:inputText placeholder="¿Qué película está buscando?" required="true"
                                          value="#{busquedaBean.busqueda}" styleClass="form_busqueda"/>
                             <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}"/>
-
                         </div>
                     </h:form>
 
-
                     <div class="text-end">
-
                         <h:form rendered="#{seguridadBean.autenticado}">
                             <p:outputLabel styleClass="me-3" value="Hola! #{seguridadBean.cliente.nombre}"/>
 
@@ -65,8 +53,6 @@
                         <h:form rendered="#{!seguridadBean.autenticado}">
                             <p:commandButton styleClass="ui-button-outlined ui-button-secondary me-3" icon="pi pi-user"
                                              iconPos="left" value="Login" oncomplete="PF('login').show()"/>
-
-
                             <p:linkButton value="REGISTRARSE" href="cliente/registro.xhtml"/>
                         </h:form>
                     </div>
@@ -76,19 +62,19 @@
 
 
     <div id="contenido">
+        <div style="background-color: #1C1D2A">
         <ui:insert name="content">
 
         </ui:insert>
+        </div>
     </div>
-
 
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">
                 <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-
                 </a>
-                <span class="mb-3 mb-md-0 text-muted">&copy; Proyecto Unicine 2022 rojo hp</span>
+                <span class="mb-3 mb-md-0 text-muted">&copy; Proyecto Unicine</span>
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
