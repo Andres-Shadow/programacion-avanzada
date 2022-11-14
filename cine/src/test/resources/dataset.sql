@@ -19,46 +19,50 @@ insert into cliente values (15,"SGR942","iolarubio@hotmail.educo","foto","Christ
 
 /** --------------------------------------PELICULAS-----------------------------------------------------**/
 
-insert into pelicula values (1,"PREVENTA","DRAMA","foto","desaparecida","reparto","sinopsis","trailer");
-insert into pelicula values (2,"PREVENTA","TERROR","foto","la noche del demonio","reparto","sinopsis","trailer2");
-insert into pelicula values (3,"PREVENTA","TERROR","foto","anabel","reparto","sinopsis","trailer3");
-insert into pelicula values (4,"EMISION","ACCION","foto","los avengers","reparto","sinopsis","traile4");
-insert into pelicula values (5,"PREVENTA","TERROR","foto","black phone","reparto","sinopsis","traile5");
-insert into pelicula values (6,"EMISION","ANIMACION","foto","paranorman","reparto","sinopsis","traile6");
-insert into pelicula values (7,"PREVENTA","DRAMA","foto","despues de ella","reparto","sinopsis","traile7");
-insert into pelicula values (8,"PREVENTA","TERROR","foto","el conjuro","reparto","sinopsis","trailer8");
-insert into pelicula values (9,"EMISION","ACCION","foto","escuadron suicida","reparto","sinopsis","trailer9");
-insert into pelicula values (10,"EMISION","ROMANCE","foto","50 sombras mas oscuras","reparto","sinopsis","trailer10");
+insert into pelicula values (1,"PREVENTA","DRAMA","desaparecida","reparto","sinopsis","trailer");
+insert into pelicula values (2,"PREVENTA","TERROR","la noche del demonio","reparto","sinopsis","trailer2");
+insert into pelicula values (3,"PREVENTA","TERROR","anabel","reparto","sinopsis","trailer3");
+insert into pelicula values (4,"EMISION","ACCION","los avengers","reparto","sinopsis","traile4");
+insert into pelicula values (5,"PREVENTA","TERROR","black phone","reparto","sinopsis","traile5");
+insert into pelicula values (6,"EMISION","ANIMACION","paranorman","reparto","sinopsis","traile6");
+insert into pelicula values (7,"PREVENTA","DRAMA","despues de ella","reparto","sinopsis","traile7");
+insert into pelicula values (8,"PREVENTA","TERROR","el conjuro","reparto","sinopsis","trailer8");
+insert into pelicula values (9,"EMISION","ACCION","escuadron suicida","reparto","sinopsis","trailer9");
+insert into pelicula values (10,"EMISION","ROMANCE","50 sombras mas oscuras","reparto","sinopsis","trailer10");
+insert into pelicula values (11,"EMISION","ROMANCE","50 sombras liberadas","reparto","sinopsis","trailer11");
+
+insert into pelicula_imagenes values (1, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (2, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (3, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (4, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (5, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (6, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (7, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (8, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (9, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (10, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+insert into pelicula_imagenes values (11, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
+
 
 /** --------------------------------------SALAS-----------------------------------------------------**/
 
-insert into sala values (1,80,66);
-insert into sala values (2,80,60);
-insert into sala values (3,80,51);
-insert into sala values (4,100,53);
-insert into sala values (5,100,53);
-insert into sala values (6,100,55);
-insert into sala values (7,80,55);
-insert into sala values (8,80,56);
-insert into sala values (9,80,69);
-insert into sala values (10,100,57);
-insert into sala values (11,100,74);
-insert into sala values (12,100,73);
-insert into sala values (13,80,68);
-insert into sala values (14,80,66);
-insert into sala values (15,80,58);
+insert into sala values (1,80,66, 1);
+insert into sala values (2,80,60,1);
+insert into sala values (3,80,51,1);
+insert into sala values (4,100,53,1);
+insert into sala values (5,100,53,1);
+insert into sala values (6,100,55,1);
+insert into sala values (7,80,55,1);
+insert into sala values (8,80,56,1);
+insert into sala values (9,80,69,1);
+insert into sala values (10,100,57,1);
+insert into sala values (11,100,74,1);
+insert into sala values (12,100,73,1);
+insert into sala values (13,80,68,1);
+insert into sala values (14,80,66,1);
+insert into sala values (15,80,58,1);
 
-/** --------------------------------------FUNCIONES-----------------------------------------------------**/
 
-insert into funcion values (1,4,11);
-insert into funcion values (2,2,10);
-insert into funcion values (3,8,4);
-insert into funcion values (4,6,12);
-insert into funcion values (6,9,7);
-insert into funcion values (7,2,2);
-insert into funcion values (8,4,5);
-insert into funcion values (9,3,9);
-insert into funcion values (10,2,3);
 
 /** --------------------------------------CIUDADES-----------------------------------------------------**/
 
@@ -78,11 +82,11 @@ insert into administrativo values (5, "123","password", "correo5@gmail.com","pep
 
 
 /** --------------------------------------TEATROS-----------------------------------------------------**/
-insert into teatro values (1, "direccion 1", "teatro 1", null, null);
-insert into teatro values (2, "direccion 2", "teatro 2",null, null);
-insert into teatro values (3, "direccion 3", "teatro 3", null, null);
-insert into teatro values (4, "direccion 4", "teatro 4", null, null);
-insert into teatro values (5, "direccion 5", "teatro 5", null, null);
+insert into teatro values (1, "direccion 1", "teatro 1", 1, 1);
+insert into teatro values (2, "direccion 2", "teatro 2",1, 1);
+insert into teatro values (3, "direccion 3", "teatro 3", 1, 1);
+insert into teatro values (4, "direccion 4", "teatro 4", 2, 1);
+insert into teatro values (5, "direccion 5", "teatro 5", 2, 1);
 
 /** --------------------------------------COMPRAS-----------------------------------------------------**/
 insert into compra (id, valor, cliente_id) values (1, 12500, 1);
@@ -141,3 +145,23 @@ insert into horario values (2, "2022-10-1 6:30:00", "2022/12/2", "3:30 - 4:30", 
 insert into horario values (3, "2022-10-1 7:30:00", "2022/12/3", "2:30 - 5:30", "2022-09-3 4:30:00");
 insert into horario values (4, "2022-10-1 8:30:00", "2022/12/4", "2:30 - 5:30", "2022-09-4 4:30:00");
 insert into horario values (5, "2022-10-1 9:30:00", "2022/12/5", "2:30 - 5:30", "2022-09-5 4:30:00");
+
+
+/**----------------------------COMPRA CONFITERIA -----------------------------------------------------**/
+
+/**id - precio - unidades - compra id - confiteria id **/
+
+insert into comrpa_confiteria value (1, 30000, 3, 1, 1);
+insert into comrpa_confiteria value (2, 30000, 3, 1, 1);
+insert into comrpa_confiteria value (3, 30000, 3, 1, 1);
+insert into comrpa_confiteria value (4, 30000, 3, 1, 1);
+insert into comrpa_confiteria value (5, 30000, 3, 1, 1);
+
+/** --------------------------------------FUNCIONES-----------------------------------------------------**/
+
+insert into funcion values (1,4,11,1);
+insert into funcion values (2,2,10,1);
+insert into funcion values (7,2,2,1);
+insert into funcion values (8,4,5,1);
+insert into funcion values (9,3,9,1);
+insert into funcion values (10,2,3,1);

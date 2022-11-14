@@ -39,8 +39,10 @@ public class Horario implements Serializable {
     @ToString.Include
     private LocalDate fin;
 
-    //------------ RELACIONES ------------
-    @ManyToMany(mappedBy = "horarios")
+
+    //--------- RELACIONES
+
+    @OneToMany(mappedBy = "horario")
     @ToString.Exclude
     private List<Funcion> funciones;
 

@@ -1,6 +1,5 @@
 package co.edu.uniquindio.unicine.Entidades;
 
-import co.edu.uniquindio.unicine.Intermedia.TeatroSala;
 import lombok.*;
 
 import javax.persistence.*;

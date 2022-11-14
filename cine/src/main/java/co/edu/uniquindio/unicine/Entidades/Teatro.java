@@ -1,6 +1,5 @@
 package co.edu.uniquindio.unicine.Entidades;
 
-import co.edu.uniquindio.unicine.Intermedia.TeatroSala;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,12 +30,15 @@ public class Teatro implements Serializable {
     @ManyToOne
     @ToString.Exclude
     private Ciudad ciudad;
+
     @ManyToOne
     @ToString.Exclude
     private Administrativo admin;
+
+
     @OneToMany(mappedBy = "teatro")
-    @ToString.Exclude
-    private List<TeatroSala> teatroSala;
+    private List<Sala> salas;
+
 
     @Builder
     public Teatro(String nombre, String direccion){

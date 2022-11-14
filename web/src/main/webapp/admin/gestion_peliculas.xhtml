@@ -24,10 +24,12 @@
                 <p:inputText id="estado_pelicula" value="#{peliculaBean.pelicula.estado}"  required="true"/>
 
                 <p:outputLabel for="genero_pelicula" value="Genero pelicula: " />
-                <p:inputText id="genero_pelicula" value="#{peliculaBean.pelicula.genero}" required="true" />
+                <p:inputText id="genero_pelicula" value="#{peliculaBean.pelicula.genero}" required="false" />
 
                 <p:outputLabel for="imagen_pelicula" value="Imagen de la pelicula: " />
-                <p:inputTextarea id="imagen_pelicula" value="#{peliculaBean.pelicula.imagen}" required="true" rows="6"  />
+                <p:fileUpload id="imagen_pelicula"  listener="#{peliculaBean.subirImagen}" mode="advanced" multiple="true"
+                              sizeLimit="1000000" fileLimit="2"
+                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/" required="true"/>
 
                 <p:outputLabel for="reparto" value="Reparto de la pelicula: " />
                 <p:inputTextarea id="reparto" value="#{peliculaBean.pelicula.reparto}" required="true" rows="6" />
@@ -37,6 +39,13 @@
 
                 <p:outputLabel for="trailler" value="Trailler de la pelicula: " />
                 <p:inputText id="trailler" value="#{peliculaBean.pelicula.trailler}" required="true" />
+
+
+                <!--  <p:outputLabel for="genero" value="Genero de la pelicula: " />
+                <p:selectOneMenu id="genero" value="#{null}" converter="#{null}" >
+                    <f:selectItem itemLabel="Seleccione una genero" noSelectionOption="true" itemValue="#{null}" />
+                    <f:selectItems value="#{null}" var="genero" itemLabel="#{genero}" itemValue="#{genero}"/>
+                </p:selectOneMenu> -->
 
             </h:panelGrid>
             <p:commandButton action="#{peliculaBean.registrarPelicula()}" value="Registrar" update="@form" />

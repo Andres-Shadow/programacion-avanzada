@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">#{detallePeliculaBean.pelicula.nombre}</ui:define>
+
+    <ui:define name="content">
+
+
+        <div class="container">
+            <p:panelGrid>
+
+
+                <p:row>
+                    <p:column colspan="1">
+
+                        <img src="#{detallePeliculaBean.pelicula.obtenerImagenPrincipal()}" alt=""/>
+                    </p:column>
+
+
+                    <p:column colspan="2">
+
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/bZ9sXOomNbk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+
+                    </p:column>
+
+                </p:row>
+            </p:panelGrid>
+
+
+
+            <p:panelGrid columns="4"
+                         columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                         layout="grid"
+                         styleClass="ui-panelgrid-blank ui-fluid"
+                         style="border:0px none; background-color:transparent;">
+
+                <p:row styleClass="my-heading-row">
+                    Detalle pelicula
+                </p:row>
+
+                <p:outputLabel for="@next" value="Nombre:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.nombre}"/>
+
+                <p:outputLabel for="@next" value="Sinopsis:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.sinopsis}"/>
+
+                <p:outputLabel for="@next" value="Genero:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.genero}"/>
+
+                <p:outputLabel for="@next" value="Reparto:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.reparto}"/>
+
+
+
+            </p:panelGrid>
+        </div>
+
+
+
+        <!--
+        <p:panel id="informacion_pelicula" header="Información pelicula" styleClass="mt-3">
+            <div class="container">
+                <div class="col-4">
+                    <div>
+                        <strong class="d-inline-block me-2">
+                            Pelicula:
+                        </strong>
+                        <p:outputLabel value="#{detallePeliculaBean.pelicula.nombre}"/>
+                    </div>
+                    <div>
+                        <strong class="d-inline-block me-2">
+                            Sinopsis:
+                        </strong>
+                        <p:outputLabel value="#{detallePeliculaBean.pelicula.sinopsis}"/>
+                    </div>
+                    <div>
+                        <strong class="d-inline-block me-2">
+                            Reparto:
+                        </strong>
+                        <p:outputLabel value="#{detallePeliculaBean.pelicula.reparto}"/>
+                    </div>
+                    <div>
+                        <strong class="d-inline-block me-2">
+                            Genero:
+                        </strong>
+                        <p:outputLabel value="#{detallePeliculaBean.pelicula.genero}"/>
+                    </div>
+
+                </div>
+
+            </div>
+        </p:panel>
+        -->
+
+
+
+
+
+
+
+    </ui:define>
+</ui:composition>
+</html>

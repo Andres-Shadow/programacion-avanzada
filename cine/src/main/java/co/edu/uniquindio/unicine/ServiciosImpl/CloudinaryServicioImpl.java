@@ -24,13 +24,9 @@ public class CloudinaryServicioImpl {
         cloudinary = new Cloudinary(config);
     }
 
-    public Map subirImagen(File file, String carpeta){
-        Map respuesta = null;
-        try {
-            respuesta = cloudinary.uploader().upload(file, ObjectUtils.asMap("folder",carpeta));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public Map subirImagen(File file, String carpeta) throws Exception{
+        Map respuesta = cloudinary.uploader().upload(file, ObjectUtils.asMap("folder",
+                String.format("unicine/%s", carpeta)));
         return respuesta;
     }
 

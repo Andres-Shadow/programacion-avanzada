@@ -17,7 +17,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     private final EntradaRepo entradaRepo;
     private final CompraRepo compraRepo;
     private final CuponRepo cuponRepo;
-    private ClienteRepo clienteRepo;
+    private final ClienteRepo clienteRepo;
 
     private final EmailServicio emailServicio;
 
@@ -126,6 +126,17 @@ public class ClienteServicioImpl implements ClienteServicio {
     @Override
     public List<Cliente> listarClientes() {
         return clienteRepo.findAll();
+    }
+
+    @Override
+    public List<Pelicula> listarPeliculasPorNombre(String nombre) throws Exception {
+
+        List<Pelicula> lista  = peliculaRepo.obtenerPelicualPorPalabra(nombre);
+
+        if(lista.isEmpty())
+            throw new Exception("no se encontraron peliculas con ese nombre");
+        else
+            return lista;
     }
 
     @Override
