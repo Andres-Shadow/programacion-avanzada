@@ -19,17 +19,18 @@ insert into cliente values (15,"SGR942","iolarubio@hotmail.educo","foto","Christ
 
 /** --------------------------------------PELICULAS-----------------------------------------------------**/
 
-insert into pelicula values (1,"PREVENTA","DRAMA","desaparecida","reparto","sinopsis","trailer");
-insert into pelicula values (2,"PREVENTA","TERROR","la noche del demonio","reparto","sinopsis","trailer2");
-insert into pelicula values (3,"PREVENTA","TERROR","anabel","reparto","sinopsis","trailer3");
-insert into pelicula values (4,"EMISION","ACCION","los avengers","reparto","sinopsis","traile4");
-insert into pelicula values (5,"PREVENTA","TERROR","black phone","reparto","sinopsis","traile5");
-insert into pelicula values (6,"EMISION","ANIMACION","paranorman","reparto","sinopsis","traile6");
-insert into pelicula values (7,"PREVENTA","DRAMA","despues de ella","reparto","sinopsis","traile7");
-insert into pelicula values (8,"PREVENTA","TERROR","el conjuro","reparto","sinopsis","trailer8");
-insert into pelicula values (9,"EMISION","ACCION","escuadron suicida","reparto","sinopsis","trailer9");
-insert into pelicula values (10,"EMISION","ROMANCE","50 sombras mas oscuras","reparto","sinopsis","trailer10");
-insert into pelicula values (11,"EMISION","ROMANCE","50 sombras liberadas","reparto","sinopsis","trailer11");
+insert into pelicula values (1,"PREVENTA","DRAMA","desaparecida","resto de gente","Una mujer que sufre por la pérdida de su hija empieza a perder la cordura al imaginar que la pequeña podría estar aún viva.","https://youtu.be/G1BD8EgwmPA");
+insert into pelicula values (2,"PREVENTA","TERROR","la noche del demonio","resto de gente","Josh y Renai se mudan a una nueva casa, donde su hijo tiene un terrible accidente y queda en estado de coma.","https://youtu.be/kCv5CaGPhVs");
+insert into pelicula values (3,"PREVENTA","TERROR","anabel","resto de gente","John Form encuentra el regalo perfecto para Mia, su esposa embarazada: una preciosa muñeca antigua llamada Annabelle.","https://youtu.be/8kmLHwKH31M");
+insert into pelicula values (4,"EMISION","ACCION","los avengers","mucha gente pa","El director de la Agencia SHIELD decide reclutar a un equipo para salvar al mundo de un desastre casi seguro cuando un enemigo inesperado surge como una gran amenaza para la seguridad mundial.","https://youtu.be/4mwtDHovB3w");
+insert into pelicula values (5,"PREVENTA","TERROR","black phone","un rarito y muchos niños","Un homicida sádico y enmascarado mantiene a Finney, un niño de 13 años, secuestrado en un sótano incomunicado","https://youtu.be/XhcEnHDKHco");
+insert into pelicula values (6,"EMISION","ANIMACION","paranorman","gente de plastilina","El joven Norman Babcock (Kodi Smit-McPhee) tiene la habilidad de hablar con los muertos -- y muchas prefiere su compañía a la de los vivos.","https://youtu.be/VXZ8mBI5TY8");
+insert into pelicula values (7,"PREVENTA","DRAMA","despues de ella","reparto","sinopsis","https://youtu.be/NaFd8ucHLuo");
+insert into pelicula values (8,"PREVENTA","TERROR","el conjuro","resto de gente y fantasmas pa","A principios de los años 70, Ed y Lorrain Warren, reputados investigadores de fenómenos paranormales, se enfrentan a una entidad demoníaca al intentar ayudar a una familia que está siendo aterrorizada por una presencia oscura en su aislada granja.","https://youtu.be/_zU1gLWGnpg");
+insert into pelicula values (9,"EMISION","ACCION","escuadron suicida","mucha gente de una carcel","Con tal de salir de una prisión infernal, los supervillanos más peligrosos del mundo aceptan una misión del Gobierno: viajar a una remota isla, enemiga de los Estados Unidos y repleta de soldados, para destruir un laboratorio de alta tecnología.","https://youtu.be/IblLmbGxw1Q");
+insert into pelicula values (10,"EMISION","ROMANCE","50 sombras mas oscuras","nadie lo ve por el reparto","Christian Grey desea retomar la relación con Anastasia Steele, pero ella exige llegar a un nuevo acuerdo antes de aceptar. Cuando por fin empiezan a reconstruir aquello que tanto les unió, el sombrío pasado de Grey amenaza con cercenar su esperanza de disfrutar de un futuro junto a Anastasia.","https://youtu.be/WDf80mIH3pc");
+insert into pelicula values (11,"EMISION","ROMANCE","50 sombras liberadas","nadie lo ve por el reparto","El millonario Christian Grey y su nueva esposa, Anastasia, disfrutan la vida al máximo sin sospechar que una amenaza terrible se cierne sobre ellos.","https://youtu.be/nJCc5HRPxYA");
+
 
 insert into pelicula_imagenes values (1, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
 insert into pelicula_imagenes values (2, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");

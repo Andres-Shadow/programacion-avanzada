@@ -35,4 +35,8 @@ public class DetallePeliculaBean implements Serializable {
         }
     }
 
+    public String redireccionar(Pelicula pelicula){
+        return "/admin_teatro/detalle_pelicula?faces-redirect=true";
+    }
+
 }
