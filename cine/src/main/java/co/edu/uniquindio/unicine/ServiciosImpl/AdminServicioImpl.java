@@ -151,12 +151,10 @@ public class AdminServicioImpl implements AdminServicio {
 
     @Override
     public Confiteria crearConfiteria(Confiteria confiteria) throws Exception {
-
         Confiteria confiteria1 = administrativoRepo.obtenerConfiteriaPorid(confiteria.getId());
         if(confiteria1 != null) {
             throw new Exception("La confiteria ya existe");
         }
-
         return confiteriaRepo.save(confiteria);
     }
 

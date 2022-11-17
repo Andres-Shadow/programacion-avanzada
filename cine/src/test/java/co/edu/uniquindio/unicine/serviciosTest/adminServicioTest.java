@@ -30,6 +30,7 @@ public class adminServicioTest {
     public void registrarAdminTest(){
         Administrativo adminTeatro = Administrativo.builder().id(56).nombre("Pedro").tipo(Tipo_Admin.ADMINISTRADOR_TEATRO).cedula("2345678").correo("pedro").contrasenia("pedro2").build();
 
+        adminTeatro.setId(1);
         try {
             Administrativo nuevo = adminServicio.crearAdminTeatro(adminTeatro);
             Assertions.assertNotNull(nuevo);
@@ -42,7 +43,7 @@ public class adminServicioTest {
     @Sql("classpath:dataset.sql")
     public void eliminarAdminTeatro(){
         try {
-            adminServicio.eliminarAdminTeatro("22222", 2);
+            adminServicio.eliminarAdminTeatro("12345", 1);
         } catch (Exception e) {
             Assertions.assertTrue(false);
         }
@@ -54,6 +55,7 @@ public class adminServicioTest {
         try {
             Administrativo admin = Administrativo.builder().nombre("Pedro").tipo(Tipo_Admin.ADMINISTRADOR_TEATRO).cedula("2345678").correo("pedro").contrasenia("pedro2").build();
             admin.setCorreo("nuevoemail@gmail.com");
+            admin.setId(1);
             Administrativo nuevo = adminServicio.actualizarAdminTeatro(admin);
             Assertions.assertNotNull(nuevo);
         } catch (Exception e) {
@@ -97,6 +99,7 @@ public class adminServicioTest {
         try {
             Ciudad ciudad = Ciudad.builder().nombre("bucaramanga").build();
             ciudad.setNombre("cali");
+            ciudad.setId(1);
             Ciudad nuevo = adminServicio.actualizarCiudad(ciudad);
             Assertions.assertNotNull(nuevo);
         } catch (Exception e) {
@@ -114,8 +117,7 @@ public class adminServicioTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void crearTeatroTest(){
-        Teatro teatro = Teatro.builder().nombre("teatro 2").direccion("centro").build();
-
+        Teatro teatro = Teatro.builder().nombre("teatro 45").direccion("direccion 45").build();
         try {
             Teatro nuevo = adminServicio.crearTeatro(teatro);
             Assertions.assertNotNull(nuevo);
@@ -140,6 +142,7 @@ public class adminServicioTest {
         try {
             Teatro teatro = Teatro.builder().nombre("teatro 2").direccion("centro").build();
             teatro.setNombre("teatro 3");
+            teatro.setId(1);
             Teatro nuevo = adminServicio.actualizarTeatro(teatro);
             Assertions.assertNotNull(nuevo);
         } catch (Exception e) {
@@ -158,7 +161,7 @@ public class adminServicioTest {
     @Sql("classpath:dataset.sql")
     public void crearCuponTest(){
         Cupon cupon = Cupon.builder().tipo(Tipo_Cupon.CUPON_TIPO_1).valor(222F).fecha(LocalDateTime.now()).descripcion("cupon entrada").estado(true).build();
-
+        cupon.setId(56);
         try {
             Cupon nuevo = adminServicio.crearCupon(cupon);
             Assertions.assertNotNull(nuevo);
@@ -171,7 +174,7 @@ public class adminServicioTest {
     @Sql("classpath:dataset.sql")
     public void eliminarCupon(){
         try {
-            adminServicio.eliminarCupon(2);
+            adminServicio.eliminarCupon(1);
         } catch (Exception e) {
             Assertions.assertTrue(false);
         }
@@ -183,6 +186,7 @@ public class adminServicioTest {
         try {
             Cupon cupon = Cupon.builder().tipo(Tipo_Cupon.CUPON_TIPO_1).valor(222F).fecha(LocalDateTime.now()).descripcion("cupon entrada").estado(true).build();
             cupon.setValorDescuento(333F);
+            cupon.setId(1);
             Cupon nuevo = adminServicio.actualizarCupon(cupon);
             Assertions.assertNotNull(nuevo);
         } catch (Exception e) {
@@ -200,8 +204,7 @@ public class adminServicioTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void crearConfiteriaTest(){
-        Confiteria confiteria = Confiteria.builder().nombre("papas").precio(2242F).imagen("img.png").puntos(5).build();
-
+        Confiteria confiteria = Confiteria.builder().nombre("papas").precio(2242F).imagen("img.png").puntos(0).build();
         try {
             Confiteria nuevo = adminServicio.crearConfiteria(confiteria);
             Assertions.assertNotNull(nuevo);
@@ -226,6 +229,7 @@ public class adminServicioTest {
         try {
             Confiteria confiteria = Confiteria.builder().nombre("papas").precio(2242F).imagen("img.png").puntos(5).build();
             confiteria.setNombre("hot dog");
+            confiteria.setId(1);
             Confiteria nuevo = adminServicio.actualizarConfiteria(confiteria);
             Assertions.assertNotNull(nuevo);
         } catch (Exception e) {
@@ -269,6 +273,7 @@ public class adminServicioTest {
         try {
             Pelicula pelicula = Pelicula.builder().nombre("pelicula").trailler("www.youtube.com").imagen("img.png").sinopsis("pelicula de terror").reparto("actor").genero(Genero_Pelicula.TERROR).estado(Estado_PElicula.PREVENTA).build();
             pelicula.setNombre("pelicula 2");
+            pelicula.setId(1);
             Pelicula nuevo = adminServicio.actualizarPelicula(pelicula);
             Assertions.assertNotNull(nuevo);
         } catch (Exception e) {
@@ -287,8 +292,8 @@ public class adminServicioTest {
     @Sql("classpath:dataset.sql")
     public void login(){
         try {
-            String correo = "admin2@google.com";
-            String contrasenia = "2222";
+            String correo = "correo1@gmail.com";
+            String contrasenia = "password";
             Administrativo buscado = adminServicio.login(correo, contrasenia);
             Assertions.assertNotNull(buscado);
         } catch (Exception e) {

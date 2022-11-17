@@ -53,6 +53,7 @@ public class adminTeatroServicioTest {
         try {
             Funcion funcion = Funcion.builder().pelicula(Pelicula.builder().build()).sala(Sala.builder().build()).build();
             funcion.setPelicula(Pelicula.builder().build());
+            funcion.setId(1);
             Funcion nuevo = adminTeatroServicio.actualizarFuncion(funcion);
             Assertions.assertNotNull(nuevo);
         } catch (Exception e) {
@@ -96,7 +97,7 @@ public class adminTeatroServicioTest {
     public void actualizarSala(){
         try {
             Sala sala =Sala.builder().sillaDsiponible(20).sillaTotal(30).build();
-            sala.setSillaDsiponible(7);
+            sala.setId(1);
             Sala nuevo = adminTeatroServicio.actualizarSala(sala);
             Assertions.assertNotNull(nuevo);
         } catch (Exception e) {
@@ -115,8 +116,8 @@ public class adminTeatroServicioTest {
     @Sql("classpath:dataset.sql")
     public void login() {
         try {
-            String correo = "admin3@google.com";
-            String contrasenia = "3333";
+            String correo = "correo1@gmail.com";
+            String contrasenia = "password";
             Administrativo buscado = adminTeatroServicio.login(correo, contrasenia);
             Assertions.assertNotNull(buscado);
         } catch (Exception e) {

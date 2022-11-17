@@ -18,9 +18,7 @@ public interface ClienteServicio {
 
     Pelicula buscarPelicula (String nombre) throws Exception;
 
-
-    Compra comprar (Entrada entrada, Optional<Confiteria> confiteria, Cliente cliente, Cupon cupon) throws Exception;
-
+    Compra comprar(Entrada entrada, Optional<Confiteria> confiteria, Cliente cliente, Cupon cupon) throws Exception;
 
     List<Compra> listarCompras(Integer idCliente) throws Exception;
 
@@ -30,7 +28,7 @@ public interface ClienteServicio {
 
     void agregarPuntos(Integer idCliente, Integer puntos) throws Exception;
 
-
     List<Cliente> listarClientes();
+
 
 }

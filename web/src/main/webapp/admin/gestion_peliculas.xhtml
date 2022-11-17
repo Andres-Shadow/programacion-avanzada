@@ -9,11 +9,11 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Página de registro de un cliente</title>
+    <title>GESTION DE PELICULAS</title>
 </h:head>
 <h:body>
 
-    <p:panel header="Registro de clientes" style="align-content: center">
+    <p:panel header="GESTION DE PELICULAS" style="align-content: center">
         <h:form>
             <h:panelGrid columns="2" cellpadding="5">
 
@@ -27,10 +27,10 @@
                 <p:inputText id="genero_pelicula" value="#{peliculaBean.pelicula.genero}" required="true" />
 
                 <p:outputLabel for="imagen_pelicula" value="Imagen de la pelicula: " />
-                <p:inputText id="imagen_pelicula" value="#{peliculaBean.pelicula.imagen}" required="true" />
+                <p:inputTextarea id="imagen_pelicula" value="#{peliculaBean.pelicula.imagen}" required="true" rows="6"  />
 
                 <p:outputLabel for="reparto" value="Reparto de la pelicula: " />
-                <p:inputText id="reparto" value="#{peliculaBean.pelicula.reparto}" required="true"/>
+                <p:inputTextarea id="reparto" value="#{peliculaBean.pelicula.reparto}" required="true" rows="6" />
 
                 <p:outputLabel for="sinopsis" value="Sinopsis de la pelilcula: " />
                 <p:inputText id="sinopsis" value="#{peliculaBean.pelicula.sinopsis}" required="true" />
