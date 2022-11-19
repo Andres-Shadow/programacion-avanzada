@@ -45,23 +45,6 @@ insert into pelicula_imagenes values (10, "http://res.cloudinary.com/dpqdgyicu/i
 insert into pelicula_imagenes values (11, "http://res.cloudinary.com/dpqdgyicu/image/upload/v1668284213/unicine/peliculas/mjix8zg82ca3hbwtzeyu.png", "unicine/peliculas/mjix8zg82ca3hbwtzeyu");
 
 
-/** --------------------------------------SALAS-----------------------------------------------------**/
-
-insert into sala values (1,80,66, 1);
-insert into sala values (2,80,60,1);
-insert into sala values (3,80,51,1);
-insert into sala values (4,100,53,1);
-insert into sala values (5,100,53,1);
-insert into sala values (6,100,55,1);
-insert into sala values (7,80,55,1);
-insert into sala values (8,80,56,1);
-insert into sala values (9,80,69,1);
-insert into sala values (10,100,57,1);
-insert into sala values (11,100,74,1);
-insert into sala values (12,100,73,1);
-insert into sala values (13,80,68,1);
-insert into sala values (14,80,66,1);
-insert into sala values (15,80,58,1);
 
 
 
@@ -157,6 +140,25 @@ insert into comrpa_confiteria value (2, 30000, 3, 1, 1);
 insert into comrpa_confiteria value (3, 30000, 3, 1, 1);
 insert into comrpa_confiteria value (4, 30000, 3, 1, 1);
 insert into comrpa_confiteria value (5, 30000, 3, 1, 1);
+
+/** --------------------------------------SALAS-----------------------------------------------------**/
+
+insert into sala values (1,80,66, 1);
+insert into sala values (2,80,60,1);
+insert into sala values (3,80,51,1);
+insert into sala values (4,100,53,1);
+insert into sala values (5,100,53,1);
+insert into sala values (6,100,55,1);
+insert into sala values (7,80,55,1);
+insert into sala values (8,80,56,1);
+insert into sala values (9,80,69,1);
+insert into sala values (10,100,57,1);
+insert into sala values (11,100,74,1);
+insert into sala values (12,100,73,1);
+insert into sala values (13,80,68,1);
+insert into sala values (14,80,66,1);
+insert into sala values (15,80,58,1);
+
 
 /** --------------------------------------FUNCIONES-----------------------------------------------------**/
 
