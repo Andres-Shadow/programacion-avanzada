@@ -37,11 +37,12 @@
                                                     <h3 class="mb-0">#{pelicula.nombre}</h3>
 
                                                 <p class="card-text mb-auto">#{pelicula.sinopsis}</p>
-                                                <a href="admin_teatro/detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
+                                                <a href="detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
                                             </div>
                                             <div class="col-auto d-none d-lg-block">
                                                 <div class="col-auto d-none d-lg-block imagen-pelicula">
-                                                    <img src="#{pelicula.obtenerImagenPrincipal()}" alt="#{pelicula.nombre}"/>
+                                                    <!-- <img src="#{pelicula.obtenerImagenPrincipal()}" alt="#{pelicula.nombre}"/> -->
+                                                    <img src="resources/img/caratula.jpg" alt="#{pelicula.nombre}"/>
                                                 </div>
 
                                             </div>
@@ -69,7 +70,7 @@
                                         <h3 class="mb-0">#{pelicula.nombre}</h3>
 
                                         <p class="card-text mb-auto">#{pelicula.sinopsis}</p>
-                                        <a href="admin_teatro/detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
+                                        <a href="detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
                                     </div>
                                     <div class="col-auto d-none d-lg-block">
                                         <div class="col-auto d-none d-lg-block imagen-pelicula">

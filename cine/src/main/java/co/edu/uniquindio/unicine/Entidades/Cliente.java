@@ -28,7 +28,7 @@ public class Cliente implements Serializable {
     private String nombre;
     @ToString.Include
     private String imagenPerfil;
-    @Column(unique = true, nullable = false, length = 50)
+    @Column(unique = true, nullable = false, length = 200)
     @ToString.Include
     private String contrasenia;
     @Column(unique = false, nullable = false, length = 50)

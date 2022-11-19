@@ -4,6 +4,7 @@ import co.edu.uniquindio.unicine.Entidades.*;
 import co.edu.uniquindio.unicine.Intermedia.CuponCliente;
 import co.edu.uniquindio.unicine.Repo.*;
 import co.edu.uniquindio.unicine.Servicios.ClienteServicio;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,13 +38,11 @@ public class ClienteServicioImpl implements ClienteServicio {
         if(correoExiste)
             throw new Exception("Excepcion: Correo ya existente");
         else{
-            emailServicio.enviarEmail("Unicine Correo:",
-                    "Hola, te has registrado en Unicine",
-                    cliente.getEmail());
+            emailServicio.enviarEmail("Unicine Correo:", "Hola, te has registrado en Unicine", cliente.getEmail());
+            emailServicio.enviarEmail("Unicine Corre0:", "Hola, se le ha enviado cun cupon: " + "(CuponCodigo)", cliente.getEmail());
 
-            emailServicio.enviarEmail("Unicine Corre0:",
-                    "Hola, se le ha enviado cun cupon: " + "(CuponCodigo)",
-                    cliente.getEmail());
+            StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
+            cliente.setContrasenia(spe.encryptPassword(cliente.getContrasenia()));
         }
         return clienteRepo.save(cliente);
     }
@@ -67,16 +66,22 @@ public class ClienteServicioImpl implements ClienteServicio {
     }
 
     @Override
-    public Cliente login(String correo, String contrasenia) throws Exception{
-        Cliente cliente =  clienteRepo.comprobarAutenticacion(correo, contrasenia);
-        if(cliente == null)
-            throw new Exception("Excepcion: Datos de ingreso invalidos");
-        else{
-            emailServicio.enviarEmail("Unicine Corre:",
-                            "Hola, se he entrado a Unicine",
-                                     correo);
-            return cliente;
+    public Cliente login(String correo, String contra) throws Exception{
+        Cliente cliente = clienteRepo.findByEmail(correo);
+
+        if(cliente != null){
+            StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
+            if(!spe.checkPassword(contra, cliente.getContrasenia())){
+                throw new Exception("Contraseña no valida");
+            }
         }
+        /*
+        * if(!cliente.getEstado()){
+        * throw new Exception("Cuenta no activada");
+        * }
+        * */
+
+        return cliente;
 
     }
 

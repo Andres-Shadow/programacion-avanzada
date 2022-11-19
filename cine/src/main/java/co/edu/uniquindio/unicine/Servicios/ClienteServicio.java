@@ -14,7 +14,7 @@ public interface ClienteServicio {
 
     void eliminarCliente(Integer idCliente) throws Exception;
 
-    Cliente login(String correo, String contrasenia) throws Exception;
+    Cliente login(String correo, String contra)throws Exception;
 
     Pelicula buscarPelicula (String nombre) throws Exception;
 

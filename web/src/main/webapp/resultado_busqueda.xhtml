@@ -17,11 +17,11 @@
                         <div class="product-list-item p-5">
                             <div class="product-list-detail">
                                 <img src="#{pelicula.obtenerImagenPrincipal()}" alt="" class="imagen-pelicula"/>
-                                <div class="product-name">#{pelicula.nombre}</div>
+                                <div class="product-name" >#{pelicula.nombre} </div>
                                 <div class="product-description">#{pelicula.sinopsis}</div>
-                                <i class="pi pi-tag product-category-icon"/><span
-                                    class="product-category">#{pelicula.genero}</span>
-                                <a href="admin_teatro/detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
+                                <i class="pi pi-tag product-category-icon"/>
+                                <span class="product-category">#{pelicula.genero}</span>
+                                <a href="/admin_teatro/detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="text-decoration-none">Mas información</a>
                             </div>
                         </div>
                     </div>

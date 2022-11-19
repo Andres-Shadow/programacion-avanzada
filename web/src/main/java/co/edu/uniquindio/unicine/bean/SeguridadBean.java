@@ -1,9 +1,11 @@
 package co.edu.uniquindio.unicine.bean;
 
+import co.edu.uniquindio.unicine.Entidades.Administrativo;
 import co.edu.uniquindio.unicine.Entidades.Ciudad;
 import co.edu.uniquindio.unicine.Entidades.Cliente;
+import co.edu.uniquindio.unicine.Servicios.AdminServicio;
 import co.edu.uniquindio.unicine.Servicios.ClienteServicio;
-import co.edu.uniquindio.unicine.ServiciosImpl.ClienteServicioImpl;
+import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,24 +32,54 @@ public class SeguridadBean implements Serializable {
     private Cliente cliente;
 
     @Getter @Setter
+    private Administrativo admin;
+
+    @Getter @Setter
     private Ciudad ciudadSeleccionada;
 
     @Autowired
     private ClienteServicio clienteServicio;
+
+    @Autowired
+    private AdminServicio adminServicio;
+
+    @Getter @Setter
+    private String tipoSesion;
 
     @PostConstruct
     public void init(){
         autenticado = false;
         email = "";
         password = "";
+        tipoSesion="";
     }
 
     public String iniciarSesion(){
         if(!email.isEmpty() && !password.isEmpty()){
             try {
                 cliente = clienteServicio.login(email, password);
-                autenticado = true;
-                return "/index?faces-redirect=true";
+                if(cliente!=null){
+                    tipoSesion="cliente";
+                    autenticado = true;
+                    return "/index?faces-redirect=true";
+                }
+                else{
+                    admin = adminServicio.loginAdmin(email, Tipo_Admin.ADMINISTRADOR_GLOBAL);
+                    if(admin!=null){
+                        tipoSesion="admin-global";
+                        autenticado = true;
+                        return "/index?faces-redirect=true";
+                    }else{
+                        admin = adminServicio.loginAdmin(email, Tipo_Admin.ADMINISTRADOR_TEATRO);
+                        if(admin!=null){
+                            tipoSesion="admin-teatro";
+                            autenticado = true;
+                            return "/index?faces-redirect=true";
+                        }
+                    }
+                }
+
+
             } catch (Exception e) {
                 FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
                 FacesContext.getCurrentInstance().addMessage("login-bean", fm);
