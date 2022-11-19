@@ -31,5 +31,8 @@ public interface ClienteRepo extends JpaRepository<Cliente, Integer> {
     @Query("select liscup.cupon from Cliente cli join cli.cupones liscup where cli.cupones= :idCupon")
     Cupon obtenerCupon(Integer idCupon);
 
+    @Query("select c from Cliente c where c.email=:email")
+    Cliente findByEmail(String email);
+
 
 }

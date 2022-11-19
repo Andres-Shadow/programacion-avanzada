@@ -47,7 +47,7 @@
                 <div class="text-end">
 
                     <h:form rendered="#{seguridadBean.autenticado}">
-                        <p:outputLabel styleClass="me-3" value="Hola! #{seguridadBean.cliente.nombre}"/>
+                        <p:outputLabel styleClass="me-3" value="Hola! #{seguridadBean.cliente.nombre} #{seguridadBean.admin.nombre} "/>
 
                         <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3" icon="pi pi-user"
                                          action="#{seguridadBean.cerrarSesion()}"

@@ -284,6 +284,17 @@ public class AdminServicioImpl implements AdminServicio {
     }
 
     @Override
+    public Administrativo loginAdmin(String correo, Tipo_Admin tipo) throws Exception{
+        return administrativoRepo.loginAdminGrande(correo, tipo);
+    }
+
+    @Override
+    public Administrativo loginAdminTeatro(String correo, Tipo_Admin tipo) throws Exception {
+        return administrativoRepo.loginAdminGrande(correo, tipo);
+    }
+
+
+    @Override
     public Ciudad obtenerCiudad(Integer id) throws Exception{
         Optional<Ciudad> ciudad = ciudadRepo.findById(id);
         return ciudad.get();
