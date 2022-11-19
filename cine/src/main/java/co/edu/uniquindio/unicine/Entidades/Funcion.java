@@ -23,12 +23,16 @@ public class Funcion implements Serializable {
     @ManyToOne
     @ToString.Exclude
     private Pelicula pelicula;
+
     @OneToMany(mappedBy = "funcion")
     @ToString.Exclude
     private List<Entrada> entradas;
-    @ManyToMany
+
+
+    @ManyToOne
     @ToString.Exclude
-    private List<Horario> horarios;
+    private Horario horario;
+
     @ManyToOne
     @ToString.Exclude
     private Sala sala;

@@ -17,3 +17,26 @@
 .item_carrusel{
     background: #bdbdbd;
 }
+
+.imagen-pelicula{
+    width: 200px;
+    height: 200px ;
+}
+
+
+.imagen-pelicula img{
+    width: 100%;
+    height: auto ;
+}
+
+.div-separador{
+    border-bottom: thin;
+    border-top: thin;
+    border-right: thin;
+    border-left: thin;
+}
+
+.my-heading-row {
+    background-color: var(--surface-c);
+    font-weight: bold;
+}

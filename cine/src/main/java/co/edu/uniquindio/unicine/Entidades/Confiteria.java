@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unicine.Entidades;
 
+import co.edu.uniquindio.unicine.Intermedia.ComrpaConfiteria;
 import lombok.*;
 
 import javax.persistence.*;
@@ -35,9 +36,10 @@ public class Confiteria implements Serializable {
     private Integer valorPuntos;
 
     //------------ RELACIONES -----------
-    @ManyToMany(mappedBy = "confiterias")
-    @ToString.Exclude
-    private List<Compra> compra;
+    @OneToMany(mappedBy = "confiteria")
+    private List<ComrpaConfiteria> listaCompraConfiterias;
+
+
     @Builder
     public Confiteria (String nombre, Float precio, String imagen, Integer puntos){
         this.nombre=nombre;

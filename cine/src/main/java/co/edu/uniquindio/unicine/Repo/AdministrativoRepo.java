@@ -69,4 +69,7 @@ public interface AdministrativoRepo extends JpaRepository<Administrativo, Intege
     @Query("select a from Administrativo  a where a.id=:id and a.tipo=:tipo")
     Administrativo obtenerAdminTeatroPorId(Integer id, Tipo_Admin tipo);
 
+    @Query("select a from Administrativo  a where a.correo=:correo and a.tipo=:tipo")
+    Administrativo loginAdminGrande(String correo, Tipo_Admin tipo);
+
 }

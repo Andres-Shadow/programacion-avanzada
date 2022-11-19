@@ -67,7 +67,7 @@
                 </p:column>
 
                 <p:column headerText="" >
-                    <p:commandButton styleClass="edit-button rounded-button ui-button-success" icon="pi pi-pencil" onclick="#{teatroBean.seleccionarTeatro(teatro)}"
+                    <p:commandButton styleClass="edit-button rounded-button ui-button-success" icon="pi pi-pencil" action="#{teatroBean.seleccionarTeatro(teatro)}"
                                      oncomplete="PF('crear_teatro').show()"
                                       update="dialogo_crear_teatro" />
                 </p:column>
