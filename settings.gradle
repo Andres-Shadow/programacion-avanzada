@@ -2,4 +2,5 @@ rootProject.name = 'unicine'
 include 'negocio'
 include 'cine'
 include 'web'
+include 'frontend'
 

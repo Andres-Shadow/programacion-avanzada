@@ -5,34 +5,115 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:d="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templateAdmin.xhtml">
+
+    <ui:define name="content">
+
+
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputScript name="bootstrap.bundle.min" library="js"/>
+    <h:outputStylesheet name="estilos.css" library="css"/>
     <title>GESTION DE TEATROS</title>
 </h:head>
 <h:body>
+    <h:form id="crud_teatro">
+            <p:toolbar>
 
-    <p:panel header="GESTION DE TEATROS" style="align-content: center">
-        <h:form>
-            <h:panelGrid columns="2" cellpadding="5">
+                <p:toolbarGroup>
+                    <p:commandButton value="Agregar" icon="pi pi-plus" styleClass="ui-button-success me-5"
+                                     action="#{teatroBean.crearTeatroDialogo()}"
+                                     oncomplete="PF('crear_teatro').show()"
+                                     update="dialogo_crear_teatro"/>
 
-                <p:outputLabel  for="direccion_teeatro"  value="Direccion del teatro:"  />
-                <p:inputText id="direccion_teeatro" value="#{teatroBean.teatro.direccion}" required="true" />
+                    <p:commandButton value="#{teatroBean.textroBtnBorrar}" id="btn_borrar" icon="pi pi-trash" styleClass="ui-button-danger"
+                                     action="#{teatroBean.elimiarTeatros()}" update="crud_teatro:lista, @this"
+                                     disabled="#{teatroBean.teatrosSeleccionados.size()==0}"/>
+                </p:toolbarGroup>
 
-                <p:outputLabel for="nombre_teatro" value="Nombre del teatro:" />
-                <p:inputText id="nombre_teatro" value="#{teatroBean.teatro.nombre}"  required="true"/>
+            </p:toolbar>
 
-                <p:outputLabel for="id_admin" value="Id de su administrador: " />
-                <p:password id="id_admin" value="#{teatroBean.teatro.admin}" />
 
-                <p:outputLabel for="id_ciudad" value="Id de donde se encuentra: " />
-                <p:inputText id="id_ciudad" value="#{teatroBean.teatro.ciudad}" />
+            <p:dataTable id="lista" value="#{teatroBean.teatros}" var="teatro" paginator="true" rows="10"
+                         rowKey="#{teatro.id}" paginatorPosition="bottom"
+                         selection="#{teatroBean.teatrosSeleccionados}"
+                         rowSelectMode="add">
 
-            </h:panelGrid>
-            <p:commandButton action="#{teatroBean.registrarTeatro()}" value="Registrar" update="@form" />
-            <p:growl for="mensaje_bean"/>
-        </h:form>
-    </p:panel>
+                <p:ajax event="rowSelect" update="crud_teatro:btn_borrar" />
+                <p:ajax event="rowUnselect" update="crud_teatro:btn_borrar" />
+                <p:ajax event="rowSelectCheckbox" update="crud_teatro:btn_borrar" />
+                <p:ajax event="rowUnselectCheckbox" update="crud_teatro:btn_borrar" />
+                <p:ajax event="toggleSelect" update="crud_teatro:btn_borrar" />
+
+
+                <p:column selectionMode="multiple" exportable="false"/>
+
+                <p:column headerText="Codigo" >
+                    <h:outputText value="#{teatro.id}"/>
+                </p:column>
+
+                <p:column headerText="Direccion" >
+                    <h:outputText value="#{teatro.direccion}"/>
+                </p:column>
+
+                <p:column headerText="Nombre" >
+                    <h:outputText value="#{teatro.nombre}"/>
+                </p:column>
+
+                <p:column headerText="Ciudad" >
+                    <h:outputText value="#{teatro.ciudad.nombre}"/>
+                </p:column>
+
+                <p:column headerText="Codigo" >
+                    <h:outputText value="#{teatro.admin.nombre}"/>
+                </p:column>
+
+                <p:column headerText="" >
+                    <p:commandButton styleClass="edit-button rounded-button ui-button-success" icon="pi pi-pencil" action="#{teatroBean.seleccionarTeatro(teatro)}"
+                                     oncomplete="PF('crear_teatro').show()"
+                                      update="dialogo_crear_teatro" />
+                </p:column>
+
+            </p:dataTable>
+    </h:form>
+
+
+
+
+        <p:dialog id="dialogo_crear_teatro" widgetVar="crear_teatro" modal="true" header="#{teatroBean.textoActualizar}" showEffect="fade">
+            <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <p:outputLabel  for="direccion_teeatro"  value="Direccion del teatro:"  />
+                    <p:inputText id="direccion_teeatro" value="#{teatroBean.teatro.direccion}" required="true" />
+
+                    <p:outputLabel for="nombre_teatro" value="Nombre del teatro:" />
+                    <p:inputText id="nombre_teatro" value="#{teatroBean.teatro.nombre}"  required="true"/>
+
+
+                    <p:outputLabel for="id_ciudad" value="Ciudad: " />
+                    <p:selectOneMenu id="id_ciudad" value="#{teatroBean.teatro.ciudad}" converter="#{ciudadConverter}">
+                        <f:selectItem itemLabel="Seleccione una ciudad" noSelectionOption="true" itemValue="#{null}"/>
+                        <f:selectItems value="#{teatroBean.ciudades}" var="ciudad" itemLabel="#{ciudad.nombre}" itemValue="#{ciudad}"/>
+                    </p:selectOneMenu>
+
+
+                </h:panelGrid>
+                <p:commandButton action="#{teatroBean.registrarTeatro()}" value="#{teatroBean.textoActualizar}" update="@form,crud_teatro:lista" />
+                <p:growl for="mensaje_bean"/>
+
+            </h:form>
+
+        </p:dialog>
+
 </h:body>
+
+
+
+</ui:define>
+        </ui:composition>
 </html>

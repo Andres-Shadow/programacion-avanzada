@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unicine.Repo;
 
 import co.edu.uniquindio.unicine.Entidades.*;
+import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -65,6 +66,7 @@ public interface AdministrativoRepo extends JpaRepository<Administrativo, Intege
     @Query("select s from Sala s where s.id = :idsala")
     Sala obtenerSalaPorId(Integer idsala);
 
-
+    @Query("select a from Administrativo  a where a.id=:id and a.tipo=:tipo")
+    Administrativo obtenerAdminTeatroPorId(Integer id, Tipo_Admin tipo);
 
 }

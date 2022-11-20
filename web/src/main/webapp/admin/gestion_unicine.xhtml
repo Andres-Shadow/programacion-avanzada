@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/templateAdmin.xhtml">
+
+    <ui:define name="content">
+
+
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin | Gestion unicine</title>
+</h:head>
+<h:body>
+
+
+
+
+
+
+        <h:form>
+            <div class="container" align="center">
+
+
+                GESTION UNICINE
+
+
+            <h:panelGrid columns="2" cellpadding="25" styleClass="panelGridCenter">
+                <p:commandButton value="Ciudad" action="/admin/gestion_ciudad?faces-redirect=true" styleClass="rounded-button" icon="pi pi-directions" style="width:300px ; height:70px "  />
+                <p:commandButton value="Teatro" action="/admin/gestion_teatro?faces-redirect=true" styleClass="rounded-button" icon="pi pi-megaphone" style="width:300px  ; height:70px"  />
+                <p:commandButton value="Cupon" action="/admin/gestion_cupon?faces-redirect=true" styleClass="rounded-button" icon="pi pi-dollar" style="width:300px  ; height:70px"/>
+                <p:commandButton value="Confiteria" action="/admin/gestion_confiteria?faces-redirect=true" styleClass="rounded-button" icon="pi pi-box" style="width:300px  ; height:70px"/>
+                <p:commandButton value="Pelicula" action="/admin/gestion_peliculas?faces-redirect=true" styleClass="rounded-button" icon="pi pi-palette" style="width:300px  ; height:70px"   />
+                <p:commandButton value="Admin Teatro" action="/admin/gestion_adminTeatro?faces-redirect=true" styleClass="rounded-button" icon="pi pi-user-plus" style="width:300px  ; height:70px "/>
+            </h:panelGrid>
+
+            </div>
+
+            <p:growl for="mensaje_bean"/>
+        </h:form>
+
+</h:body>
+
+
+
+
+
+</ui:define>
+</ui:composition>
+
+</html>

@@ -1,6 +1,5 @@
 package co.edu.uniquindio.unicine.Entidades;
 
-import co.edu.uniquindio.unicine.Intermedia.TeatroSala;
 import lombok.*;
 
 import javax.persistence.*;
@@ -28,12 +27,16 @@ public class Sala implements Serializable {
     private Integer sillaDsiponible;
 
     //----------- RELACIONES ------------
-    @OneToMany(mappedBy = "sala")
+
+    @ManyToOne
     @ToString.Exclude
-    private List<TeatroSala> teatroSala;
+    private Teatro teatro;
+
     @OneToMany(mappedBy = "sala")
     @ToString.Exclude
     private List<Funcion> funciones;
+
+
     @Builder
     public Sala ( Integer sillaTotal, Integer sillaDsiponible){
         this.sillaTotal = sillaTotal;

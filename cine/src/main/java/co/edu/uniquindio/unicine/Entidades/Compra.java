@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unicine.Entidades;
 
+import co.edu.uniquindio.unicine.Intermedia.ComrpaConfiteria;
 import co.edu.uniquindio.unicine.Intermedia.CuponCliente;
 import lombok.*;
 
@@ -27,9 +28,6 @@ public class Compra implements Serializable {
     private Float valor;
 
     // --------- RELACIONES -------------
-    @ManyToMany
-    @ToString.Exclude
-    private List<Confiteria> confiterias;
     @ManyToOne
     @ToString.Exclude
     private Factura factura;
@@ -37,9 +35,14 @@ public class Compra implements Serializable {
     @ToString.Exclude
     private Cliente cliente;
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "compra")
+    private List<ComrpaConfiteria> listaCompraConfiterias;
+
     @OneToOne
     @ToString.Exclude
     private Cupon cupon;
+
     @Builder
     public Compra(Float valor){
         this.valor=valor;
