@@ -16,47 +16,102 @@
         <h:head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <title>Admin | Gestion ciudad</title>
+            <title>Admin | Gestion cupon</title>
         </h:head>
 
+        <h:body>
+            <h:form id="crud_cupon">
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton  value="Agregar" icon="pi pi-plus"   styleClass="ui-button-success me-3" action="#{cuponBean.crearCuponDialogo}" update="dialogo_crear" oncomplete="PF('crear_cupon').show()" />
+                        <p:commandButton  id="btn_borrar" value="#{cuponBean.mensajeBorrar}" icon="pi pi-trash"   disabled="#{cuponBean.cuponesSeleccionados.size()==0}" styleClass="ui-button-danger" action="#{cuponBean.eliminarCupones}" update="crud_cupon:lista"/>
+
+                    </p:toolbarGroup>
+                </p:toolbar>
 
 
 
 
-        <h:form>
-            <div class="container" align="center">
+
+                <p:dataTable id="lista" value="#{cuponBean.cupones}" var="cupon" paginator="true" rows="10" rowKey="#{cupon.id}"
+                             paginatorPosition="bottom" selection="#{cuponBean.cuponesSeleccionados}">
+
+                    <p:ajax event="rowSelect" update="crud_cupon:btn_borrar" />
+                    <p:ajax event="rowUnselect" update="crud_cupon:btn_borrar" />
+                    <p:ajax event="rowSelectCheckbox" update="crud_cupon:btn_borrar" />
+                    <p:ajax event="rowUnselectCheckbox" update="crud_cupon:btn_borrar" />
+                    <p:ajax event="toggleSelect" update="crud_cupon:btn_borrar" />
+
+                    <p:column selectionMode="multiple" exportable="false"/>
+
+                    <p:column headerText="codigo">
+                        <h:outputText value="#{cupon.id}" />
+                    </p:column>
+
+                    <p:column headerText="descripcion">
+                        <h:outputText value="#{cupon.descripcion}" />
+                    </p:column>
+
+                    <p:column headerText="estado">
+                        <h:outputText value="#{cupon.estado}" />
+                    </p:column>
+
+                    <p:column headerText="fecha vencimiento">
+                        <h:outputText value="#{cupon.fechaVencimiento}" />
+                    </p:column>
+
+                    <p:column headerText="tipo">
+                        <h:outputText value="#{cupon.tipo}" />
+                    </p:column>
+
+                    <p:column headerText="valor descuento">
+                        <h:outputText value="#{cupon.valorDescuento}" />
+                    </p:column>
+
+                    <p:column headerText="">
+                        <p:commandButton icon="pi pi-pencil" styleClass="edit-button rounded-button ui-button-success" action="#{cuponBean.seleccionarCupon(cupon)}"  oncomplete="PF('crear_cupon').show()" update="dialogo_crear"/>
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+
+            <p:dialog id="dialogo_crear" widgetVar="crear_cupon" modal="true"  header="#{cuponBean.mensajeCrear}" showEffect="fade">
+                <h:form>
+                    <div class="container" align="center">
 
 
 
-                <h:panelGrid columns="2" cellpadding="5">
+                        <h:panelGrid columns="2" cellpadding="5">
 
-                    <p:outputLabel  for="descripcion_cupon"  value="Descripcion del cupon:" />
-                    <p:inputText id="descripcion_cupon" value="#{cuponBean.cupon.descripcion}" required="true" />
+                            <p:outputLabel  for="descripcion_cupon"  value="descripcion del cupon:" />
+                            <p:inputText id="descripcion_cupon" value="#{cuponBean.cupon.descripcion}" required="true" />
 
-                    <p:outputLabel  for="estado_cupon"  value="estado del cupon:" />
-                    <p:inputText id="estado_cupon" value="#{cuponBean.cupon.estado}" required="true" />
+                            <p:outputLabel  for="estado_cupon"  value="Estado del cupon:" />
+                            <p:inputText id="estado_cupon" value="#{cuponBean.cupon.estado}" required="true" />
 
-                    <p:outputLabel  for="fechaVencimiento_cupon"  value="vencimiento del cupon:" />
-                    <p:inputText id="fechaVencimiento_cupon" value="#{cuponBean.cupon.fechaVencimiento}" required="true" />
+                            <p:outputLabel  for="fechaVen_cupon"  value="Fecha de vencimiento:" />
+                            <p:inputText id="fechaVen_cupon" value="#{cuponBean.cupon.fechaVencimiento}" required="true" />
 
-                    <p:outputLabel  for="tipo_cupon"  value="tipo del cupon:" />
-                    <p:inputText id="tipo_cupon" value="#{cuponBean.cupon.tipo}" required="true" />
+                            <p:outputLabel  for="tipo_cupon"  value="Tipo de cupon:" />
+                            <p:inputText id="tipo_cupon" value="#{cuponBean.cupon.tipo}" required="true" />
 
-                    <p:outputLabel  for="valorDescuento_cupon"  value="descuento del cupon:" />
-                    <p:inputText id="valorDescuento_cupon" value="#{cuponBean.cupon.descripcion}" required="true" />
+                            <p:outputLabel  for="valorDescuento_cupon"  value="valor de descuento:" />
+                            <p:inputText id="valorDescuento_cupon" value="#{cuponBean.cupon.valorDescuento}" required="true" />
 
-
-                </h:panelGrid>
-
-
-                <p:commandButton  value="crear cupon" action="#{cuponBean.crearCupon}" update="@form"  icon="pi pi-plus"  />
-
-                <p:growl for="mensaje_bean"/>
-            </div>
-
-        </h:form>
+                        </h:panelGrid>
 
 
+                        <p:commandButton action="#{cuponBean.crearCupon()}" value="#{cuponBean.mensajeCrear}" update="@form,crud_cupon:lista"  icon="pi pi-plus"  />
+
+                        <p:growl for="mensaje_bean"/>
+                    </div>
+
+                </h:form>
+            </p:dialog>
+
+        </h:body>
 
 
 
