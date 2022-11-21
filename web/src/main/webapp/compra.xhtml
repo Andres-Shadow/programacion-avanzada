@@ -97,24 +97,24 @@
                 </p:row>
                 <p:row >
                     <h3 class="mb-0">#{detallePeliculaBean.pelicula.funciones.get(0).sala.toString()}</h3>
-                        <p:repeat value="detallePeliculaBean.pelicula.funciones.get(0).sala.funciones" var="funcion">
-                            <p:column colspan="2">
-                                <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
-                                                 action="#{seguridadBean.cerrarSesion()}"
-                                                 iconPos="left" value="#{detallePeliculaBean.pelicula.funciones.get(0).sala.funciones.get(0).horario.hora_minutos}" />
-                                <a href="detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
-                            </p:column>
-                            <p:column colspan="2">
-                                <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
-                                                 action="#{seguridadBean.cerrarSesion()}"
-                                                 iconPos="left" value="#{detallePeliculaBean.pelicula.funciones.get(0).sala.funciones.get(1).horario.hora_minutos}" />
-                            </p:column>
-                            <p:column colspan="2">
-                                <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
-                                                 action="#{seguridadBean.cerrarSesion()}"
-                                                 iconPos="left" value="#{detallePeliculaBean.pelicula.funciones.get(0).sala.funciones.get(2).horario.hora_minutos}" />
-                            </p:column>
-                        </p:repeat>
+                    <p:repeat value="detallePeliculaBean.pelicula.funciones.get(0).sala.funciones" var="funcion">
+                        <p:column colspan="2">
+                            <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                             action="#{seguridadBean.cerrarSesion()}"
+                                             iconPos="left" value="#{detallePeliculaBean.pelicula.funciones.get(0).sala.funciones.get(0).horario.hora_minutos}" />
+                            <a href="detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
+                        </p:column>
+                        <p:column colspan="2">
+                            <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                             action="#{seguridadBean.cerrarSesion()}"
+                                             iconPos="left" value="#{detallePeliculaBean.pelicula.funciones.get(0).sala.funciones.get(1).horario.hora_minutos}" />
+                        </p:column>
+                        <p:column colspan="2">
+                            <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                             action="#{seguridadBean.cerrarSesion()}"
+                                             iconPos="left" value="#{detallePeliculaBean.pelicula.funciones.get(0).sala.funciones.get(2).horario.hora_minutos}" />
+                        </p:column>
+                    </p:repeat>
                 </p:row>
             </p:panelGrid>
         </div>

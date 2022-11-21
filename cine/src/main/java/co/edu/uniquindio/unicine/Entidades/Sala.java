@@ -11,12 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
+
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Sala implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ToString.Include
     @EqualsAndHashCode.Include
     private Integer id;
     @Column(nullable = false)
@@ -41,5 +40,10 @@ public class Sala implements Serializable {
     public Sala ( Integer sillaTotal, Integer sillaDsiponible){
         this.sillaTotal = sillaTotal;
         this.sillaDsiponible = sillaDsiponible;
+    }
+
+    @Override
+    public String toString() {
+        return "Sala "+ id;
     }
 }

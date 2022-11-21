@@ -30,7 +30,7 @@
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
                         <li><a href="/index.xhtml" class="nav-link px-2 text-secondary">Incio</a></li>
-                        <li><a href="/admin/gestion_peliculas.xhtml"
+                        <li><a href="/admin_teatro/gestion_peliculas.xhtml"
                                class="nav-link px-2 text-white">GESTIONAR PELICULA</a></li>
                         <li><a href="/admin_teatro/gestion_salas.xhtml"
                                class="nav-link px-2 text-white">GESTIONAR SALA</a></li>
@@ -51,28 +51,7 @@
                         </div>
                     </h:form>
 
-
-                    <div class="text-end">
-
-                        <h:form rendered="#{seguridadBean.autenticado}">
-                            <p:outputLabel styleClass="me-3" value="Hola! #{seguridadBean.cliente.nombre}"/>
-
-                            <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3" icon="pi pi-user"
-                                             action="#{seguridadBean.cerrarSesion()}"
-                                             iconPos="left" value="Cerrar sesión"/>
-                        </h:form>
-
-                        <h:form rendered="#{!seguridadBean.autenticado}">
-                            <p:commandButton styleClass="ui-button-outlined ui-button-secondary me-3" icon="pi pi-user"
-                                             iconPos="left" value="Login" oncomplete="PF('login').show()"/>
-
-
-                            <p:linkButton value="REGISTRARSE" href="cliente/registro.xhtml"/>
-                        </h:form>
-                    </div>
-<<<<<<< HEAD
-=======
-                </h:form>
+                </div>
 
 
                 <div class="text-end">
@@ -89,10 +68,8 @@
                         <p:commandButton  styleClass="ui-button-outlined ui-button-secondary me-3" icon="pi pi-user"
                                          iconPos="left" value="Login" oncomplete="PF('login').show()"/>
 
-
                         <p:linkButton  value="REGISTRARSE" href="/registro.xhtml" />
                     </h:form>
->>>>>>> 1e9b5f2bc779f2ceea1271a8eab28b9d7f162b28
                 </div>
         </div>
     </header>

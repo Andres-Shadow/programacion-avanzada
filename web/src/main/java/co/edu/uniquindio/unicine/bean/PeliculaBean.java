@@ -27,6 +27,9 @@ import java.util.Map;
 @Component
 @ViewScoped
 public class PeliculaBean {
+
+    @Getter @Setter
+    private int indice;
     @Autowired
     private AdminServicio adminServicio;
     @Getter @Setter
@@ -91,6 +94,15 @@ public class PeliculaBean {
         fos.write(uploadedFile.getContent());
         fos.close();
         return file;
+    }
+
+    public int contador(boolean flag){
+        if (flag){
+            return indice++;
+        }
+        else{
+            return indice;
+        }
     }
 
 }
