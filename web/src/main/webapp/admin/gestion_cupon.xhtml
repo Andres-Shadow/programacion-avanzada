@@ -9,20 +9,58 @@
 
 <ui:composition template="/WEB-INF/templateAdmin.xhtml">
 
-<ui:define name="content">
-
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Admin | Gestion cupon</title>
-</h:head>
+    <ui:define name="content">
 
 
 
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Admin | Gestion ciudad</title>
+        </h:head>
 
 
 
 
-</ui:define>
+
+        <h:form>
+            <div class="container" align="center">
+
+
+
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <p:outputLabel  for="descripcion_cupon"  value="Descripcion del cupon:" />
+                    <p:inputText id="descripcion_cupon" value="#{cuponBean.cupon.descripcion}" required="true" />
+
+                    <p:outputLabel  for="estado_cupon"  value="estado del cupon:" />
+                    <p:inputText id="estado_cupon" value="#{cuponBean.cupon.estado}" required="true" />
+
+                    <p:outputLabel  for="fechaVencimiento_cupon"  value="vencimiento del cupon:" />
+                    <p:inputText id="fechaVencimiento_cupon" value="#{cuponBean.cupon.fechaVencimiento}" required="true" />
+
+                    <p:outputLabel  for="tipo_cupon"  value="tipo del cupon:" />
+                    <p:inputText id="tipo_cupon" value="#{cuponBean.cupon.tipo}" required="true" />
+
+                    <p:outputLabel  for="valorDescuento_cupon"  value="descuento del cupon:" />
+                    <p:inputText id="valorDescuento_cupon" value="#{cuponBean.cupon.descripcion}" required="true" />
+
+
+                </h:panelGrid>
+
+
+                <p:commandButton  value="crear cupon" action="#{cuponBean.crearCupon}" update="@form"  icon="pi pi-plus"  />
+
+                <p:growl for="mensaje_bean"/>
+            </div>
+
+        </h:form>
+
+
+
+
+
+    </ui:define>
 </ui:composition>
+
 </html>
