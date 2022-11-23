@@ -135,6 +135,7 @@ insert into horario values (5, "2022-10-1 9:30:00", "2022/12/5", "2:30 - 5:30", 
 
 /**id - precio - unidades - compra id - confiteria id **/
 
+<<<<<<< HEAD
 insert into comrpa_confiteria value (1, 30000, 3, 1, 1);
 insert into comrpa_confiteria value (2, 30000, 3, 1, 1);
 insert into comrpa_confiteria value (3, 30000, 3, 1, 1);
