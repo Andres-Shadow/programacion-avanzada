@@ -4,7 +4,9 @@ import co.edu.uniquindio.unicine.Entidades.*;
 import co.edu.uniquindio.unicine.Intermedia.CuponCliente;
 import co.edu.uniquindio.unicine.Repo.*;
 import co.edu.uniquindio.unicine.Servicios.ClienteServicio;
+import org.jasypt.util.binary.AES256BinaryEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;
+import org.jasypt.util.text.AES256TextEncryptor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,18 +37,30 @@ public class ClienteServicioImpl implements ClienteServicio {
     @Override
     public Cliente registrarCliente(Cliente cliente) throws Exception {
         boolean correoExiste = verCorreoRepetido(cliente.getEmail());
+        Cliente registro = null;
         if(correoExiste)
             throw new Exception("Excepcion: Correo ya existente");
         else{
-            emailServicio.enviarEmail("Unicine Correo:", "Hola, te has registrado en Unicine", cliente.getEmail());
-            emailServicio.enviarEmail("Unicine Corre0:", "Hola, se le ha enviado cun cupon: " + "(CuponCodigo)", cliente.getEmail());
+
 
             StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
             cliente.setContrasenia(spe.encryptPassword(cliente.getContrasenia()));
             cliente.setEstado(false);
             cliente.setPuntos(0);
+
+            registro = clienteRepo.save(cliente);
+
+            AES256TextEncryptor textEncryptor = new AES256TextEncryptor();
+
+            textEncryptor.setPassword("pectorales");
+
+            String parame1 = textEncryptor.encrypt(registro.getEmail());
+
+
+            emailServicio.enviarEmail("Unicine Correo:", "Hola, te has registrado en Unicine, debe ir al siguiente enlace para activar la cuenta http://localhost:8081/activar_cuenta.xhtml?p1="+parame1, cliente.getEmail());
+            emailServicio.enviarEmail("Unicine Corre0:", "Hola, se le ha enviado cun cupon: " + "(CuponCodigo)", cliente.getEmail());
         }
-        return clienteRepo.save(cliente);
+        return registro;
     }
 
     private boolean verCorreoRepetido(String correo){
@@ -146,6 +160,25 @@ public class ClienteServicioImpl implements ClienteServicio {
             throw new Exception("no se encontraron peliculas con ese nombre");
         else
             return lista;
+    }
+
+    @Override
+    public void activarCliente(String correo) throws Exception {
+
+        correo = correo.replaceAll(" ", "+");
+        AES256TextEncryptor textEncryptor = new AES256TextEncryptor();
+        textEncryptor.setPassword("pectorales");
+
+        String ncorreo = textEncryptor.decrypt(correo);
+
+        Cliente guardado = clienteRepo.findByEmail(ncorreo);
+        if(guardado==null){
+            throw new Exception("Cliente no existe");
+        }
+
+        guardado.setEstado(true);
+        clienteRepo.save(guardado);
+
     }
 
     @Override
