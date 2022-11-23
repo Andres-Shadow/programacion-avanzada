@@ -253,7 +253,7 @@ public class AdminServicioImpl implements AdminServicio {
     }
 
     @Override
-    public void eliminarAdminTeatro(String numCedula, Integer idAdmin) throws Exception {
+    public void eliminarAdminTeatro(Integer idAdmin) throws Exception {
         Optional<Administrativo> guardado = administrativoRepo.findById(idAdmin);
 
         if(guardado.isEmpty()){

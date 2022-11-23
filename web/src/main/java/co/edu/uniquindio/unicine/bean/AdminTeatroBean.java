@@ -1,18 +1,11 @@
 package co.edu.uniquindio.unicine.bean;
 
-
 import co.edu.uniquindio.unicine.Entidades.Administrativo;
-import co.edu.uniquindio.unicine.Entidades.Ciudad;
-import co.edu.uniquindio.unicine.Entidades.Cupon;
-import co.edu.uniquindio.unicine.Entidades.Teatro;
-import co.edu.uniquindio.unicine.Repo.AdministrativoRepo;
 import co.edu.uniquindio.unicine.Servicios.AdminServicio;
-import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -22,17 +15,17 @@ import java.util.List;
 
 @Component
 @ViewScoped
-public class CuponBean {
+public class AdminTeatroBean {
     @Getter @Setter
-    private Cupon cupon;
+    private Administrativo administrador;
     @Autowired
     private AdminServicio adminServicio;
 
     @Getter @Setter
-    private List<Cupon> cupones;
+    private List<Administrativo> administradores;
 
     @Getter @Setter
-    private List<Cupon> cuponesSeleccionados;
+    private List<Administrativo> administradoresSeleccionados;
 
 
     private boolean editar;
@@ -40,26 +33,24 @@ public class CuponBean {
     @PostConstruct
     public void init(){
         editar = false;
-        cupon = new Cupon();
-        cupones = adminServicio.listarCupon();
-        cuponesSeleccionados = new ArrayList<>();
+        administrador = new Administrativo();
+        administradores = adminServicio.listarAdminTeatro();
+        administradoresSeleccionados = new ArrayList<>();
     }
 
-    public void crearCupon(){
+    public void crearAdministrador(){
 
         try {
             if(!editar){
-                Cupon registro = adminServicio.crearCupon(cupon);
+                Administrativo registro = adminServicio.crearAdminTeatro(administrador);
+                administradores.add(registro);
+                administrador = new Administrativo();
 
-                registro.setCompra(null);
-                cupones.add(registro);
-                cupon = new Cupon();
-
-                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Cupon creada correctamente");
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Admin creado correctamente");
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", fm);
             }else{
-                adminServicio.actualizarCupon(cupon);
-                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Cupon actualizada correctamente");
+                adminServicio.actualizarAdminTeatro(administrador);
+                FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Admin actualizado correctamente");
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", fm);
             }
         } catch (Exception e) {
@@ -70,46 +61,46 @@ public class CuponBean {
 
     }
 
-    public void eliminarCupones()
+    public void eliminarAdministradores()
     {
 
-        cuponesSeleccionados.forEach(c -> {
+        administradoresSeleccionados.forEach(c -> {
             try {
-                adminServicio.eliminarCupon(c.getId());
-                cupones.remove(c);
+                adminServicio.eliminarAdminTeatro(c.getId());
+                administradores.remove(c);
             } catch (Exception e) {
                 FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alerta", e.getMessage());
                 FacesContext.getCurrentInstance().addMessage("mensaje_bean", fm);
             }
         });
-        cuponesSeleccionados.clear();
+        administradoresSeleccionados.clear();
     }
 
     public String getMensajeCrear(){
         if(editar){
-            return "Editar cupon";
+            return "Editar Admin";
         }else {
-            return "Crear cupon";
+            return "Crear Admin";
         }
     }
 
     public String getMensajeBorrar(){
-        if(cuponesSeleccionados.isEmpty()){
+        if(administradoresSeleccionados.isEmpty()){
             return "Borrar";
-        }else if(cuponesSeleccionados.size()==1) {
-            return "Borrar " +cuponesSeleccionados.size() + " elemento";
+        }else if(administradoresSeleccionados.size()==1) {
+            return "Borrar " +administradoresSeleccionados.size() + " elemento";
         }else{
-            return "Borrar " +cuponesSeleccionados.size() + " elementos";
+            return "Borrar " +administradoresSeleccionados.size() + " elementos";
         }
     }
 
-    public void seleccionarCupon(Cupon cuponSeleccionado){
-        this.cupon = cuponSeleccionado;
+    public void seleccionarAdministrador(Administrativo adminSeleccionado){
+        this.administrador = adminSeleccionado;
         editar = true;
     }
 
-    public void crearCuponDialogo(){
-        this.cupon = new Cupon();
+    public void crearAdministradorDialogo(){
+        this.administrador = new Administrativo();
         editar = false;
     }
 

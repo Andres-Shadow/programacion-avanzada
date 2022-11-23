@@ -46,7 +46,7 @@ public interface AdminServicio {
     Pelicula obtnerPeliculaPorSuId(Integer id) throws Exception;
 
     Administrativo crearAdminTeatro(Administrativo adminTeatro)throws Exception;
-    void eliminarAdminTeatro(String numCedula, Integer idAdmin)throws Exception;
+    void eliminarAdminTeatro(Integer idAdmin)throws Exception;
     Administrativo actualizarAdminTeatro(Administrativo adminTeatro)throws Exception;
     List<Administrativo> listarAdminTeatro();
 
