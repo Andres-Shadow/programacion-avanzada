@@ -11,10 +11,15 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Component
 @ViewScoped
 public class DetallePeliculaBean implements Serializable {
+
+
 
     @Value("#{param['pelicula_id']}")
     private String peliculaCodigo;
@@ -34,6 +39,19 @@ public class DetallePeliculaBean implements Serializable {
             throw new RuntimeException(e);
         }
     }
+
+    public String obtenerFecha(int dia){
+        String[] semana =new String[] {"LUN", "MAR", "MIE", "JUE", "VIE", "SAB", "DOM"};
+        String fecha = "";
+        DateFormat df = new SimpleDateFormat("dd/MM/yy");
+        Date fechaActual = new Date();
+        int dias = (24 * 60 * 60 * 1000) * dia;
+        Date fechaFinal = new Date(fechaActual.getTime() + dias);
+        fecha = df.format(fechaFinal);
+        fecha = semana[fechaFinal.getDay()] + "\n" + fecha;
+        return fecha;
+    }
+
 
     public String redireccionar(Pelicula pelicula){
         return "/admin_teatro/detalle_pelicula?faces-redirect=true";

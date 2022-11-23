@@ -38,7 +38,7 @@ public class Administrativo implements Serializable {
     @Email
     private String correo;
     @ToString.Include
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 200)
     private String contrasenia;
 
     //---------- RELACIONES -----------

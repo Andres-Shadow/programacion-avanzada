@@ -50,7 +50,7 @@ public class SeguridadFilter implements Filter {
             }else if (requestURI.startsWith("/admin_teatro/") ) {
 
                 if (userManager != null) {
-                    if (userManager.isAutenticado() && userManager.getTipoSesion().equals("admin-teatro")) {
+                    if (userManager.isAutenticado()) {
                         filterChain.doFilter(servletRequest, servletResponse);
                     } else {
                         response.sendRedirect(request.getContextPath() + PAGINA_INICIO);

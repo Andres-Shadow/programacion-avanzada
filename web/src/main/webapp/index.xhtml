@@ -10,7 +10,6 @@
 
 <ui:composition template="/WEB-INF/template.xhtml">
     <ui:define name="content">
-
         <div>
             <p:carousel value="#{inicioBean.cartelera}" var="pelicula" numScroll="1" numVisible="3">
                 <div class="item_carrusel">
@@ -19,10 +18,9 @@
             </p:carousel>
         </div>
 
-
-
             <div jsf:id="listas_peliculas" class="container ">
                 <div>
+
                     <h1>EN CARTELERA</h1>
                     <div class="row">
                         <p:repeat value="#{inicioBean.cartelera}" var="pelicula">
@@ -43,7 +41,8 @@
                                             </div>
                                             <div class="col-auto d-none d-lg-block">
                                                 <div class="col-auto d-none d-lg-block imagen-pelicula">
-                                                    <img src="#{pelicula.obtenerImagenPrincipal()}" alt="#{pelicula.nombre}"/>
+                                                    <!-- <img src="#{pelicula.obtenerImagenPrincipal()}" alt="#{pelicula.nombre}"/> -->
+                                                    <img src="resources/img/caratula.jpg" alt="#{pelicula.nombre}"/>
                                                 </div>
 
                                             </div>
@@ -51,6 +50,7 @@
                                 </div>
                         </p:repeat>
                     </div>
+
                 </div>
 
                 <div>
