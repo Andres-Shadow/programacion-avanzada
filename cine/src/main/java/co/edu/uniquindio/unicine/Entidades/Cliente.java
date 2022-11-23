@@ -26,9 +26,13 @@ public class Cliente implements Serializable {
     @Column(unique = true, nullable = false, length = 50)
     @ToString.Include
     private String nombre;
-    @ToString.Include
-    private String imagenPerfil;
-    @Column(unique = true, nullable = false, length = 200)
+
+    @Column(nullable = false)
+    @ElementCollection
+    private Map<String, String> imagenPerfil;
+
+
+    @Column(unique = false, nullable = false, length = 200)
     @ToString.Include
     private String contrasenia;
     @Column(unique = false, nullable = false, length = 50)
@@ -39,6 +43,8 @@ public class Cliente implements Serializable {
     @Column(unique = true, nullable = false, length = 50)
     @ToString.Include
     private String email;
+    @ToString.Include
+    private Boolean estado;
 
 
 
@@ -57,12 +63,20 @@ public class Cliente implements Serializable {
     // ------------- CONSTRUCTOR ---------------------
 
     @Builder
-    public Cliente( String nombre, String imagen, String contra, Integer puntos, String email) {
+    public Cliente( String nombre, String contra, Integer puntos, String email, Boolean estado) {
         this.nombre = nombre;
-        this.imagenPerfil = imagen;
         this.contrasenia = contra;
         this.puntos = puntos;
         this.email = email;
+        this.estado = estado;
+    }
+
+    public String obtenerImagenPrincipal(){
+        if(!imagenPerfil.isEmpty()){
+            String primera = imagenPerfil.keySet().toArray()[0].toString();
+            return  imagenPerfil.get(primera);
+        }
+        return "";
     }
 
 }

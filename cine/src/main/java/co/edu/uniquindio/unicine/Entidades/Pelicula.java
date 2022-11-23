@@ -29,6 +29,7 @@ public class Pelicula implements Serializable {
     @ToString.Include
     private String trailler;
     @ElementCollection
+
     @Column(nullable = false)
     private Map<String, String> imagenes;
 

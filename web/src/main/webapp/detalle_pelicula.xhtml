@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/template.xhtml">
+    <ui:define name="title">#{detallePeliculaBean.pelicula.nombre}</ui:define>
+    <ui:define name="content">
+        <div class="container">
+            <p:panelGrid>
+                <p:row>
+                    <p:column colspan="1">
+
+                        <img src="#{detallePeliculaBean.pelicula.obtenerImagenPrincipal()}" alt=""/>
+                    </p:column>
+
+
+                    <p:column colspan="2">
+
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/joHCGlzxi8U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+
+                    </p:column>
+
+                </p:row>
+            </p:panelGrid>
+
+
+
+            <p:panelGrid columns="4"
+                         columnClasses="ui-grid-col-2,ui-grid-col-4,ui-grid-col-2,ui-grid-col-4"
+                         layout="grid"
+                         styleClass="ui-panelgrid-blank ui-fluid"
+                         style="border:0px none; background-color:transparent;">
+
+                <p:row styleClass="my-heading-row">
+                    Detalle pelicula
+                </p:row>
+
+                <p:outputLabel for="@next" value="Nombre:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.nombre}"/>
+
+                <p:outputLabel for="@next" value="Sinopsis:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.sinopsis}"/>
+
+                <p:outputLabel for="@next" value="Genero:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.genero}"/>
+
+                <p:outputLabel for="@next" value="Reparto:"/>
+                <p:outputLabel value="#{detallePeliculaBean.pelicula.reparto}"/>
+            </p:panelGrid>
+        </div>
+        <div class="container">
+            <p:panelGrid columns="5"
+                         columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2"
+                         layout="grid"
+                         styleClass="ui-panelgrid-blank ui-fluid"
+                         style="border:0px none; background-color:transparent;">
+
+                <p:row styleClass="my-heading-row" >
+                    Funciones
+                </p:row>
+                <p:row styleClass="my-heading-row">
+                    <p:column colspan="2">
+                        <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                         action="#{seguridadBean.cerrarSesion()}"
+                                         iconPos="left" value=" HOY #{detallePeliculaBean.obtenerFecha(0)}" />
+                    </p:column>
+                    <p:column colspan="2">
+                        <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                         action="#{seguridadBean.cerrarSesion()}"
+                                         iconPos="left" value="#{detallePeliculaBean.obtenerFecha(1)}" />
+                    </p:column>
+                    <p:column colspan="2">
+                        <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                         action="#{seguridadBean.cerrarSesion()}"
+                                         iconPos="left" value="#{detallePeliculaBean.obtenerFecha(2)}" />
+                    </p:column>
+                    <p:column colspan="2">
+                        <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                         action="#{seguridadBean.cerrarSesion()}"
+                                         iconPos="left" value="#{detallePeliculaBean.obtenerFecha(3)}" />
+                    </p:column>
+                    <p:column colspan="2">
+                        <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                         action="#{seguridadBean.cerrarSesion()}"
+                                         iconPos="left" value="#{detallePeliculaBean.obtenerFecha(4)}" />
+                    </p:column>
+                    <p:column colspan="2">
+                        <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                         action="#{seguridadBean.cerrarSesion()}"
+                                         iconPos="left" value="#{detallePeliculaBean.obtenerFecha(5)}" />
+                    </p:column>
+                </p:row>
+                <p:row >
+                    <h3 class="mb-0">#{detallePeliculaBean.pelicula.funciones.get(0).sala.toString()}</h3>
+                        <p:repeat value="detallePeliculaBean.pelicula.funciones.get(0).sala.funciones" var="funcion">
+                            <p:column colspan="2">
+                                <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                                 action="#{seguridadBean.cerrarSesion()}"
+                                                 iconPos="left" value="#{detallePeliculaBean.pelicula.funciones.get(0).sala.funciones.get(0).horario.hora_minutos}" />
+                                <a href="detalle_pelicula.xhtml?pelicula_id=#{pelicula.id}" class="stretched-link text-decoration-none">Mas información</a>
+                            </p:column>
+                            <p:column colspan="2">
+                                <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                                 action="#{seguridadBean.cerrarSesion()}"
+                                                 iconPos="left" value="#{detallePeliculaBean.pelicula.funciones.get(0).sala.funciones.get(1).horario.hora_minutos}" />
+                            </p:column>
+                            <p:column colspan="2">
+                                <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3"
+                                                 action="#{seguridadBean.cerrarSesion()}"
+                                                 iconPos="left" value="#{detallePeliculaBean.pelicula.funciones.get(0).sala.funciones.get(2).horario.hora_minutos}" />
+                            </p:column>
+                        </p:repeat>
+                </p:row>
+            </p:panelGrid>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

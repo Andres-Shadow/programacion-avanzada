@@ -14,40 +14,53 @@
     <h:outputScript name="bootstrap.bundle.min" library="js"/>
     <h:outputStylesheet name="styles.css" library="css"/>
 
-    <title>Unicine | <ui:insert name="title"/>Inicio</title>
+    <title>UniCine
+        <ui:insert name="title"/>
+    </title>
 </h:head>
 <h:body>
-    <header class="p-3 text-bg-dark">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+    <header class="p-3 menu_principal bg-dark">
+        <div class="container col-11">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
 
-                </a>
-                <h:graphicImage library="img" name="icono.png" styleClass="img-icon me-2" />
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="/index.xhtml" class="nav-link px-2 text-secondary">INICIO</a></li>
-                    <li><a href="/admin/gestion_peliculas.xhtml" class="nav-link px-2 text-white">GESTIONAR PELICULA</a></li>
-                    <li><a href="/admin_teatro/gestion_salas.xhtml" class="nav-link px-2 text-white">GESTIONAR SALA</a></li>
-                    <li><a href="/admin/gestion_teatro.xhtml" class="nav-link px-2 text-white">GESTIONAR TEATRO</a></li>
-                    <li><a href="" class="nav-link px-2 text-white">PERFIL</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-
-                </ul>
+                    </a>
+                    <h:graphicImage library="img" name="Unicine.png" styleClass="img-icon me-2"/>
 
 
-                <h:form styleClass="barraBusqueda me-5">
-                    <div class="input-searchui-inputgroup" >
-                        <p:inputText placeholder="¿Qué película está buscando?" required="true" value="#{busquedaBean.busqueda}" styleClass="form_busqueda" />
-                        <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}" />
 
-                    </div>
-                </h:form>
+                    <h:form styleClass="barraBusqueda me-5">
+                        <div class="input-searchui-inputgroup">
+                            <p:inputText placeholder="¿Qué película está buscando?" required="true"
+                                         value="#{busquedaBean.busqueda}" styleClass="form_busqueda"/>
+                            <p:commandButton update="@form" icon="pi pi-search" action="#{busquedaBean.buscar}"/>
+
+                        </div>
+                    </h:form>
+
+                    <h:form rendered="#{seguridadBean.autenticado}">
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li><a href="/cliente/perfil_cliente.xhtml" class="nav-link px-2 text-white">PERFIL</a></li>
+                        </ul>
+                    </h:form>
+
+                    <h:form>
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li><a href="/index.xhtml" class="nav-link px-2 text-white">INICIO</a></li>
+                        </ul>
+                    </h:form>
+
+
+
+                </div>
 
 
                 <div class="text-end">
 
+
+
                     <h:form rendered="#{seguridadBean.autenticado}">
-                        <p:outputLabel styleClass="me-3" value="Hola! #{seguridadBean.cliente.nombre} #{seguridadBean.admin.nombre} "/>
+                        <p:outputLabel styleClass="me-3 text-white" value="Hola! #{seguridadBean.cliente.nombre} #{seguridadBean.admin.nombre} "/>
 
                         <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3" icon="pi pi-user"
                                          action="#{seguridadBean.cerrarSesion()}"
@@ -58,25 +71,18 @@
                         <p:commandButton  styleClass="ui-button-outlined ui-button-secondary me-3" icon="pi pi-user"
                                          iconPos="left" value="Login" oncomplete="PF('login').show()"/>
 
-
-                        <p:linkButton  value="REGISTRARSE" href="cliente/registro.xhtml" />
+                        <p:linkButton  value="REGISTRARSE" href="/registro.xhtml" />
                     </h:form>
                 </div>
-
-
-            </div>
         </div>
     </header>
 
 
-
-    <div id="contenido" >
+    <div id="contenido">
         <ui:insert name="content">
 
         </ui:insert>
     </div>
-
-
 
 
     <div class="container">
@@ -96,19 +102,19 @@
 
 
     <p:dialog header="Iniciar sesión" showEffect="fade" widgetVar="login" modal="true"
-              rendered="#{!seguridadBean.autenticado}" >
-        <h:form >
+              rendered="#{!seguridadBean.autenticado}">
+        <h:form>
             <h:panelGrid columns="3" cellpadding="5">
-                <p:outputLabel for="email_login" value="Email:" />
-                <p:inputText id="email_login" value="#{seguridadBean.email}" required="true" />
-                <p:message for="email_login" />
-                <p:outputLabel for="password_login" value="Password:" />
+                <p:outputLabel for="email_login" value="Email:"/>
+                <p:inputText id="email_login" value="#{seguridadBean.email}" required="true"/>
+                <p:message for="email_login"/>
+                <p:outputLabel for="password_login" value="Password:"/>
                 <p:password id="password_login" value="#{seguridadBean.password}" required="true"/>
-                <p:message for="password_login" />
+                <p:message for="password_login"/>
             </h:panelGrid>
             <p:commandButton value="Iniciar Sesión" action="#{seguridadBean.iniciarSesion}"
-                             styleClass="mt-4" update="@form" icon="pi pi-sign-in" iconPos="left" />
-            <p:growl for="login-bean" showDetail="true" />
+                             styleClass="mt-4" update="@form" icon="pi pi-sign-in" iconPos="left"/>
+            <p:growl for="login-bean" showDetail="true"/>
         </h:form>
     </p:dialog>
 

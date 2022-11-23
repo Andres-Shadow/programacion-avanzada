@@ -3,12 +3,13 @@ package co.edu.uniquindio.unicine.Servicios;
 import co.edu.uniquindio.unicine.Entidades.Administrativo;
 import co.edu.uniquindio.unicine.Entidades.Funcion;
 import co.edu.uniquindio.unicine.Entidades.Sala;
+import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
 
 import java.util.List;
 
 public interface AdminTeatroServicio {
 
-    Administrativo login(String correo, String cedula)throws Exception;
+    Administrativo login(String correo, String contra)throws Exception;
 
     //Gestionar funciones
     Funcion crearFuncion(Funcion funcion)throws Exception;

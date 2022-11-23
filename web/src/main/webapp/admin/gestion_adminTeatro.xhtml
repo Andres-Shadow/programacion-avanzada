@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/templateAdmin.xhtml">
+
+    <ui:define name="content">
+
+
+
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Admin | Gestion Admin</title>
+        </h:head>
+
+        <h:body>
+            <h:form id="crud_admin">
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton  value="Agregar" icon="pi pi-plus"   styleClass="ui-button-success me-3" action="#{adminTeatroBean.crearAdministradorDialogo}" update="dialogo_crear" oncomplete="PF('crear_admin').show()" />
+                        <p:commandButton  id="btn_borrar" value="#{adminTeatroBean.mensajeBorrar}" icon="pi pi-trash"   disabled="#{adminTeatroBean.administradoresSeleccionados.size()==0}" styleClass="ui-button-danger" action="#{adminTeatroBean.eliminarAdministradores}" update="crud_admin:lista"/>
+
+                    </p:toolbarGroup>
+                </p:toolbar>
+
+
+
+
+
+                <p:dataTable id="lista" value="#{adminTeatroBean.administradores}" var="administrador" paginator="true" rows="10" rowKey="#{administrador.id}"
+                             paginatorPosition="bottom" selection="#{adminTeatroBean.administradoresSeleccionados}">
+
+                    <p:ajax event="rowSelect" update="crud_admin:btn_borrar" />
+                    <p:ajax event="rowUnselect" update="crud_admin:btn_borrar" />
+                    <p:ajax event="rowSelectCheckbox" update="crud_admin:btn_borrar" />
+                    <p:ajax event="rowUnselectCheckbox" update="crud_admin:btn_borrar" />
+                    <p:ajax event="toggleSelect" update="crud_admin:btn_borrar" />
+
+                    <p:column selectionMode="multiple" exportable="false"/>
+
+                    <p:column headerText="codigo">
+                        <h:outputText value="#{administrador.id}" />
+                    </p:column>
+
+                    <p:column headerText="cedula">
+                        <h:outputText value="#{administrador.cedula}" />
+                    </p:column>
+
+                    <p:column headerText="contraseña">
+                        <h:outputText value="#{administrador.contrasenia}" />
+                    </p:column>
+
+                    <p:column headerText="correo">
+                        <h:outputText value="#{administrador.correo}" />
+                    </p:column>
+
+                    <p:column headerText="nombre">
+                        <h:outputText value="#{administrador.nombre}" />
+                    </p:column>
+
+                    <p:column headerText="tipo">
+                        <h:outputText value="#{administrador.tipo}" />
+                    </p:column>
+
+
+
+
+
+                    <p:column headerText="">
+                        <p:commandButton icon="pi pi-pencil" styleClass="edit-button rounded-button ui-button-success" action="#{adminTeatroBean.seleccionarAdministrador(administrador)}"  oncomplete="PF('crear_admin').show()" update="dialogo_crear"/>
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+
+            <p:dialog id="dialogo_crear" widgetVar="crear_admin" modal="true"  header="#{adminTeatroBean.mensajeCrear}" showEffect="fade">
+                <h:form>
+                    <div class="container" align="center">
+
+
+
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <p:outputLabel  for="id_admin"  value="id admin:" />
+                            <p:inputText id="id_admin" value="#{adminBean.administrador.id}" required="true" />
+
+                            <p:outputLabel  for="cedula_admin"  value="cedula del admin:" />
+                            <p:inputText id="cedula_admin" value="#{adminBean.administrador.cedula}" required="true" />
+
+                            <p:outputLabel  for="contrasenia_admin"  value="Contraseña de admin:" />
+                            <p:inputText id="contrasenia_admin" value="#{adminBean.administrador.contrasenia}" required="true" />
+
+                            <p:outputLabel  for="correo_admin"  value="correo de admin:" />
+                            <p:inputText id="correo_admin" value="#{adminBean.administrador.correo}" required="true" />
+
+                            <p:outputLabel  for="nombre_admin"  value="nombre del admin:" />
+                            <p:inputText id="nombre_admin" value="#{adminBean.administrador.nombre}" required="true" />
+
+                            <p:outputLabel  for="tipo_admin"  value="Tipo de admin:" />
+                            <p:inputText id="tipo_admin" value="#{adminBean.administrador.tipo}" required="true" />
+
+
+                        </h:panelGrid>
+
+
+                        <p:commandButton action="#{adminTeatroBean.crearAdministrador()}" value="#{adminTeatroBean.mensajeCrear}" update="@form,crud_admin:lista"  icon="pi pi-plus"  />
+
+                        <p:growl for="mensaje_bean"/>
+                    </div>
+
+                </h:form>
+            </p:dialog>
+
+        </h:body>
+
+
+
+    </ui:define>
+</ui:composition>
+
+</html>

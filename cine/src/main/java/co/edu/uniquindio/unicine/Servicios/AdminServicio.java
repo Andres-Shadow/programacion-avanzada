@@ -46,14 +46,14 @@ public interface AdminServicio {
     Pelicula obtnerPeliculaPorSuId(Integer id) throws Exception;
 
     Administrativo crearAdminTeatro(Administrativo adminTeatro)throws Exception;
-    void eliminarAdminTeatro(String numCedula, Integer idAdmin)throws Exception;
+    void eliminarAdminTeatro(Integer idAdmin)throws Exception;
     Administrativo actualizarAdminTeatro(Administrativo adminTeatro)throws Exception;
     List<Administrativo> listarAdminTeatro();
 
     Administrativo obtenerAdminTeatro(Integer id, Tipo_Admin tipo)throws Exception;
 
-    Administrativo loginAdmin(String correo, Tipo_Admin tipo) throws Exception;
+    Administrativo loginAdmin(String correo, String contra) throws Exception;
 
-    Administrativo loginAdminTeatro(String correo, Tipo_Admin tipo) throws Exception;
+    Administrativo loginAdminTeatro(String correo, String contra) throws Exception;
 
 }

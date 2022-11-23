@@ -64,17 +64,17 @@ public class SeguridadBean implements Serializable {
                     return "/index?faces-redirect=true";
                 }
                 else{
-                    admin = adminServicio.loginAdmin(email, Tipo_Admin.ADMINISTRADOR_GLOBAL);
+                    admin = adminServicio.loginAdmin(email, password);
                     if(admin!=null){
                         tipoSesion="admin-global";
                         autenticado = true;
-                        return "/index?faces-redirect=true";
+                        return "/gestion_unicine?faces-redirect=true";
                     }else{
-                        admin = adminServicio.loginAdmin(email, Tipo_Admin.ADMINISTRADOR_TEATRO);
+                        admin = adminServicio.loginAdminTeatro(email, password);
                         if(admin!=null){
                             tipoSesion="admin-teatro";
                             autenticado = true;
-                            return "/index?faces-redirect=true";
+                            return "/gestion_unicine?faces-redirect=true";
                         }
                     }
                 }

@@ -38,7 +38,7 @@ public class Administrativo implements Serializable {
     @Email
     private String correo;
     @ToString.Include
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 200)
     private String contrasenia;
 
     //---------- RELACIONES -----------
@@ -52,7 +52,8 @@ public class Administrativo implements Serializable {
     @ToString.Exclude
     private Administrativo supervisor;
     @Builder
-    public Administrativo(Tipo_Admin tipo, String nombre, String cedula, String correo, String contrasenia){
+    public Administrativo(Integer id, Tipo_Admin tipo, String nombre, String cedula, String correo, String contrasenia){
+        this.id = id;
         this.tipo = tipo;
         this.nombre = nombre;
         this.cedula = cedula;

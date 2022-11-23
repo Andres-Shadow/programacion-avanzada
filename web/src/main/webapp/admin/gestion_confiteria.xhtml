@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/templateAdmin.xhtml">
+
+    <ui:define name="content">
+
+
+
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Admin | Gestion confiteria</title>
+        </h:head>
+
+        <h:body>
+            <h:form id="crud_confiteria">
+                <p:toolbar>
+                    <p:toolbarGroup>
+                        <p:commandButton  value="Agregar" icon="pi pi-plus"   styleClass="ui-button-success me-3" action="#{confiteriaBean.crearConfiteriaDialogo}" update="dialogo_crear" oncomplete="PF('crear_confiteria').show()" />
+                        <p:commandButton  id="btn_borrar" value="#{confiteriaBean.mensajeBorrar}" icon="pi pi-trash"   disabled="#{confiteriaBean.confiteriasSeleccionadas.size()==0}" styleClass="ui-button-danger" action="#{confiteriaBean.eliminarConfiterias}" update="crud_confiteria:lista"/>
+
+                    </p:toolbarGroup>
+                </p:toolbar>
+
+
+
+
+
+                <p:dataTable id="lista" value="#{confiteriaBean.confiterias}" var="confiteria" paginator="true" rows="10" rowKey="#{confiteria.id}"
+                             paginatorPosition="bottom" selection="#{confiteriaBean.confiteriasSeleccionadas}">
+
+                    <p:ajax event="rowSelect" update="crud_confiteria:btn_borrar" />
+                    <p:ajax event="rowUnselect" update="crud_confiteria:btn_borrar" />
+                    <p:ajax event="rowSelectCheckbox" update="crud_confiteria:btn_borrar" />
+                    <p:ajax event="rowUnselectCheckbox" update="crud_confiteria:btn_borrar" />
+                    <p:ajax event="toggleSelect" update="crud_confiteria:btn_borrar" />
+
+                    <p:column selectionMode="multiple" exportable="false"/>
+
+                    <p:column headerText="codigo">
+                        <h:outputText value="#{confiteria.id}" />
+                    </p:column>
+
+                    <p:column headerText="nombre">
+                        <h:outputText value="#{confiteria.nombre}" />
+                    </p:column>
+
+                    <p:column headerText="imagen">
+                        <h:outputText value="#{confiteria.imagen}" />
+                    </p:column>
+
+                    <p:column headerText="precio">
+                        <h:outputText value="#{confiteria.precio}" />
+                    </p:column>
+
+                    <p:column headerText="valor_puntos">
+                        <h:outputText value="#{confiteria.valorPuntos}" />
+                    </p:column>
+
+
+
+                    <p:column headerText="">
+                        <p:commandButton icon="pi pi-pencil" styleClass="edit-button rounded-button ui-button-success" action="#{confiteriaBean.seleccionarConfiteria(confiteria)}"  oncomplete="PF('crear_confiteria').show()" update="dialogo_crear"/>
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+
+            <p:dialog id="dialogo_crear" widgetVar="crear_confiteria" modal="true"  header="#{confiteriaBean.mensajeCrear}" showEffect="fade">
+                <h:form>
+                    <div class="container" align="center">
+
+
+
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <p:outputLabel  for="nombre_confiteria"  value="Nombre de la confiteria:" />
+                            <p:inputText id="nombre_confiteria" value="#{confiteriaBean.confiteria.nombre}" required="true" />
+
+                            <p:outputLabel  for="imagen_confiteria"  value="Imagen de la confiteria:" />
+                            <p:inputText id="imagen_confiteria" value="#{confiteriaBean.confiteria.imagen}" required="true" />
+
+                            <p:outputLabel  for="precio_confiteria"  value="precio de la confiteria:" />
+                            <p:inputText id="precio_confiteria" value="#{confiteriaBean.confiteria.precio}" required="true" />
+
+                            <p:outputLabel  for="valorPuntos_confiteria"  value="puntos de la confiteria:" />
+                            <p:inputText id="valorPuntos_confiteria" value="#{confiteriaBean.confiteria.valorPuntos}" required="true" />
+
+
+
+                        </h:panelGrid>
+
+
+                        <p:commandButton action="#{confiteriaBean.crearConfiteria()}" value="#{confiteriaBean.mensajeCrear}" update="@form,crud_confiteria:lista"  icon="pi pi-plus"  />
+
+                        <p:growl for="mensaje_bean"/>
+                    </div>
+
+                </h:form>
+            </p:dialog>
+
+        </h:body>
+
+
+
+    </ui:define>
+</ui:composition>
+
+</html>
