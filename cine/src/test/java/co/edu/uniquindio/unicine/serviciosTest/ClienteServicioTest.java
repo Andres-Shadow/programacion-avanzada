@@ -45,7 +45,7 @@ public class ClienteServicioTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void registrarCliente(){
-        Cliente cliente = Cliente.builder().nombre("pepe").contra("1234").email("pepe1234@gmail.com").puntos(0).imagen("foto").build();
+        Cliente cliente = Cliente.builder().nombre("pepe").contra("1234").email("pepe1234@gmail.com").puntos(0).build();
 
         try {
             Cliente nuevo = clienteServicio.registrarCliente(cliente);
