@@ -1,14 +1,12 @@
 package co.edu.uniquindio.unicine.ServiciosImpl;
 
-import co.edu.uniquindio.unicine.Entidades.Administrativo;
-import co.edu.uniquindio.unicine.Entidades.Confiteria;
-import co.edu.uniquindio.unicine.Entidades.Funcion;
-import co.edu.uniquindio.unicine.Entidades.Sala;
+import co.edu.uniquindio.unicine.Entidades.*;
 import co.edu.uniquindio.unicine.Repo.AdministrativoRepo;
 import co.edu.uniquindio.unicine.Repo.FuncionRepo;
 import co.edu.uniquindio.unicine.Repo.SalaRepo;
 import co.edu.uniquindio.unicine.Servicios.AdminTeatroServicio;
 import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,16 +29,8 @@ public class AdminTeatroImpl implements AdminTeatroServicio {
     }
 
     @Override
-    public Administrativo login(String correo, String password) throws Exception {
-        Administrativo admin = administrativoRepo.ComprobarAutenticacion(correo, password);
-
-        if(admin == null )
-        {
-            throw new Exception("Los datos de autenticacion son incorrectos");
-        }
-
-        return admin;
-
+    public Administrativo login(String correo, String contra) throws Exception {
+        return null;
     }
 
     @Override

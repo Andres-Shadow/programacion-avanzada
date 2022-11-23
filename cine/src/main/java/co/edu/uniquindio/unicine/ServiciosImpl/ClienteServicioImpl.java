@@ -76,11 +76,13 @@ public class ClienteServicioImpl implements ClienteServicio {
             if(!spe.checkPassword(contra, cliente.getContrasenia())){
                 throw new Exception("Contraseña no valida");
             }
+
+            if(!cliente.getEstado()){
+                throw new Exception("Cuenta no activada");
+            }
         }
 
-        if(!cliente.getEstado()){
-         throw new Exception("Cuenta no activada");
-        }
+
 
 
         return cliente;

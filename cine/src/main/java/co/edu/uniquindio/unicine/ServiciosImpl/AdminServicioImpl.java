@@ -6,6 +6,7 @@ import co.edu.uniquindio.unicine.Servicios.AdminServicio;
 import co.edu.uniquindio.unicine.Tipos.Estado_PElicula;
 import co.edu.uniquindio.unicine.Tipos.Genero_Pelicula;
 import co.edu.uniquindio.unicine.Tipos.Tipo_Admin;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -284,13 +285,30 @@ public class AdminServicioImpl implements AdminServicio {
     }
 
     @Override
-    public Administrativo loginAdmin(String correo, Tipo_Admin tipo) throws Exception{
-        return administrativoRepo.loginAdminGrande(correo, tipo);
+    public Administrativo loginAdmin(String correo, String contrasenia) throws Exception{
+        Administrativo admin = administrativoRepo.findByCorreo(correo);
+
+        if(admin!=null ){
+            StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
+            if(!spe.checkPassword(contrasenia, admin.getContrasenia())){
+                throw new Exception("Contraseña no valida");
+            }
+        }
+
+        return admin;
     }
 
     @Override
-    public Administrativo loginAdminTeatro(String correo, Tipo_Admin tipo) throws Exception {
-        return administrativoRepo.loginAdminGrande(correo, tipo);
+    public Administrativo loginAdminTeatro(String correo, String contra) throws Exception {
+        Administrativo admin = administrativoRepo.findByCorreo(correo);
+        if(admin!=null){
+            StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
+            if(!spe.checkPassword(contra, admin.getContrasenia())){
+                throw new Exception("Contraseña no valida");
+            }
+        }
+
+        return admin;
     }
 
 

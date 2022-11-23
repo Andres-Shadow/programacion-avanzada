@@ -27,19 +27,6 @@
                     </a>
                     <h:graphicImage library="img" name="Unicine.png" styleClass="img-icon me-2"/>
 
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-
-                        <li><a href="/index.xhtml" class="nav-link px-2 text-secondary">Incio</a></li>
-                        <li><a href="/admin_teatro/gestion_peliculas.xhtml"
-                               class="nav-link px-2 text-white">GESTIONAR PELICULA</a></li>
-                        <li><a href="/admin_teatro/gestion_salas.xhtml"
-                               class="nav-link px-2 text-white">GESTIONAR SALA</a></li>
-                        <li><a href="/admin/gestion_teatro.xhtml" class="nav-link px-2 text-white">GESTIONAR TEATRO</a>
-                        </li>
-                        <li><a href="" class="nav-link px-2 text-white">PERFIL</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-
-                    </ul>
 
 
                     <h:form styleClass="barraBusqueda me-5">
@@ -51,13 +38,29 @@
                         </div>
                     </h:form>
 
+                    <h:form rendered="#{seguridadBean.autenticado}">
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li><a href="/cliente/perfil_cliente.xhtml" class="nav-link px-2 text-white">PERFIL</a></li>
+                        </ul>
+                    </h:form>
+
+                    <h:form>
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li><a href="/index.xhtml" class="nav-link px-2 text-white">INICIO</a></li>
+                        </ul>
+                    </h:form>
+
+
+
                 </div>
 
 
                 <div class="text-end">
 
+
+
                     <h:form rendered="#{seguridadBean.autenticado}">
-                        <p:outputLabel styleClass="me-3" value="Hola! #{seguridadBean.cliente.nombre} #{seguridadBean.admin.nombre} "/>
+                        <p:outputLabel styleClass="me-3 text-white" value="Hola! #{seguridadBean.cliente.nombre} #{seguridadBean.admin.nombre} "/>
 
                         <p:commandButton styleClass="ui-button-outlined ui-button-primary me-3" icon="pi pi-user"
                                          action="#{seguridadBean.cerrarSesion()}"

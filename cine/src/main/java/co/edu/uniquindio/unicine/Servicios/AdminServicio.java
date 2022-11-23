@@ -52,8 +52,8 @@ public interface AdminServicio {
 
     Administrativo obtenerAdminTeatro(Integer id, Tipo_Admin tipo)throws Exception;
 
-    Administrativo loginAdmin(String correo, Tipo_Admin tipo) throws Exception;
+    Administrativo loginAdmin(String correo, String contra) throws Exception;
 
-    Administrativo loginAdminTeatro(String correo, Tipo_Admin tipo) throws Exception;
+    Administrativo loginAdminTeatro(String correo, String contra) throws Exception;
 
 }
