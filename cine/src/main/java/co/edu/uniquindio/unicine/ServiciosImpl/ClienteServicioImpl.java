@@ -43,6 +43,8 @@ public class ClienteServicioImpl implements ClienteServicio {
 
             StrongPasswordEncryptor spe = new StrongPasswordEncryptor();
             cliente.setContrasenia(spe.encryptPassword(cliente.getContrasenia()));
+            cliente.setEstado(false);
+            cliente.setPuntos(0);
         }
         return clienteRepo.save(cliente);
     }
@@ -75,11 +77,11 @@ public class ClienteServicioImpl implements ClienteServicio {
                 throw new Exception("Contraseña no valida");
             }
         }
-        /*
-        * if(!cliente.getEstado()){
-        * throw new Exception("Cuenta no activada");
-        * }
-        * */
+
+        if(!cliente.getEstado()){
+         throw new Exception("Cuenta no activada");
+        }
+
 
         return cliente;
 

@@ -1,20 +1,40 @@
 
 /** --------------------------------------CLIENTES-----------------------------------------------------**/
-insert into cliente values (1,"BQF862","dominiquejavier5853@uniquindio.com","foto","Regina Esteban",100);
-insert into cliente values (2,"CNX987","gabrielflorencia@uniquindio.org","foto","MacKensie Santos",23);
-insert into cliente values (3,"FYS689","ezekielpea@yahoo.org","foto","Reed Francisco",77);
-insert into cliente values (4,"WHK372","luneajose@google.com","foto","Alyssa Chichi",65);
-insert into cliente values (5,"DEK244","lucysofia7864@google.com","foto","Rogan Diez",13);
-insert into cliente values (6,"BYQ684","portermatilde8875@yahoo.org","foto","Nelle Jara",38);
-insert into cliente values (7,"ATG266","brendavalentina@uniquindio.com","foto","Cailin Pastor",70);
-insert into cliente values (8,"FAN619","omarrodriguez1187@outlook.com","foto","Jakeem Benjamin",50);
-insert into cliente values (9,"WFA868","illanabentlee@hotmail.org","foto","Audrey Zuniga",22);
-insert into cliente values (10,"XOA627","gagearaya5239@google.com","foto","Calvin Saez",24);
-insert into cliente values (11,"RUU877","fitzgeraldfrancisco1116@yahoo.org","foto","Wanda Julieta",21);
-insert into cliente values (12,"EYP885","chandadominguez@outlook.com","foto","Thaddeus Figueroa",75);
-insert into cliente values (13,"FST855","graidengutierrez@yahoo.org","foto","Audrey Reyes",40);
-insert into cliente values (14,"RHS477","theodoremedina@yahoo.com","foto","Ray Ramirez",17);
-insert into cliente values (15,"SGR942","iolarubio@hotmail.educo","foto","Christine Muñoz",94);
+insert into cliente values (1,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","dominiquejavier5853@uniquindio.com",1,"Regina Esteban",100);
+insert into cliente values (2,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","gabrielflorencia@uniquindio.org",1,"MacKensie Santos",23);
+insert into cliente values (3,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","ezekielpea@yahoo.org",1,"Reed Francisco",77);
+insert into cliente values (4,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","luneajose@google.com",1,"Alyssa Chichi",65);
+insert into cliente values (5,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","lucysofia7864@google.com",1,"Rogan Diez",13);
+insert into cliente values (6,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","portermatilde8875@yahoo.org",1,"Nelle Jara",38);
+insert into cliente values (7,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","brendavalentina@uniquindio.com",1,"Cailin Pastor",70);
+insert into cliente values (8,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","omarrodriguez1187@outlook.com",1,"Jakeem Benjamin",50);
+insert into cliente values (9,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","illanabentlee@hotmail.org",1,"Audrey Zuniga",22);
+insert into cliente values (10,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","gagearaya5239@google.com",1,"Calvin Saez",24);
+insert into cliente values (11,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","fitzgeraldfrancisco1116@yahoo.org",1,"Wanda Julieta",21);
+insert into cliente values (12,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","chandadominguez@outlook.com",1,"Thaddeus Figueroa",75);
+insert into cliente values (13,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","graidengutierrez@yahoo.org",1,"Audrey Reyes",40);
+insert into cliente values (14,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","theodoremedina@yahoo.com",1,"Ray Ramirez",17);
+insert into cliente values (15,"GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek","iolarubio@hotmail.educo",1,"Christine Muñoz",94);
+
+
+/**---------------------- cliente_imagen_perfil ----------------------------**/
+
+insert into cliente_imagen_perfil value (1, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (2, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (3, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (4, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (5, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (6, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (7, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (8, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (9, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (10, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (11, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (12, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (13, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (14, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+insert into cliente_imagen_perfil value (15, "https://res.cloudinary.com/dpqdgyicu/image/upload/v1669165980/unicine/usuario/umbreon_wnn8kr.jpg", "unicine/usuario/umbreon_wnn8kr");
+
 
 
 /** --------------------------------------PELICULAS-----------------------------------------------------**/
@@ -58,11 +78,11 @@ insert into ciudad values(5, "Medellin");
 
 /** --------------------------------------ADMINS-----------------------------------------------------**/
                 /*    id - cedula -    nombre   -     tipo    - id supervisor* - correo - contraseña */
-insert into administrativo values (1, "12345","password", "correo1@gmail.com","pepito1", "ADMINISTRADOR_TEATRO", null );
-insert into administrativo values (2, "54321","password", "correo2@gmail.com","pepito2", "ADMINISTRADOR_TEATRO", null );
-insert into administrativo values (3, "6789","password", "correo3@gmail.com","pepito3", "ADMINISTRADOR_TEATRO", null );
-insert into administrativo values (4, "9876","password", "correo4@gmail.com","pepito4", "ADMINISTRADOR_TEATRO", null );
-insert into administrativo values (5, "123","password", "correo5@gmail.com","pepito5", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (1, "12345","GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek", "correo1@gmail.com","pepito1", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (2, "54321","GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek", "correo2@gmail.com","pepito2", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (3, "6789","GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek", "correo3@gmail.com","pepito3", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (4, "9876","GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek", "correo4@gmail.com","pepito4", "ADMINISTRADOR_TEATRO", null );
+insert into administrativo values (5, "123","GxkCkaNhkhviyal9GVRv6nT3X2J8ZpIoydzhKbovRVy7oDQDZ0AbiuFJf9hpjMek", "correo5@gmail.com","pepito5", "ADMINISTRADOR_TEATRO", null );
 
 
 /** --------------------------------------TEATROS-----------------------------------------------------**/
@@ -135,7 +155,6 @@ insert into horario values (5, "2022-10-1 9:30:00", "2022/12/5", "2:30 - 5:30", 
 
 /**id - precio - unidades - compra id - confiteria id **/
 
-<<<<<<< HEAD
 insert into comrpa_confiteria value (1, 30000, 3, 1, 1);
 insert into comrpa_confiteria value (2, 30000, 3, 1, 1);
 insert into comrpa_confiteria value (3, 30000, 3, 1, 1);
