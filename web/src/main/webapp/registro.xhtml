@@ -25,9 +25,6 @@
                 <p:outputLabel for="contra2_usuario" value="Confirmar contraseña: " />
                 <p:password id="contra2_usuario" value="#{clienteBean.confirmacionContra}" required="true"/>
 
-                <p:outputLabel for="puntos_usuario" value="Puntos: " />
-                <p:inputText id="puntos_usuario" value="#{clienteBean.cliente.puntos}" required="true"/>
-
             </h:panelGrid>
             <p:commandButton action="#{clienteBean.registrarCliente()}" value="Registrar" update="@form" />
             <p:growl for="mensaje_bean"/>
